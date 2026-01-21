@@ -1,0 +1,216 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-jet-black: #30343f;
+  --color-jet-black-100: #0a0a0d;
+  --color-jet-black-200: #13151a;
+  --color-jet-black-300: #1d1f26;
+  --color-jet-black-400: #272a33;
+  --color-jet-black-500: #30343f;
+  --color-jet-black-600: #525a6d;
+  --color-jet-black-700: #778098;
+  --color-jet-black-800: #a4aabb;
+  --color-jet-black-900: #d2d5dd;
+
+  --color-ghost-white: #fafaff;
+  --color-ghost-white-100: #000065;
+  --color-ghost-white-200: #0000ca;
+  --color-ghost-white-300: #3030ff;
+  --color-ghost-white-400: #9595ff;
+  --color-ghost-white-500: #fafaff;
+  --color-ghost-white-600: #fbfbff;
+  --color-ghost-white-700: #fcfcff;
+  --color-ghost-white-800: #fdfdff;
+  --color-ghost-white-900: #fefeff;
+
+  --color-periwinkle: #e4d9ff;
+  --color-periwinkle-100: #1b005f;
+  --color-periwinkle-200: #3600be;
+  --color-periwinkle-300: #5d1eff;
+  --color-periwinkle-400: #a17cff;
+  --color-periwinkle-500: #e4d9ff;
+  --color-periwinkle-600: #ebe2ff;
+  --color-periwinkle-700: #f0eaff;
+  --color-periwinkle-800: #f5f1ff;
+  --color-periwinkle-900: #faf8ff;
+
+  --color-twilight-indigo: #273469;
+  --color-twilight-indigo-100: #080a15;
+  --color-twilight-indigo-200: #0f152a;
+  --color-twilight-indigo-300: #171f3f;
+  --color-twilight-indigo-400: #1f2953;
+  --color-twilight-indigo-500: #273469;
+  --color-twilight-indigo-600: #3a4e9e;
+  --color-twilight-indigo-700: #5e72c4;
+  --color-twilight-indigo-800: #94a1d7;
+  --color-twilight-indigo-900: #c9d0eb;
+
+  --color-space-indigo: #2b2d42;
+  --color-space-indigo-100: #08090d;
+  --color-space-indigo-200: #11121a;
+  --color-space-indigo-300: #191b27;
+  --color-space-indigo-400: #222334;
+  --color-space-indigo-500: #2b2d42;
+  --color-space-indigo-600: #4a4d72;
+  --color-space-indigo-700: #6d71a0;
+  --color-space-indigo-800: #9da0bf;
+  --color-space-indigo-900: #ced0df;
+
+  --color-lavender-grey: #8d99ae;
+  --color-lavender-grey-100: #1a1e25;
+  --color-lavender-grey-200: #343c4a;
+  --color-lavender-grey-300: #4f5b6f;
+  --color-lavender-grey-400: #697994;
+  --color-lavender-grey-500: #8d99ae;
+  --color-lavender-grey-600: #a4aebf;
+  --color-lavender-grey-700: #bbc2cf;
+  --color-lavender-grey-800: #d2d6df;
+  --color-lavender-grey-900: #e8ebef;
+
+  --color-platinum: #edf2f4;
+  --color-platinum-100: #24353b;
+  --color-platinum-200: #496a77;
+  --color-platinum-300: #759bab;
+  --color-platinum-400: #b1c6cf;
+  --color-platinum-500: #edf2f4;
+  --color-platinum-600: #f0f4f6;
+  --color-platinum-700: #f4f7f8;
+  --color-platinum-800: #f7fafa;
+  --color-platinum-900: #fbfcfd;
+
+  --color-punch-red: #ef233c;
+  --color-punch-red-100: #330409;
+  --color-punch-red-200: #660813;
+  --color-punch-red-300: #9a0c1c;
+  --color-punch-red-400: #cd0f26;
+  --color-punch-red-500: #ef233c;
+  --color-punch-red-600: #f25063;
+  --color-punch-red-700: #f57c8a;
+  --color-punch-red-800: #f8a8b1;
+  --color-punch-red-900: #fcd3d8;
+
+  --color-flag-red: #d90429;
+  --color-flag-red-100: #2b0108;
+  --color-flag-red-200: #560210;
+  --color-flag-red-300: #810318;
+  --color-flag-red-400: #ac0420;
+  --color-flag-red-500: #d90429;
+  --color-flag-red-600: #fa1b40;
+  --color-flag-red-700: #fc5470;
+  --color-flag-red-800: #fd8da0;
+  --color-flag-red-900: #fec6cf;
+
+  --font-nunito: 'Nunito Sans', sans-serif;
+  --font-pally: 'Pally', sans-serif;
+  --font-kola: 'Kola', sans-serif;
+  --font-azert: 'Azert', sans-serif;
+  --font-redhawk: 'redhawk', sans-serif;
+  --font-gantians: 'gantians', sans-serif;
+  --font-cursive: 'Homemade Apple', cursive;
+  --font-titan-one: 'Titan One', sans-serif;
+  --font-ibm-plex: 'IBM Plex Mono', monospace;
+  --font-ubuntu: 'Ubuntu Condensed', sans-serif;
+  --font-raleway: 'Raleway', sans-serif;
+
+  --font-size-xxs: clamp(0.75rem, calc(0.65rem + 0.22vw), 0.88rem);
+  --font-line-height-xxs: 1.4;
+  --font-size-xs: clamp(0.88rem, calc(0.75rem + 0.27vw), 1rem);
+  --font-line-height-xs: 1.4;
+  --font-size-sm: clamp(1rem, calc(0.92rem + 0.39vw), 1.2rem);
+  --font-line-height-sm: 1.4;
+  --font-size-md: clamp(1.13rem, calc(0.98rem + 0.73vw), 1.5rem);
+  --font-line-height-md: 1.5;
+  --font-size-lg: clamp(1.27rem, calc(1.03rem + 1.19vw), 1.88rem);
+  --font-line-height-lg: 1.4;
+  --font-size-xl: clamp(1.42rem, calc(1.06rem + 1.8vw), 2.34rem);
+  --font-line-height-xl: 1.4;
+  --font-size-2xl: clamp(1.6rem, calc(1.08rem + 2.59vw), 2.93rem);
+  --font-line-height-2xl: 1.2;
+  --font-size-3xl: clamp(1.8rem, calc(1.08rem + 3.63vw), 3.66rem);
+  --font-line-height-3xl: 1.1;
+  --font-size-4xl: clamp(2.03rem, calc(1.03rem + 4.98vw), 4.58rem);
+  --font-line-height-4xl: 1;
+  --font-size-5xl: clamp(2.28rem, calc(0.94rem + 6.71vw), 5.72rem);
+  --font-line-height-5xl: 1;
+  --font-size-6xl: clamp(2.57rem, calc(0.78rem + 8.95vw), 7.15rem);
+  --font-line-height-6xl: 1;
+  --font-size-7xl: clamp(3.1rem, calc(0.78rem + 10.5vw), 8.57rem);
+  --font-line-height-7xl: 1;
+  --font-size-8xl: clamp(3.75rem, calc(0.78rem + 12.7vw), 10.25rem);
+  --font-line-height-8xl: 1;
+}
+
+/* --- SCROLLBAR STYLES --- */
+::-webkit-scrollbar {
+  width: 1px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar:horizontal {
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  background: #13151a;
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffffffa0;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #252422;
+}
+
+::-webkit-scrollbar-corner {
+  display: none;
+}
+
+/* --- BODY STYLES --- */
+body {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- CUSTOM FONTS --- */
+@font-face {
+  font-family: 'Pally';
+  src:
+    url('./fonts/pally/fonts/Pally-Variable.eot') format('embedded-opentype'),
+    url('./fonts/pally/fonts/Pally-Variable.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Kola';
+  src:
+    url('./fonts/kola/fonts/Kola-Regular.eot') format('embedded-opentype'),
+    url('./fonts/kola/fonts/Kola-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Azert';
+  src: url('./fonts/azert/AzeretMono[100].ttf') format('truetype');
+}
+@font-face {
+  font-family: 'redhawk';
+  src: url('./fonts/redhawk/Redhawk.otf') format('truetype');
+}
+@font-face {
+  font-family: 'gantians';
+  src: url('./fonts/gantians/Gantians-BLL2B.otf') format('truetype');
+}
+@font-face {
+  font-family: 'Homemade Apple';
+  src: url('./fonts/homemade-apple/HomemadeApple-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Titan One';
+  src: url('./fonts/titan-one/TitanOne-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('./fonts/ibm-plex-mono/IBMPlexMono-Regular.ttf') format('truetype');
+}
