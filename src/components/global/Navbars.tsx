@@ -3,111 +3,95 @@ import { ChevronRight, Menu, X } from 'lucide-react';
 import FlipLink from './FlipLInk';
 import { useState } from 'react';
 
-const BottomBar = ({
+import { ChevronUp, ChevronDown } from 'lucide-react';
+
+const SideNav = ({
   activePageIndex,
   pages,
   scrollToPage,
-  scrollYProgress,
 }: {
   activePageIndex: number;
   pages: { title: string }[];
   scrollToPage: (index: number) => void;
-  scrollYProgress: any;
 }) => {
   const totalPages = pages.length;
-  const prevPage = pages[activePageIndex - 1];
-  const nextPage = pages[activePageIndex + 1];
+  const isFirst = activePageIndex === 0;
+  const isLast = activePageIndex === totalPages - 1;
 
-  const leftLabel = activePageIndex === 0 ? 'HOME' : prevPage?.title;
-  const rightLabel = activePageIndex === totalPages - 1 ? 'END' : nextPage?.title;
-  console.log('Scroll Progress:- ', scrollYProgress.current * 100);
+  // Calculate percentage for the vertical line height
+  const progressPercent = (activePageIndex / (totalPages - 1)) * 100;
+
   return (
-    <div className="right-0 bottom-1 left-0 z-50 absolute px-8 md:px-12 w-full pointer-events-none">
-      {/* Container: 
-        - pointer-events-auto (so buttons are clickable)
-        - flex: lays out children in a row
-        - items-center: vertically centers the line and buttons
-      */}
-      <div className="flex items-center mx-auto w-full pointer-events-auto">
-        {/* --- LEFT CONTROL --- */}
-        <div
+    <div className="top-1/2 left-6 z-50 fixed flex flex-col items-center gap-6 -translate-y-1/2 pointer-events-auto">
+      {/* --- UP / PREV BUTTON --- */}
+      <div className="group relative">
+        <button
+          onClick={() => {
+            console.log('SideNav UP clicked, current index:', activePageIndex, 'target:', activePageIndex - 1);
+            !isFirst && scrollToPage(activePageIndex - 1);
+          }}
+          disabled={isFirst}
           className={`
-            shrink-0 flex items-center gap-3 py-2 pr-2
-            transition-opacity duration-300
-            ${activePageIndex === 0 ? 'opacity-50 cursor-default' : 'hover:opacity-80 cursor-pointer'}
+            p-2 rounded-full border border-white/10 bg-black/20 backdrop-blur-sm
+            transition-all duration-300
+            ${
+              isFirst
+                ? 'opacity-30 cursor-not-allowed text-white'
+                : 'opacity-100 hover:bg-white/10 hover:border-amber-400/50 text-white hover:text-amber-400 cursor-pointer'
+            }
           `}
         >
-          <div className="flex flex-row justify-center items-center gap-2 overflow-hidden cursor-pointer">
-            {activePageIndex !== 0 && (
-              <div className="">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className="w-3 h-3 text-white"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15.75 19.5L8.25 12l7.5-7.5"
-                  />
-                </svg>
-              </div>
-            )}
-            <AnimatePresence mode="wait">
-              <FlipLink
-                key={leftLabel}
-                onClick={() => {
-                  if (activePageIndex !== 0) scrollToPage(activePageIndex - 1);
-                }}
-                disabled={activePageIndex === 0}
-                className="font-bold text-white text-sm md:text-base uppercase tracking-widest"
-              >
-                {leftLabel}
-              </FlipLink>
-            </AnimatePresence>
-          </div>
-        </div>
-        <div className="flex-1 bg-periwinkle-700/20 mx-3 h-px">
-          <motion.div
-            initial={{ width: 0 }}
-            animate={{
-              width: `${(activePageIndex / (pages.length - 1)) * 100}%`,
-            }}
-            transition={{ type: 'spring', damping: 30, stiffness: 100 }}
-            className="bg-periwinkle-500/50 h-px"
-          ></motion.div>
-        </div>
+          <ChevronUp className="w-5 h-5" />
+        </button>
 
-        <div
+        {/* Tooltip for Prev Page Name */}
+        {!isFirst && (
+          <span className="top-1/2 left-full absolute bg-black/80 opacity-0 group-hover:opacity-100 ml-4 px-2 py-1 rounded font-bold text-white text-xs uppercase tracking-wider whitespace-nowrap transition-all -translate-x-2 -translate-y-1/2 group-hover:translate-x-0 duration-300">
+            {pages[activePageIndex - 1]?.title}
+          </span>
+        )}
+      </div>
+
+      {/* --- VERTICAL PROGRESS TRACK --- */}
+      {/* h-32: Sets a fixed height (small portion of screen)
+         w-px: Thin line
+      */}
+      <div className="relative bg-white/10 rounded-full w-px h-32 overflow-hidden">
+        <motion.div
+          initial={{ height: 0 }}
+          animate={{ height: `${progressPercent}%` }}
+          transition={{ type: 'spring', damping: 30, stiffness: 100 }}
+          className="top-0 left-0 absolute bg-gradient-to-b from-amber-200 to-amber-500 rounded-full w-full"
+        />
+      </div>
+
+      {/* --- DOWN / NEXT BUTTON --- */}
+      <div className="group relative">
+        <button
+          onClick={() => {
+            console.log('SideNav DOWN clicked, current index:', activePageIndex, 'target:', activePageIndex + 1);
+            !isLast && scrollToPage(activePageIndex + 1);
+          }}
+          disabled={isLast}
           className={`
-            shrink-0 flex items-center gap-3 py-2 pl-2
-            transition-opacity duration-300
-            ${activePageIndex === totalPages - 1 ? 'opacity-50 cursor-default' : 'hover:opacity-80 cursor-pointer'}
+            p-2 rounded-full border border-white/10 bg-black/20 backdrop-blur-sm
+            transition-all duration-300
+            ${
+              isLast
+                ? 'opacity-30 cursor-not-allowed text-white'
+                : 'opacity-100 hover:bg-white/10 hover:border-amber-400/50 text-white hover:text-amber-400 cursor-pointer'
+            }
           `}
         >
-          <div className="flex flex-row justify-center items-center gap-2 overflow-hidden cursor-pointer">
-            <AnimatePresence mode="wait">
-              <FlipLink
-                key={rightLabel}
-                onClick={() => {
-                  if (activePageIndex !== totalPages - 1) scrollToPage(activePageIndex + 1);
-                }}
-                disabled={activePageIndex === totalPages - 1}
-                className="font-bold text-white text-sm md:text-base uppercase tracking-widest"
-              >
-                {rightLabel}
-              </FlipLink>
-            </AnimatePresence>{' '}
-            {activePageIndex !== totalPages - 1 && (
-              <div className="">
-                <ChevronRight className="size-3 text-amber-200" />
-              </div>
-            )}
-          </div>
-        </div>
+          <ChevronDown className="w-5 h-5" />
+        </button>
+
+        {/* Tooltip for Next Page Name */}
+        {!isLast && (
+          <span className="top-1/2 left-full absolute bg-black/80 opacity-0 group-hover:opacity-100 ml-4 px-2 py-1 rounded font-bold text-white text-xs uppercase tracking-wider whitespace-nowrap transition-all -translate-x-2 -translate-y-1/2 group-hover:translate-x-0 duration-300">
+            {pages[activePageIndex + 1]?.title}
+          </span>
+        )}
       </div>
     </div>
   );
@@ -189,7 +173,7 @@ const NavBar = ({
       {!isOpen && (
         <button
           onClick={() => setTimeout(() => setIsOpen(true), 100)}
-          className="group top-6 right-6 z-100 absolute flex items-center gap-2 bg-platinum-300/10 hover:opacity-75 backdrop-blur-md px-4 py-2 rounded-full font-medium text-platinum-900/40 text-lg tracking-wide hover:scale-[105%] active:scale-100 transition-opacity ease-in-out cursor-pointer"
+          className="group top-6 right-6 z-100 fixed flex items-center gap-2 bg-platinum-300/10 hover:opacity-75 backdrop-blur-md px-4 py-2 rounded-full font-medium text-platinum-900/40 text-lg tracking-wide hover:scale-[105%] active:scale-100 transition-opacity ease-in-out cursor-pointer"
         >
           <Menu className="w-5 h-5" />
         </button>
@@ -203,7 +187,7 @@ const NavBar = ({
             initial="initial"
             animate="animate"
             exit="exit"
-            className="top-0 left-0 z-100 absolute flex flex-col justify-center bg-twilight-indigo-500/20 backdrop-blur-2xl px-8 md:px-20 w-full h-full origin-top-right cursor-default"
+            className="z-100 fixed inset-0 flex flex-col justify-center bg-twilight-indigo-500/20 backdrop-blur-2xl px-8 md:px-20 w-full h-full origin-top-right cursor-default"
             onClick={() => setIsOpen(false)}
           >
             <div className="relative flex flex-col justify-center mx-auto w-full max-w-7xl h-full">
@@ -231,10 +215,11 @@ const NavBar = ({
                     <motion.div variants={linkVars}>
                       <span
                         onClick={() => {
+                          console.log('NavBar clicked, target index:', index);
                           setIsOpen(false);
                           scrollToPage(index);
                         }}
-                        className={`font-bold  ${activePageIndex === index ? 'text-violet-300' : 'text-white'} hover:text-violet-200 text-6xl md:text-8xl tracking-tighter transition-colors cursor-pointer`}
+                        className={`font-bold  ${activePageIndex === index ? 'text-violet-300' : 'text-white'} hover:text-violet-200 text-6xl md:text-8xl tracking-tighter transition-colors cursor-pointer z-100`}
                       >
                         {page.title}
                       </span>
@@ -261,7 +246,7 @@ const NavBar = ({
     </>
   );
 };
-export { BottomBar, NavBar };
+export { SideNav, NavBar };
 /*const NavBarOld = ({
   activePageIndex,
   pages,
