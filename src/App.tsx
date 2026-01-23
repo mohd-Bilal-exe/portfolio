@@ -6,10 +6,12 @@ import Home from './components/pages/Home/Home';
 import About from './components/pages/About/About';
 import Projects from './components/pages/Projects/Projects';
 import Contact from './components/pages/Contact/Contact';
+import Skills from './components/pages/Skills/Skills';
 
 const PAGE_DATA = [
   { id: 'home', title: 'Home', color: '', Component: Home },
   { id: 'about', title: 'About', color: '', Component: About },
+  { id: 'skills', title: 'Skills', color: '', Component: Skills },
   { id: 'projects', title: 'Projects', color: '', Component: Projects },
   { id: 'contact', title: 'Contact', color: '', Component: Contact },
 ];
@@ -30,8 +32,6 @@ export default function App() {
     return 1 - Math.pow(1 - x, 4);
   }
   const scrollToPage = (index: number) => {
-    console.log('scrollToPage called with index:', index);
-
     if (index < 0 || index >= PAGE_DATA.length || !sectionRefs.current[index]) {
       return;
     }
