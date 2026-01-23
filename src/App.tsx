@@ -50,7 +50,7 @@ export default function App() {
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.0,
+      duration: 1.2,
       easing: easeOutQuart,
       orientation: 'vertical',
       smoothWheel: true,

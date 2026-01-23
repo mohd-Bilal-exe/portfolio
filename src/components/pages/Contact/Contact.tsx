@@ -1,5 +1,5 @@
 const Contact = () => (
-  <div className="flex flex-col justify-center items-center bg-red-500/30 p-4 w-full min-h-dvh">
+  <div className="flex flex-col justify-center items-center bg-red-500/10 p-4 w-full min-h-dvh">
     <div className="flex flex-col space-y-4 w-full max-w-md">
       <h2 className="mb-4 font-bold text-white text-4xl text-center">Get in touch</h2>
       <input
