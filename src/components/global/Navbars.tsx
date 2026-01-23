@@ -1,8 +1,6 @@
 import { AnimatePresence, easeInOut, motion } from 'framer-motion';
-import { ChevronRight, Menu, X } from 'lucide-react';
-import FlipLink from './FlipLInk';
+import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
-
 import { ChevronUp, ChevronDown } from 'lucide-react';
 
 const SideNav = ({
@@ -17,17 +15,20 @@ const SideNav = ({
   const totalPages = pages.length;
   const isFirst = activePageIndex === 0;
   const isLast = activePageIndex === totalPages - 1;
-
   // Calculate percentage for the vertical line height
   const progressPercent = (activePageIndex / (totalPages - 1)) * 100;
-
   return (
-    <div className="top-1/2 left-6 z-50 fixed flex flex-col items-center gap-6 -translate-y-1/2 pointer-events-auto">
+    <div className="top-1/2 left-1.5 md:left-6 z-50 fixed flex flex-col items-center gap-6 -translate-y-1/2 pointer-events-auto">
       {/* --- UP / PREV BUTTON --- */}
       <div className="group relative">
         <button
           onClick={() => {
-            console.log('SideNav UP clicked, current index:', activePageIndex, 'target:', activePageIndex - 1);
+            console.log(
+              'SideNav UP clicked, current index:',
+              activePageIndex,
+              'target:',
+              activePageIndex - 1
+            );
             !isFirst && scrollToPage(activePageIndex - 1);
           }}
           disabled={isFirst}
@@ -41,12 +42,12 @@ const SideNav = ({
             }
           `}
         >
-          <ChevronUp className="w-5 h-5" />
+          <ChevronUp className="size-3 md:size-5" />
         </button>
 
         {/* Tooltip for Prev Page Name */}
         {!isFirst && (
-          <span className="top-1/2 left-full absolute bg-black/80 opacity-0 group-hover:opacity-100 ml-4 px-2 py-1 rounded font-bold text-white text-xs uppercase tracking-wider whitespace-nowrap transition-all -translate-x-2 -translate-y-1/2 group-hover:translate-x-0 duration-300">
+          <span className="top-1/2 left-full absolute bg-black/15 opacity-0 group-hover:opacity-100 backdrop-blur-sm ml-4 px-4 py-2 border border-white/5 rounded-full font-bold text-white text-xs uppercase tracking-wider whitespace-nowrap transition-all -translate-x-2 -translate-y-1/2 group-hover:translate-x-0 duration-300">
             {pages[activePageIndex - 1]?.title}
           </span>
         )}
@@ -61,7 +62,7 @@ const SideNav = ({
           initial={{ height: 0 }}
           animate={{ height: `${progressPercent}%` }}
           transition={{ type: 'spring', damping: 30, stiffness: 100 }}
-          className="top-0 left-0 absolute bg-gradient-to-b from-amber-200 to-amber-500 rounded-full w-full"
+          className="top-0 left-0 absolute bg-linear-to-b from-amber-200 to-amber-500 rounded-full w-full"
         />
       </div>
 
@@ -69,7 +70,12 @@ const SideNav = ({
       <div className="group relative">
         <button
           onClick={() => {
-            console.log('SideNav DOWN clicked, current index:', activePageIndex, 'target:', activePageIndex + 1);
+            console.log(
+              'SideNav DOWN clicked, current index:',
+              activePageIndex,
+              'target:',
+              activePageIndex + 1
+            );
             !isLast && scrollToPage(activePageIndex + 1);
           }}
           disabled={isLast}
@@ -83,12 +89,12 @@ const SideNav = ({
             }
           `}
         >
-          <ChevronDown className="w-5 h-5" />
+          <ChevronDown className="size-3 md:size-5" />
         </button>
 
         {/* Tooltip for Next Page Name */}
         {!isLast && (
-          <span className="top-1/2 left-full absolute bg-black/80 opacity-0 group-hover:opacity-100 ml-4 px-2 py-1 rounded font-bold text-white text-xs uppercase tracking-wider whitespace-nowrap transition-all -translate-x-2 -translate-y-1/2 group-hover:translate-x-0 duration-300">
+          <span className="top-1/2 left-full absolute bg-black/15 opacity-0 group-hover:opacity-100 backdrop-blur-sm ml-4 px-4 py-2 border border-white/5 rounded-full font-bold text-white text-xs uppercase tracking-wider whitespace-nowrap transition-all -translate-x-2 -translate-y-1/2 group-hover:translate-x-0 duration-300">
             {pages[activePageIndex + 1]?.title}
           </span>
         )}
@@ -215,9 +221,8 @@ const NavBar = ({
                     <motion.div variants={linkVars}>
                       <span
                         onClick={() => {
-                          console.log('NavBar clicked, target index:', index);
                           setIsOpen(false);
-                          scrollToPage(index);
+                          setTimeout(() => scrollToPage(index), 1000);
                         }}
                         className={`font-bold  ${activePageIndex === index ? 'text-violet-300' : 'text-white'} hover:text-violet-200 text-6xl md:text-8xl tracking-tighter transition-colors cursor-pointer z-100`}
                       >

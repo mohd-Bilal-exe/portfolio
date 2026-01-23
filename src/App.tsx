@@ -72,9 +72,7 @@ export default function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
       const windowHeight = window.innerHeight;
-
       // Find which section is currently in view
       let currentIndex = 0;
       sectionRefs.current.forEach((ref, index) => {

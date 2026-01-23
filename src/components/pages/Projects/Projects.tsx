@@ -31,7 +31,7 @@ const Projects = () => {
   ];
 
   return (
-    <div className="flex flex-col justify-center items-center bg-ghost-white-200 p-4 w-full min-h-dvh">
+    <div className="flex flex-col justify-center items-center bg-ghost-white-200/5 p-4 w-full min-h-dvh">
       <h2 className="mb-6 font-bold text-white text-4xl">Projects</h2>
       <div className="gap-4 grid grid-cols-1 md:grid-cols-3 md:auto-rows-[200px] w-full max-w-5xl">
         {projectsInfo.map(project => (
