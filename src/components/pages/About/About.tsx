@@ -4,6 +4,17 @@ import { ArrowRight } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 import AnimateString from '../../global/AnimateString';
 
+import {
+  codeImg,
+  lucknowImg,
+  gymImg,
+  cameraImg,
+  codeVideo,
+  lucknowVideo,
+  gymVideo,
+  photographyVideo,
+} from '../../../lib/assets';
+
 const MediaPill = ({
   staticImg,
   imgClassName = 'object-cover',
@@ -114,8 +125,8 @@ const About = () => {
             <MediaPill
               alt="Coding"
               imgClassName="object-bottom object-cover"
-              staticImg="../src/assets/images/code.jpg"
-              videoSrc="../src/assets/videos/CodeVideo.mp4"
+              staticImg={codeImg}
+              videoSrc={codeVideo}
               delayOffset={0.25}
             />
             <AnimateString delayOffset={0.3}>while eating Awadhi cuisine in</AnimateString>
@@ -125,9 +136,9 @@ const About = () => {
             <MediaPill
               delayOffset={0.45}
               alt="Lucknow"
-              staticImg="../src/assets/images/lucknow.webp"
+              staticImg={lucknowImg}
               imgClassName="object-bottom object-cover"
-              videoSrc="../src/assets/videos/LucknowVideo.mp4"
+              videoSrc={lucknowVideo}
             />
             .
           </div>
@@ -146,8 +157,8 @@ const About = () => {
               delayOffset={0.65}
               alt="Gym"
               imgClassName="object-top object-cover"
-              staticImg="../src/assets/images/gym.jpg"
-              videoSrc="../src/assets/videos/GymVideo.mp4"
+              staticImg={gymImg}
+              videoSrc={gymVideo}
             />
 
             <AnimateString delayOffset={0.7}>and ocassionaly finding different</AnimateString>
@@ -160,8 +171,8 @@ const About = () => {
               alt="Photography"
               delayOffset={0.9}
               imgClassName="object-[30%_30%] object-cover"
-              staticImg="../src/assets/images/Camera.webp"
-              videoSrc="../src/assets/Videos/PhotographyVideo.mp4"
+              staticImg={cameraImg}
+              videoSrc={photographyVideo}
             />
 
             <AnimateString delayOffset={1}>through a lens.</AnimateString>
