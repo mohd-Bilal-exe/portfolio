@@ -10,7 +10,7 @@ import gymVideo from '../assets/Videos/GymVideo.mp4';
 import photographyVideo from '../assets/Videos/PhotographyVideo.mp4';
 import portfolio from '../assets/Images/portfolio.webp';
 import resumeIQ from '../assets/Images/resumeIQ.png';
-import TODONest from '../assets/Images/TODONest.png';
+import TODONest from '../assets/Images/TODOnest.png';
 import debatrix from '../assets/Images/debatrix.png';
 export {
   portfolio,
