@@ -2,13 +2,14 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowLeft, ExternalLink } from 'lucide-react';
 import AnimateString from '../../global/AnimateString';
+import { debatrix, portfolio, resumeIQ, TODONest } from '../../../lib/assets';
 
 // --- DATA ---
 const projects = [
   {
     key: 'ResumeIQ',
     title: 'ResumeIQ',
-    imgScr: '../src/assets/images/resumeIQ.png',
+    imgScr: resumeIQ,
     link: 'https://resumeiq-mohdb.vercel.app/',
     description: 'AI resume reviewer with real-time LaTeX preview and PDF export.',
     tech: ['Next js', 'Firebase', 'Gemini API'],
@@ -17,7 +18,7 @@ const projects = [
   {
     key: 'debatrix',
     title: 'deBatrix',
-    imgScr: '../src/assets/images/debatrix.png',
+    imgScr: debatrix,
     link: 'https://de-batrix.vercel.app/',
     description: 'AI-powered app for grammar correction and language translation.',
     tech: ['React js', 'Redux js', 'Framer-motion'],
@@ -26,7 +27,7 @@ const projects = [
   {
     key: 'ToDo Nest',
     title: 'ToDo Nest',
-    imgScr: '../src/assets/images/TODOnest.png',
+    imgScr: TODONest,
     link: 'https://todo-nest.netlify.app/',
     description: 'A task manager with custom colors, powered by Redux.',
     tech: ['React js', 'TailwindCSS'],
@@ -35,7 +36,7 @@ const projects = [
   {
     key: 'PreviousPortfolio',
     title: 'Oldfolio',
-    imgScr: '../src/assets/images/portfolio.webp',
+    imgScr: portfolio,
     link: 'https://webweaver-personalportfolio.netlify.app/',
     description: 'My first React project featuring Framer Motion animations.',
     tech: ['React js', 'Framer-motion'],
