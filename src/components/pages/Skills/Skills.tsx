@@ -188,8 +188,8 @@ export default function SkillsSection({ scrollToPage }: { scrollToPage: (index: 
         viewport={{ once: true }}
         className="flex items-center gap-4 mx-[7dvw] md:mx-[10dvw] py-6 md:py-10"
       >
-        <div className="bg-border-strong w-12 h-px" />
-        <span className="font-medium text-text-heading text-xs md:text-sm uppercase tracking-widest">
+        <div className="bg-zinc-700 w-12 h-px" />
+        <span className="font-medium text-text-secondary text-sm uppercase tracking-widest">
           What I bring to the table.
         </span>
       </motion.div>

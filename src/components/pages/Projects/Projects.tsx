@@ -87,10 +87,10 @@ export default function ProjectsSection({
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        className="flex items-center gap-4 mx-[7dvw] md:mx-[10dvw] py-6 md:pt-10"
+        className="flex items-center gap-4 mx-[7dvw] md:mx-[10dvw] py-6 md:py-10"
       >
-        <div className="bg-border-strong w-12 h-px" />
-        <span className="font-medium text-text-heading text-xs md:text-sm uppercase tracking-widest">
+        <div className="bg-zinc-700 w-12 h-px" />
+        <span className="font-medium text-text-secondary text-sm uppercase tracking-widest">
           latest Works
         </span>
       </motion.div>
@@ -101,7 +101,7 @@ export default function ProjectsSection({
         transition={{ type: 'spring', stiffness: 80, damping: 20 }}
       >
         {/* === PAGE 1: FEATURED STORY === */}
-        <div className="flex flex-col justify-center items-center px-[10dvw] w-dvw">
+        <div className="flex flex-col justify-start items-center px-[10dvw] w-dvw">
           <div className="w-full">
             <h2 className="mb-12 font-bold text-primary/80 text-4xl md:text-7xl leading-tight -white">
               <AnimateString>Crafting digital products</AnimateString>

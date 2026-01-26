@@ -109,7 +109,7 @@ const About = () => {
           className="flex items-center gap-4 mb-12"
         >
           <div className="bg-zinc-700 w-12 h-px" />
-          <span className="font-medium text-text-secondary/70 text-sm uppercase tracking-widest">
+          <span className="font-medium text-text-secondary text-sm uppercase tracking-widest">
             About Me
           </span>
         </motion.div>

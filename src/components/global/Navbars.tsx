@@ -224,7 +224,6 @@ const NavBar = ({
             animate="animate"
             exit="exit"
             className="z-300 fixed inset-0 flex flex-col justify-center bg-accent/20 backdrop-blur-2xl px-8 md:px-20 cursor-default"
-            onClick={() => setIsOpen(false)}
           >
             <div className="relative flex flex-col justify-center mx-auto w-full max-w-7xl h-full">
               {/* HEADER ROW (Logo/Close placeholder) */}
@@ -282,14 +281,15 @@ const NavBar = ({
                 exit={{ opacity: 0 }}
                 className="right-0 bottom-8 absolute"
               >
-                <button
-                  onClick={e => {
-                    e.preventDefault();
-                    setDarkMode(!darkMode);
-                  }}
-                  className="bg-background-overlay/60 hover:bg-color-background-overlay backdrop-blur-sm ml-4 px-6 py-2 rounded-full font-bold text-text-heading text-sm uppercase tracking-wider transition-colors"
-                >
-                  {darkMode ? 'Light Mode' : 'Dark Mode'}
+                <button className="">
+                  <label className="bg-background-overlay/60 hover:bg-color-background-overlay backdrop-blur-sm ml-4 px-6 py-2 rounded-full font-bold text-text-heading text-sm uppercase tracking-wider transition-colors switch">
+                    <input
+                      type="checkbox"
+                      checked={!darkMode}
+                      onChange={() => setDarkMode(!darkMode)}
+                    />
+                    <span className="slider"></span>
+                  </label>
                 </button>
               </motion.div>
             </div>
