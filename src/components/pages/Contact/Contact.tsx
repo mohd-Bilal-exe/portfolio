@@ -1,4 +1,4 @@
-import { ArrowRight, Instagram, Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { ArrowRight, Instagram, Github, Linkedin } from 'lucide-react';
 import AnimateString from '../../global/AnimateString';
 
 const Contact = () => {

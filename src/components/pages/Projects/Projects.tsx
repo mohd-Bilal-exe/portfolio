@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { ArrowRight, ArrowLeft, ExternalLink } from 'lucide-react';
 import AnimateString from '../../global/AnimateString';
 

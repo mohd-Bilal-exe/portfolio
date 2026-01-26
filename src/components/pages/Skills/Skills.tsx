@@ -248,7 +248,7 @@ export default function SkillsSection({ scrollToPage }: { scrollToPage: (index: 
             >
               <div className="bg-background-overlay w-6 md:w-12 group-hover:w-24 h-px transition-all duration-300" />
               See Full Tech Stack
-              <span className="bg-background-surface p-2 rounded-full text-black transition-transform group-hover:translate-x-2 duration-300">
+              <span className="bg-background-surface p-2 rounded-full text-primary transition-transform group-hover:translate-x-2 duration-300">
                 <ArrowRight size={20} />
               </span>
             </button>

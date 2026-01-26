@@ -131,7 +131,6 @@ export default function App() {
         />
       </div>
       <div className="relative flex flex-col w-full">
-        <div className="hidden md:block w-full h-[10dvh]"></div>
         {PAGE_DATA.map(({ id, Component }, index) => (
           <div
             key={id}
@@ -146,7 +145,6 @@ export default function App() {
             />
           </div>
         ))}
-        {hasHomeAnimated && <div className="hidden md:block w-full h-[10dvh]"></div>}
       </div>
       {hasHomeAnimated && (
         <GradualBlurMemo

@@ -1,9 +1,8 @@
 import { AnimatePresence, easeInOut, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ChevronUp, ChevronDown } from 'lucide-react';
 import FlipLink from './FlipLInk';
-import SplitText from './SplitText';
 
 const SideNav = ({
   activePageIndex,
@@ -253,7 +252,7 @@ const NavBar = ({
                 {pages.map((page, index) => (
                   <div key={index} className="flex justify-start items-center overflow-hidden">
                     <motion.div variants={linkVars} className="group">
-                      <span className="mx-3 font-space-grotesk text-muted text-xs md:text-xl transition-colors group-hover:text-accent-hover">
+                      <span className="mx-3 font-space-grotesk text-primary/20 text-xs md:text-xl transition-colors group-hover:text-accent-hover">
                         {String(index + 1).padStart(2, '0')}.
                       </span>
                       <FlipLink
@@ -283,11 +282,11 @@ const NavBar = ({
                 exit={{ opacity: 0 }}
                 className="right-0 bottom-8 absolute"
               >
-                <button className="bg-background-overlay/60 hover:bg-background-overlay backdrop-blur-sm px-6 py-2 rounded-full font-bold text-text-primary text-sm uppercase tracking-wider transition-colors">
-                  Contact
-                </button>
                 <button
-                  onClick={() => setDarkMode(!darkMode)}
+                  onClick={e => {
+                    e.preventDefault();
+                    setDarkMode(!darkMode);
+                  }}
                   className="bg-background-overlay/60 hover:bg-color-background-overlay backdrop-blur-sm ml-4 px-6 py-2 rounded-full font-bold text-text-heading text-sm uppercase tracking-wider transition-colors"
                 >
                   {darkMode ? 'Light Mode' : 'Dark Mode'}
