@@ -17,9 +17,10 @@ export interface SplitTextProps {
   to?: gsap.TweenVars;
   threshold?: number;
   rootMargin?: string;
-  tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
+  tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div' | 'button';
   textAlign?: React.CSSProperties['textAlign'];
   onLetterAnimationComplete?: () => void;
+  onClick?: () => void;
 }
 
 const SplitText: React.FC<SplitTextProps> = ({
@@ -36,6 +37,7 @@ const SplitText: React.FC<SplitTextProps> = ({
   tag = 'p',
   textAlign = 'center',
   onLetterAnimationComplete,
+  onClick = () => {},
 }) => {
   const ref = useRef<HTMLParagraphElement>(null);
   const animationCompletedRef = useRef(false);
@@ -209,8 +211,11 @@ const SplitText: React.FC<SplitTextProps> = ({
         );
     }
   };
-
-  return renderTag();
+  if (tag === 'button') {
+    return <button onClick={onClick}>{renderTag()}</button>;
+  } else {
+    return renderTag();
+  }
 };
 
 export default SplitText;

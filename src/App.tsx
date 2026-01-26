@@ -7,6 +7,7 @@ import About from './components/pages/About/About';
 import Projects from './components/pages/Projects/Projects';
 import Contact from './components/pages/Contact/Contact';
 import Skills from './components/pages/Skills/Skills';
+import GradualBlurMemo from './components/global/GradientBlur';
 
 const PAGE_DATA = [
   { id: 'home', title: 'Home', color: '', Component: Home },
@@ -17,9 +18,11 @@ const PAGE_DATA = [
 ];
 
 export default function App() {
+  const [darkMode, setDarkMode] = useState(true);
   const [activePageIndex, setActivePageIndex] = useState(0);
   const lenisRef = useRef<Lenis | null>(null);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [hasHomeAnimated, setHasHomeAnimated] = useState(false);
   function easeInOutBack(x: number): number {
     const c1 = 1.70158;
     const c2 = c1 * 1.525;
@@ -50,7 +53,7 @@ export default function App() {
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 0.5,
       easing: easeOutQuart,
       orientation: 'vertical',
       smoothWheel: true,
@@ -110,15 +113,25 @@ export default function App() {
   };
 
   return (
-    <div className="bg-jet-black-100/95 font-nunito">
-      <NavBar activePageIndex={activePageIndex} pages={PAGE_DATA} scrollToPage={scrollToPage} />
-      <div className="z-0 fixed inset-0 opacity-30 pointer-events-none">
+    <div
+      className={`bg-background/95 font-nunito ${darkMode ? 'dark' : ''} transition-colors duration-300 ease-in-out selection:bg-accent selection:text-accent-muted w-dvw`}
+    >
+      <NavBar
+        activePageIndex={activePageIndex}
+        pages={PAGE_DATA}
+        scrollToPage={scrollToPage}
+        setDarkMode={setDarkMode}
+        darkMode={darkMode}
+        setHasHomeAnimated={setHasHomeAnimated}
+      />
+      <div className="hidden z-0 fixed inset-0 opacity-30 pointer-events-none">
         <GridBackground
           baseColor={getActiveColor(activePageIndex)}
           activeColor={getActiveColor(activePageIndex)}
         />
       </div>
       <div className="relative flex flex-col w-full">
+        <div className="hidden md:block w-full h-[10dvh]"></div>
         {PAGE_DATA.map(({ id, Component }, index) => (
           <div
             key={id}
@@ -127,11 +140,27 @@ export default function App() {
             }}
             className="relative flex justify-center items-center w-full min-h-dvh"
           >
-            <Component />
+            <Component
+              markAnimationComplete={() => setHasHomeAnimated(true)}
+              scrollToPage={scrollToPage}
+            />
           </div>
         ))}
+        {hasHomeAnimated && <div className="hidden md:block w-full h-[10dvh]"></div>}
       </div>
-
+      {hasHomeAnimated && (
+        <GradualBlurMemo
+          target="page"
+          position="bottom"
+          height="5rem"
+          strength={2}
+          divCount={5}
+          curve="bezier"
+          exponential
+          opacity={0.8}
+          className="z-100"
+        ></GradualBlurMemo>
+      )}
       <SideNav activePageIndex={activePageIndex} pages={PAGE_DATA} scrollToPage={scrollToPage} />
     </div>
   );
@@ -140,8 +169,8 @@ export default function App() {
 const GridBackground = ({ baseColor, activeColor }: { baseColor: string; activeColor: string }) => {
   return (
     <DotGrid
-      dotSize={2}
-      gap={20}
+      dotSize={4}
+      gap={15}
       baseColor={baseColor}
       activeColor={activeColor}
       proximity={120}
@@ -149,7 +178,7 @@ const GridBackground = ({ baseColor, activeColor }: { baseColor: string; activeC
       shockStrength={5}
       resistance={750}
       returnDuration={1.5}
-      className="w-full h-full"
+      className="w-dvw h-dvh"
     />
   );
 };

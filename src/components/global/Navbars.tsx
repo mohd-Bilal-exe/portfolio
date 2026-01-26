@@ -1,7 +1,9 @@
 import { AnimatePresence, easeInOut, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ChevronUp, ChevronDown } from 'lucide-react';
+import FlipLink from './FlipLInk';
+import SplitText from './SplitText';
 
 const SideNav = ({
   activePageIndex,
@@ -33,12 +35,21 @@ const SideNav = ({
           }}
           disabled={isFirst}
           className={`
-            p-2 rounded-full border border-white/10 bg-black/20 backdrop-blur-sm
+            p-2 rounded-full border
+            bg-background-overlay/40
+            border-border-subtle
+            backdrop-blur-sm
             transition-all duration-300
             ${
               isFirst
-                ? 'opacity-30 cursor-not-allowed text-white'
-                : 'opacity-100 hover:bg-white/10 hover:border-amber-400/50 text-white hover:text-amber-400 cursor-pointer'
+                ? 'opacity-30 cursor-not-allowed text-text-muted'
+                : `
+                  text-text-primary
+                  hover:bg-background-overlay/70
+                  hover:border-accent
+                  hover:text-accent
+                  cursor-pointer
+                `
             }
           `}
         >
@@ -47,7 +58,7 @@ const SideNav = ({
 
         {/* Tooltip for Prev Page Name */}
         {!isFirst && (
-          <span className="top-1/2 left-full absolute bg-black/15 opacity-0 group-hover:opacity-100 backdrop-blur-sm ml-4 px-4 py-2 border border-white/5 rounded-full font-bold text-white text-xs uppercase tracking-wider whitespace-nowrap transition-all -translate-x-2 -translate-y-1/2 group-hover:translate-x-0 duration-300">
+          <span className="top-1/2 left-full absolute bg-background-overlay/60 opacity-0 group-hover:opacity-100 backdrop-blur-sm ml-4 px-4 py-2 border border-border-subtle rounded-full font-bold text-text-primary text-xs uppercase tracking-wider whitespace-nowrap transition-all -translate-x-2 -translate-y-1/2 group-hover:translate-x-0 duration-300">
             {pages[activePageIndex - 1]?.title}
           </span>
         )}
@@ -57,12 +68,12 @@ const SideNav = ({
       {/* h-32: Sets a fixed height (small portion of screen)
          w-px: Thin line
       */}
-      <div className="relative bg-white/10 rounded-full w-px h-32 overflow-hidden">
+      <div className="relative bg-border-subtle/60 rounded-full w-px h-32 overflow-hidden">
         <motion.div
+          className="top-0 left-0 absolute bg-linear-to-b to-accent rounded-full w-full from-accent-soft"
           initial={{ height: 0 }}
           animate={{ height: `${progressPercent}%` }}
           transition={{ type: 'spring', damping: 30, stiffness: 100 }}
-          className="top-0 left-0 absolute bg-linear-to-b from-amber-200 to-amber-500 rounded-full w-full"
         />
       </div>
 
@@ -80,21 +91,30 @@ const SideNav = ({
           }}
           disabled={isLast}
           className={`
-            p-2 rounded-full border border-white/10 bg-black/20 backdrop-blur-sm
-            transition-all duration-300
-            ${
-              isLast
-                ? 'opacity-30 cursor-not-allowed text-white'
-                : 'opacity-100 hover:bg-white/10 hover:border-amber-400/50 text-white hover:text-amber-400 cursor-pointer'
-            }
-          `}
+              p-2 rounded-full border
+              bg-background-overlay/40
+              border-border-subtle
+              backdrop-blur-sm
+              transition-all duration-300
+              ${
+                isLast
+                  ? 'opacity-30 cursor-not-allowed text-text-muted'
+                  : `
+                    text-text-primary
+                    hover:bg-background-overlay/70
+                    hover:border-accent
+                    hover:text-accent
+                    cursor-pointer
+                  `
+              }
+            `}
         >
           <ChevronDown className="size-3 md:size-5" />
         </button>
 
         {/* Tooltip for Next Page Name */}
         {!isLast && (
-          <span className="top-1/2 left-full absolute bg-black/15 opacity-0 group-hover:opacity-100 backdrop-blur-sm ml-4 px-4 py-2 border border-white/5 rounded-full font-bold text-white text-xs uppercase tracking-wider whitespace-nowrap transition-all -translate-x-2 -translate-y-1/2 group-hover:translate-x-0 duration-300">
+          <span className="top-1/2 left-full absolute bg-background-overlay/60 opacity-0 group-hover:opacity-100 backdrop-blur-sm ml-4 px-4 py-2 border border-border-subtle rounded-full font-bold text-text-primary text-xs uppercase tracking-wider whitespace-nowrap transition-all -translate-x-2 -translate-y-1/2 group-hover:translate-x-0 duration-300">
             {pages[activePageIndex + 1]?.title}
           </span>
         )}
@@ -107,10 +127,16 @@ const NavBar = ({
   activePageIndex,
   pages,
   scrollToPage,
+  setDarkMode,
+  darkMode = true,
+  setHasHomeAnimated,
 }: {
   activePageIndex: number;
   pages: { title: string }[];
   scrollToPage: (index: number) => void;
+  setDarkMode: (value: boolean) => void;
+  darkMode: boolean;
+  setHasHomeAnimated: (value: boolean) => void;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -178,8 +204,13 @@ const NavBar = ({
       {/* --- TRIGGER BUTTON (Top-Right Corner) --- */}
       {!isOpen && (
         <button
-          onClick={() => setTimeout(() => setIsOpen(true), 100)}
-          className="group top-6 right-6 z-100 fixed flex items-center gap-2 bg-platinum-300/10 hover:opacity-75 backdrop-blur-md px-4 py-2 rounded-full font-medium text-platinum-900/40 text-lg tracking-wide hover:scale-[105%] active:scale-100 transition-opacity ease-in-out cursor-pointer"
+          onClick={() =>
+            setTimeout(() => {
+              setHasHomeAnimated(false);
+              setIsOpen(true);
+            }, 100)
+          }
+          className="top-6 right-6 z-100 fixed flex items-center gap-2 bg-background-secondary/60 hover:opacity-80 backdrop-blur-md px-4 py-2 rounded-full font-medium text-text-primary text-lg tracking-wide hover:scale-[1.05] active:scale-100 transition"
         >
           <Menu className="w-5 h-5" />
         </button>
@@ -193,16 +224,19 @@ const NavBar = ({
             initial="initial"
             animate="animate"
             exit="exit"
-            className="z-100 fixed inset-0 flex flex-col justify-center bg-twilight-indigo-500/20 backdrop-blur-2xl px-8 md:px-20 w-full h-full origin-top-right cursor-default"
+            className="z-300 fixed inset-0 flex flex-col justify-center bg-accent/20 backdrop-blur-2xl px-8 md:px-20 cursor-default"
             onClick={() => setIsOpen(false)}
           >
             <div className="relative flex flex-col justify-center mx-auto w-full max-w-7xl h-full">
               {/* HEADER ROW (Logo/Close placeholder) */}
-              <div className="top-8 left-0 absolute flex justify-between items-center w-full font-semibold text-violet-200 text-sm uppercase tracking-widest">
+              <div className="top-16 left-0 absolute flex justify-between items-center w-full font-semibold text-primary text-sm uppercase tracking-widest">
                 <span>Jump To a section!</span>
                 <button
-                  onClick={() => setIsOpen(false)}
-                  className="hover:text-white hover:scale-110 active:scale-95 transition-transform"
+                  onClick={() => {
+                    setIsOpen(false);
+                    setTimeout(() => setHasHomeAnimated(true), 500);
+                  }}
+                  className="hover:text-primary/70 hover:scale-110 active:scale-95 transition-transform cursor-pointer"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -217,17 +251,26 @@ const NavBar = ({
                 className="flex flex-col gap-2 font-kola"
               >
                 {pages.map((page, index) => (
-                  <div key={index} className="overflow-hidden">
-                    <motion.div variants={linkVars}>
-                      <span
+                  <div key={index} className="flex justify-start items-center overflow-hidden">
+                    <motion.div variants={linkVars} className="group">
+                      <span className="mx-3 font-space-grotesk text-muted text-xs md:text-xl transition-colors group-hover:text-accent-hover">
+                        {String(index + 1).padStart(2, '0')}.
+                      </span>
+                      <FlipLink
                         onClick={() => {
                           setIsOpen(false);
                           setTimeout(() => scrollToPage(index), 1000);
                         }}
-                        className={`font-bold  ${activePageIndex === index ? 'text-violet-300' : 'text-white'} hover:text-violet-200 text-6xl md:text-8xl tracking-tighter transition-colors cursor-pointer z-100`}
+                        className={`
+                        font-bold tracking-tighter cursor-pointer
+                        text-5xl md:text-7xl
+                        transition-colors 
+                        ${activePageIndex === index ? 'text-primary tracking-tight' : 'text-primary/60'}
+                        group-hover:text-accent-hover
+                      `}
                       >
                         {page.title}
-                      </span>
+                      </FlipLink>
                     </motion.div>
                   </div>
                 ))}
@@ -240,8 +283,14 @@ const NavBar = ({
                 exit={{ opacity: 0 }}
                 className="right-0 bottom-8 absolute"
               >
-                <button className="bg-white/10 hover:bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full font-bold text-white text-sm uppercase tracking-wider transition-colors">
+                <button className="bg-background-overlay/60 hover:bg-background-overlay backdrop-blur-sm px-6 py-2 rounded-full font-bold text-text-primary text-sm uppercase tracking-wider transition-colors">
                   Contact
+                </button>
+                <button
+                  onClick={() => setDarkMode(!darkMode)}
+                  className="bg-background-overlay/60 hover:bg-color-background-overlay backdrop-blur-sm ml-4 px-6 py-2 rounded-full font-bold text-text-heading text-sm uppercase tracking-wider transition-colors"
+                >
+                  {darkMode ? 'Light Mode' : 'Dark Mode'}
                 </button>
               </motion.div>
             </div>
@@ -375,7 +424,7 @@ export { SideNav, NavBar };
                 toggle();
                 setTimeout(() => scrollToPage(i), 1200);
               }}
-              className="font-bold text-white hover:text-amber-400 text-sm uppercase tracking-wider whitespace-nowrap transition-colors"
+              className="font-bold text-primary hover:text-amber-400 text-sm uppercase tracking-wider whitespace-nowrap transition-colors"
             >
               {page.title}
             </button>
@@ -383,7 +432,7 @@ export { SideNav, NavBar };
         </motion.div>
         {isOpen && (
           <motion.div
-            className="top-1.5 right-2 absolute rounded-full text-white cursor-pointer"
+            className="top-1.5 right-2 absolute rounded-full text-primary cursor-pointer"
             animate={{
               opacity: isOpen ? 1 : 0,
               scale: isOpen ? 1 : 0.9,
