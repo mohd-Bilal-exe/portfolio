@@ -9,8 +9,8 @@ import lucknowVideo from '../assets/Videos/LucknowVideo.mp4';
 import gymVideo from '../assets/Videos/GymVideo.mp4';
 import photographyVideo from '../assets/Videos/PhotographyVideo.mp4';
 import portfolio from '../assets/Images/portfolio.webp';
-import resumeIQ from '../assets/Images/resumeIQ.webp';
-import TODONest from '../assets/Images/TODONest.webp';
+import resumeIQ from '../assets/Images/resumeIQ.png';
+import TODONest from '../assets/Images/TODONest.png';
 import debatrix from '../assets/Images/debatrix.png';
 export {
   portfolio,
