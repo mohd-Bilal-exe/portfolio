@@ -7,33 +7,62 @@ import { debatrix, portfolio, resumeIQ, TODONest } from '../../../lib/assets';
 // --- DATA ---
 const projects = [
   {
-    key: 'ResumeIQ',
-    title: 'ResumeIQ',
-    imgScr: resumeIQ,
-    link: 'https://resumeiq-mohdb.vercel.app/',
-    description: 'AI resume reviewer with real-time LaTeX preview and PDF export.',
-    tech: ['Next js', 'Firebase', 'Gemini API'],
-    isEmphasized: true, // Grid logic: Span 2 columns
+    isFeatured: true,
+    key: 'motion-on-native',
+    title: 'Motion on Native',
+    imgScr: null, // Replace with actual asset if available
+    link: 'https://github.com/mohd-Bilal-exe/motion-on-native', // Link to your GitHub/NPM
+    description:
+      'A Framer Motion-like animation library for React Native built on top of Reanimated 3.',
+    tech: ['React Native', 'Reanimated', 'TypeScript'],
+    isEmphasized: true,
   },
+
   {
+    isFeatured: true,
     key: 'debatrix',
     title: 'deBatrix',
     imgScr: debatrix,
     link: 'https://de-batrix.vercel.app/',
-    description: 'AI-powered app for grammar correction and language translation.',
-    tech: ['React js', 'Redux js', 'Framer-motion'],
+    description:
+      'AI debate simulation platform featuring AI vs AI debates with customizable personalities.',
+    tech: ['Next.js', 'React Native', 'Prisma', 'Express', 'Gemini API'],
     isEmphasized: false,
   },
   {
+    isFeatured: true,
+    key: 'ResumeIQ',
+    title: 'ResumeIQ',
+    imgScr: resumeIQ,
+    link: 'https://resumeiq-mohdb.vercel.app/',
+    description:
+      'AI resume reviewer with real-time LaTeX preview, PDF export, and credit-based analysis.',
+    tech: ['Next.js', 'Firebase', 'Express', 'Node', 'Gemini API'],
+    isEmphasized: true,
+  },
+  {
+    isFeatured: false,
+    key: 'Clarity',
+    title: 'Clarity AI',
+    imgScr: portfolio,
+    link: '#',
+    description:
+      'Privacy-first mobile screenshot manager that uses local AI to organize and tag images.',
+    tech: ['React Native', 'SQLite', 'Gemini API', 'AWS Bedrock'],
+    isEmphasized: true,
+  },
+  {
+    isFeatured: false,
     key: 'ToDo Nest',
     title: 'ToDo Nest',
     imgScr: TODONest,
     link: 'https://todo-nest.netlify.app/',
-    description: 'A task manager with custom colors, powered by Redux.',
-    tech: ['React js', 'TailwindCSS'],
+    description: 'A task manager with custom colors and persistent storage powered by Redux.',
+    tech: ['React js', 'Redux', 'TailwindCSS'],
     isEmphasized: false,
   },
   {
+    isFeatured: false,
     key: 'PreviousPortfolio',
     title: 'Oldfolio',
     imgScr: portfolio,
@@ -58,7 +87,7 @@ export default function ProjectsSection({
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        className="flex items-center gap-4 mx-[7dvw] md:mx-[10dvw] py-6 md:py-10"
+        className="flex items-center gap-4 mx-[7dvw] md:mx-[10dvw] py-6 md:pt-10"
       >
         <div className="bg-border-strong w-12 h-px" />
         <span className="font-medium text-text-heading text-xs md:text-sm uppercase tracking-widest">
@@ -84,9 +113,11 @@ export default function ProjectsSection({
 
             {/* Horizontal Cards (Halo Aesthetic) */}
             <div className="gap-6 grid grid-cols-1 md:grid-cols-3 mb-16">
-              {projects.slice(0, 3).map((project, i) => (
-                <FeaturedCard key={project.key} project={project} index={i} />
-              ))}
+              {projects
+                .filter(p => p.isFeatured)
+                .map((project, i) => (
+                  <FeaturedCard key={project.key} project={project} index={i} />
+                ))}
             </div>
 
             <button
@@ -125,7 +156,7 @@ export default function ProjectsSection({
             </button>
           </div>
 
-          <div className="gap-6 grid grid-cols-1 md:grid-cols-3">
+          <div className="gap-6 grid grid-cols-1 md:grid-cols-6">
             {projects.map(project => (
               <BentoCard key={project.key} project={project} />
             ))}
@@ -135,8 +166,6 @@ export default function ProjectsSection({
     </div>
   );
 }
-
-// --- SUBCOMPONENTS ---
 
 const FeaturedCard = ({ project, index }: { project: any; index: number }) => (
   <motion.a
@@ -149,11 +178,17 @@ const FeaturedCard = ({ project, index }: { project: any; index: number }) => (
     className="group cursor-pointer"
   >
     <div className="relative grayscale group-hover:grayscale-0 mb-6 rounded-[2rem] aspect-4/3 overflow-hidden transition-all duration-800">
-      <img
-        src={project.imgScr}
-        alt={project.title}
-        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
-      />
+      {project.imgScr ? (
+        <img
+          src={project.imgScr}
+          alt={project.title}
+          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
+        />
+      ) : (
+        <div className="flex justify-center items-center w-full h-full text-primary bg-accent-muted/5">
+          <h1>{project.title}</h1>
+        </div>
+      )}
       <div className="absolute inset-0 flex justify-center items-center bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300">
         <div className="bg-primary/20 p-5 rounded-full text-primary">
           <ArrowRight className="-rotate-45" size={28} />
@@ -178,7 +213,7 @@ const BentoCard = ({ project }: { project: any }) => (
     className={`
     relative group p-8 rounded-[2rem] border border-border bg-background-surface/10 
     hover:border-border-strong cursor-pointer  duration-500 flex flex-col justify-between hover:scale-[102%] transition-all
-    ${project.isEmphasized ? 'md:col-span-2' : 'col-span-1'}
+    ${project.isEmphasized ? 'md:col-span-3 ' : 'md:col-span-2'}
   `}
   >
     <div>

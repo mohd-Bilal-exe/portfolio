@@ -12,8 +12,10 @@ import portfolio from '../assets/Images/portfolio.webp';
 import resumeIQ from '../assets/Images/resumeIQ.png';
 import TODONest from '../assets/Images/TODOnest.png';
 import debatrix from '../assets/Images/debatrix.png';
+import MotionOnNative from '../assets/Images/MotionOnNative.png';
 export {
   portfolio,
+  MotionOnNative,
   debatrix,
   resumeIQ,
   TODONest,
