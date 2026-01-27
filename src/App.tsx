@@ -1,6 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Lenis from 'lenis';
-import DotGrid from './components/global/DotGrid';
 import { NavBar, SideNav } from './components/global/Navbars';
 import Home from './components/pages/Home/Home';
 import About from './components/pages/About/About';
@@ -100,21 +99,6 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [activePageIndex]);
 
-  const getActiveColor = (index: number) => {
-    switch (index) {
-      case 0:
-        return '#efc88b';
-      case 1:
-        return '#7c7c7c';
-      case 2:
-        return '#eee5e9';
-      case 3:
-        return '#cf5c36';
-      default:
-        return '#000000';
-    }
-  };
-
   return (
     <div
       className={`bg-background/95 font-nunito ${darkMode ? 'dark' : ''} transition-colors duration-300 ease-in-out selection:bg-accent selection:text-accent-muted w-dvw transform-cpu scroll-smooth`}
@@ -160,20 +144,3 @@ export default function App() {
     </div>
   );
 }
-
-const GridBackground = ({ baseColor, activeColor }: { baseColor: string; activeColor: string }) => {
-  return (
-    <DotGrid
-      dotSize={4}
-      gap={15}
-      baseColor={baseColor}
-      activeColor={activeColor}
-      proximity={120}
-      shockRadius={250}
-      shockStrength={5}
-      resistance={750}
-      returnDuration={1.5}
-      className="w-dvw h-dvh"
-    />
-  );
-};
