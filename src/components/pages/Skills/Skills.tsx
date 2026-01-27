@@ -1,16 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  Server,
-  Database,
-  Cloud,
-  PenTool,
-  ChevronDown,
-  ArrowRight,
-  ArrowLeft,
-} from 'lucide-react';
+import { Server, Database, Cloud, PenTool, ChevronDown, ArrowRight, ArrowLeft } from 'lucide-react';
 import AnimateString from '../../global/AnimateString';
-
 
 const skillsData = [
   {
@@ -440,9 +431,9 @@ export default function SkillsSection({ scrollToPage }: { scrollToPage: (index: 
                 setShowAllSkills(true);
                 scrollToPage(2);
               }}
-              className="group flex items-center gap-4 font-light text-text-primary/70 text-xs md:text-lg cursor-pointer"
+              className="group flex items-center gap-4 font-light text-text-primary/90 text-xs md:text-lg underline underline-offset-3 underline-text-secondary cursor-pointer"
             >
-              <div className="bg-background-overlay w-6 md:w-12 group-hover:w-24 h-px transition-all duration-300" />
+              <div className="w-6 md:w-12 group-hover:w-24 h-px bg-text-primary transition-all duration-300" />
               See Full Tech Stack
               <span className="bg-background-surface p-2 rounded-full text-text-primary transition-transform group-hover:translate-x-2 duration-300">
                 <ArrowRight size={20} />
