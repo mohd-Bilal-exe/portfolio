@@ -4,40 +4,69 @@ import { ArrowRight } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 import AnimateString from '../../global/AnimateString';
 
-import {
-  codeImg,
-  lucknowImg,
-  gymImg,
-  cameraImg,
-  codeVideo,
-  lucknowVideo,
-  gymVideo,
-  photographyVideo,
-} from '../../../lib/assets';
+// Assets are lazy-loaded via dynamic import() when needed to keep the initial bundle small.
 
 const MediaPill = ({
   staticImg,
+  staticImgLoader,
   imgClassName = 'object-cover',
   videoSrc,
+  videoSrcLoader,
   videoClassName = '',
   alt,
   delayOffset = 0,
 }: {
-  staticImg: string;
+  staticImg?: string;
+  staticImgLoader?: () => Promise<string>;
   imgClassName?: string;
+  videoSrc?: string;
+  videoSrcLoader?: () => Promise<string>;
   videoClassName?: string;
-  videoSrc: string;
   alt: string;
   delayOffset?: number;
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [imgSrc, setImgSrc] = useState<string | undefined>(staticImg);
+  const [videoSrcState, setVideoSrcState] = useState<string | undefined>(videoSrc);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleMouseEnter = () => {
+  const preloadAssets = async () => {
+    if (isLoading) return;
+    setIsLoading(true);
+    try {
+      if (!imgSrc && staticImgLoader) {
+        const res = await staticImgLoader();
+        setImgSrc(res);
+      }
+      if (!videoSrcState && videoSrcLoader) {
+        const res = await videoSrcLoader();
+        setVideoSrcState(res);
+        if (videoRef.current) {
+          // assign immediately so the player can load
+          try {
+            videoRef.current.src = res;
+            videoRef.current.load();
+          } catch (_) {}
+        }
+      }
+    } catch (e) {
+      // ignore individual asset loading failures
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleMouseEnter = async () => {
+    await preloadAssets();
     setIsHovered(true);
     if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-      videoRef.current.play();
+      try {
+        videoRef.current.currentTime = 0;
+        await videoRef.current.play();
+      } catch (_) {
+        // some browsers block autoplay until interaction
+      }
     }
   };
 
@@ -53,6 +82,7 @@ const MediaPill = ({
       className="inline-block relative bg-zinc-800 shadow-sm mx-1.5 border border-white/10 rounded-full overflow-hidden align-middle"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onViewportEnter={preloadAssets}
       initial={{ width: 48, borderRadius: 24, opacity: 0, y: 15, filter: 'blur(5px)' }}
       animate={{
         width: isHovered ? 220 : 110,
@@ -71,7 +101,8 @@ const MediaPill = ({
       style={{ height: '36px', verticalAlign: 'middle' }}
     >
       <img
-        src={staticImg}
+        src={imgSrc}
+        loading="lazy"
         alt={alt}
         className={twMerge(
           imgClassName,
@@ -81,10 +112,11 @@ const MediaPill = ({
       />
       <video
         ref={videoRef}
-        src={videoSrc}
+        src={videoSrcState}
         muted
         loop
         playsInline
+        preload="none"
         className={twMerge(
           videoClassName,
           'absolute inset-0 w-full h-full object-cover transition-opacity duration-300',
@@ -125,8 +157,12 @@ const About = () => {
             <MediaPill
               alt="Coding"
               imgClassName="object-bottom object-cover"
-              staticImg={codeImg}
-              videoSrc={codeVideo}
+              staticImgLoader={() =>
+                import('../../../assets/Images/code.jpg').then(m => m.default ?? m)
+              }
+              videoSrcLoader={() =>
+                import('../../../assets/Videos/CodeVideo.mp4').then(m => m.default ?? m)
+              }
               delayOffset={0.2}
             />
             <AnimateString delayOffset={0.25}>while eating Awadhi cuisine in</AnimateString>
@@ -136,9 +172,13 @@ const About = () => {
             <MediaPill
               delayOffset={0.4}
               alt="Lucknow"
-              staticImg={lucknowImg}
+              staticImgLoader={() =>
+                import('../../../assets/Images/lucknow.webp').then(m => m.default ?? m)
+              }
               imgClassName="object-bottom object-cover"
-              videoSrc={lucknowVideo}
+              videoSrcLoader={() =>
+                import('../../../assets/Videos/LucknowVideo.mp4').then(m => m.default ?? m)
+              }
             />
             .
           </div>
@@ -157,8 +197,12 @@ const About = () => {
               delayOffset={0.6}
               alt="Gym"
               imgClassName="object-top object-cover"
-              staticImg={gymImg}
-              videoSrc={gymVideo}
+              staticImgLoader={() =>
+                import('../../../assets/Images/gym.jpg').then(m => m.default ?? m)
+              }
+              videoSrcLoader={() =>
+                import('../../../assets/Videos/GymVideo.mp4').then(m => m.default ?? m)
+              }
             />
 
             <AnimateString delayOffset={0.65}>and ocassionaly finding different</AnimateString>
@@ -171,8 +215,12 @@ const About = () => {
               alt="Photography"
               delayOffset={0.8}
               imgClassName="object-[30%_30%] object-cover"
-              staticImg={cameraImg}
-              videoSrc={photographyVideo}
+              staticImgLoader={() =>
+                import('../../../assets/Images/Camera.webp').then(m => m.default ?? m)
+              }
+              videoSrcLoader={() =>
+                import('../../../assets/Videos/PhotographyVideo.mp4').then(m => m.default ?? m)
+              }
             />
 
             <AnimateString delayOffset={0.85}>through a lens.</AnimateString>

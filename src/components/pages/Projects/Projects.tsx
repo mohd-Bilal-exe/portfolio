@@ -81,7 +81,7 @@ export default function ProjectsSection({
   const [showVault, setShowVault] = useState(false);
   const date = new Date();
   return (
-    <div className="relative flex flex-col justify-center py-[15dvh] w-full min-h-dvh overflow-hidden font-space-grotesk font-bold">
+    <div className="relative flex flex-col justify-center pt-[5dvh] w-full min-h-dvh overflow-hidden font-space-grotesk font-bold">
       {/* Label */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
@@ -103,10 +103,10 @@ export default function ProjectsSection({
         {/* === PAGE 1: FEATURED STORY === */}
         <div className="flex flex-col justify-start items-center px-[10dvw] w-dvw">
           <div className="w-full">
-            <h2 className="mb-12 font-bold text-primary/80 text-4xl md:text-7xl leading-tight -white">
+            <h2 className="mb-12 font-bold text-text-primary/80 text-4xl md:text-7xl leading-tight -white">
               <AnimateString delayOffset={0.05}>Crafting digital products</AnimateString>
               <br />
-              <span className="text-primary/50">
+              <span className="text-text-primary/50">
                 <AnimateString delayOffset={0.12}>with intent and precision.</AnimateString>
               </span>
             </h2>
@@ -125,11 +125,11 @@ export default function ProjectsSection({
                 setShowVault(true);
                 scrollToPage(3);
               }}
-              className="group flex items-center gap-4 font-light text-primary/30 text-xs md:text-lg cursor-pointer"
+              className="group flex items-center gap-4 font-light text-text-primary/30 text-xs md:text-lg cursor-pointer"
             >
               <div className="bg-background-overlay w-6 md:w-12 group-hover:w-24 h-px transition-all duration-300" />
               Explore project Vault
-              <span className="bg-background-surface p-2 rounded-full text-primary transition-transform group-hover:translate-x-2 duration-300">
+              <span className="bg-background-surface p-2 rounded-full text-text-primary transition-transform group-hover:translate-x-2 duration-300">
                 <ArrowRight size={20} />
               </span>
             </button>
@@ -185,20 +185,20 @@ const FeaturedCard = ({ project, index }: { project: any; index: number }) => (
           className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
         />
       ) : (
-        <div className="flex justify-center items-center w-full h-full text-primary bg-accent-muted/5">
+        <div className="flex justify-center items-center w-full h-full text-text-primary bg-accent-muted/5">
           <h1>{project.title}</h1>
         </div>
       )}
       <div className="absolute inset-0 flex justify-center items-center bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300">
-        <div className="bg-primary/20 p-5 rounded-full text-primary">
+        <div className="bg-primary/20 p-5 rounded-full text-text-primary">
           <ArrowRight className="-rotate-45" size={28} />
         </div>
       </div>
     </div>
     <div className="flex justify-between items-start px-2">
       <div>
-        <h4 className="mb-1 font-bold text-primary/70 text-2xl">{project.title}</h4>
-        <p className="text-primary/50 text-sm">
+        <h4 className="mb-1 font-bold text-text-primary/70 text-2xl">{project.title}</h4>
+        <p className="text-text-primary/50 text-sm">
           <AnimateString delayOffset={index * 0.12 + 0.18}>{project.description}</AnimateString>
         </p>
       </div>
@@ -219,9 +219,9 @@ const BentoCard = ({ project }: { project: any }) => (
     <div>
       <div className="flex justify-between items-start mb-6">
         <h4 className="font-bold text-white text-3xl">{project.title}</h4>
-        <a className="bg-zinc-900 p-2 rounded-full text-zinc-500 hover:text-white transition-colors">
+        <span className="bg-zinc-900 p-2 rounded-full text-zinc-500 hover:text-white transition-colors">
           <ExternalLink size={20} />
-        </a>
+        </span>
       </div>
       <p className="mb-8 text-zinc-400 leading-relaxed">
         <AnimateString delayOffset={0.05}>{project.description}</AnimateString>

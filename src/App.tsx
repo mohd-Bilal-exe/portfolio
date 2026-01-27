@@ -7,6 +7,8 @@ import Projects from './components/pages/Projects/Projects';
 import Contact from './components/pages/Contact/Contact';
 import Skills from './components/pages/Skills/Skills';
 import GradualBlurMemo from './components/global/GradientBlur';
+import useMediaQuery from './hooks/useMediaQuery';
+import { twMerge } from 'tailwind-merge';
 
 const PAGE_DATA = [
   { id: 'home', title: 'Home', color: '', Component: Home },
@@ -17,7 +19,31 @@ const PAGE_DATA = [
 ];
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(true);
+  // Simple, immediate theme state managed in App (replaces `useDarkMode` hook here)
+  const [isDark, setIsDark] = useState<boolean>(() => {
+    try {
+      const s = localStorage.getItem('theme');
+      if (s === 'dark') return true;
+      if (s === 'light') return false;
+    } catch (e) {}
+    if (typeof window !== 'undefined' && window.matchMedia) {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    return false;
+  });
+
+  const toggleDark = (persist = true) => {
+    setIsDark(prev => {
+      const next = !prev;
+      try {
+        if (persist) localStorage.setItem('theme', next ? 'dark' : 'light');
+        else localStorage.removeItem('theme');
+      } catch (e) {}
+      return next;
+    });
+  };
+
+  console.log('Dark mode from app, ', isDark);
   const [activePageIndex, setActivePageIndex] = useState(0);
   const lenisRef = useRef<Lenis | null>(null);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -74,7 +100,6 @@ export default function App() {
       lenis.destroy();
     };
   }, []);
-
   useEffect(() => {
     const handleScroll = () => {
       const windowHeight = window.innerHeight;
@@ -90,7 +115,6 @@ export default function App() {
       });
 
       if (currentIndex !== activePageIndex) {
-        console.log(`Scroll detected - New index: ${currentIndex}, Previous: ${activePageIndex}`);
         setActivePageIndex(currentIndex);
       }
     };
@@ -98,19 +122,21 @@ export default function App() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [activePageIndex]);
-
   return (
     <div
-      className={`bg-background/95 font-nunito ${darkMode ? 'dark' : ''} transition-colors duration-300 ease-in-out selection:bg-accent selection:text-accent-muted w-dvw transform-cpu scroll-smooth`}
+      className={twMerge(
+        isDark ? 'dark' : '',
+        ` bg-background/95 font-nunito transition-colors duration-300 ease-in-out selection:bg-accent selection:text-accent-muted w-dvw transform-cpu `
+      )}
     >
       <SideNav activePageIndex={activePageIndex} pages={PAGE_DATA} scrollToPage={scrollToPage} />
       <NavBar
         activePageIndex={activePageIndex}
         pages={PAGE_DATA}
         scrollToPage={scrollToPage}
-        setDarkMode={setDarkMode}
-        darkMode={darkMode}
         setHasHomeAnimated={setHasHomeAnimated}
+        isDark={isDark}
+        toggleDark={toggleDark}
       />
       <div className="relative flex flex-col w-full">
         {PAGE_DATA.map(({ id, Component }, index) => (

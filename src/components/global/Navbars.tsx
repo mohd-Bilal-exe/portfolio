@@ -126,19 +126,18 @@ const NavBar = ({
   activePageIndex,
   pages,
   scrollToPage,
-  setDarkMode,
-  darkMode = true,
   setHasHomeAnimated,
+  isDark,
+  toggleDark,
 }: {
   activePageIndex: number;
   pages: { title: string }[];
   scrollToPage: (index: number) => void;
-  setDarkMode: (value: boolean) => void;
-  darkMode: boolean;
   setHasHomeAnimated: (value: boolean) => void;
+  isDark: boolean;
+  toggleDark: (persist?: boolean) => void;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-
   // 1. The Background Expansion from Top-Right Corner
   const menuVars = {
     initial: {
@@ -197,7 +196,7 @@ const NavBar = ({
       },
     },
   };
-
+  console.log('darkMode from navbar', isDark);
   return (
     <>
       {/* --- TRIGGER BUTTON (Top-Right Corner) --- */}
@@ -227,14 +226,14 @@ const NavBar = ({
           >
             <div className="z-50 relative flex flex-col justify-center mx-auto w-full max-w-7xl h-full">
               {/* HEADER ROW (Logo/Close placeholder) */}
-              <div className="top-16 left-0 z-50 absolute flex justify-between items-center w-full font-semibold text-primary text-sm uppercase tracking-widest">
+              <div className="top-16 left-0 z-50 absolute flex justify-between items-center w-full font-semibold text-text-primary text-sm uppercase tracking-widest">
                 <span>Jump To a section!</span>
                 <button
                   onClick={() => {
                     setIsOpen(false);
                     setTimeout(() => setHasHomeAnimated(true), 500);
                   }}
-                  className="hover:text-primary/70 hover:scale-110 active:scale-95 transition-transform cursor-pointer"
+                  className="hover:text-text-primary/70 hover:scale-110 active:scale-95 transition-transform cursor-pointer"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -251,7 +250,7 @@ const NavBar = ({
                 {pages.map((page, index) => (
                   <div key={index} className="flex justify-start items-center overflow-hidden">
                     <motion.div variants={linkVars} className="group">
-                      <span className="mx-3 font-space-grotesk text-primary/20 text-xs md:text-xl transition-colors group-hover:text-accent-hover">
+                      <span className="mx-3 font-space-grotesk text-text-primary/30 text-xs md:text-xl transition-colors group-hover:text-accent-hover/50">
                         {String(index + 1).padStart(2, '0')}.
                       </span>
                       <FlipLink
@@ -263,7 +262,7 @@ const NavBar = ({
                         font-bold tracking-tighter cursor-pointer
                         text-5xl md:text-7xl
                         transition-colors 
-                        ${activePageIndex === index ? 'text-primary tracking-tight' : 'text-primary/60'}
+                        ${activePageIndex === index ? 'text-text-primary/90 tracking-tight' : 'text-text-primary/60'}
                         group-hover:text-accent-hover
                       `}
                       >
@@ -283,11 +282,7 @@ const NavBar = ({
               >
                 <button className="">
                   <label className="bg-background-overlay/60 hover:bg-color-background-overlay backdrop-blur-sm ml-4 px-6 py-2 rounded-full font-bold text-text-heading text-sm uppercase tracking-wider transition-colors switch">
-                    <input
-                      type="checkbox"
-                      checked={!darkMode}
-                      onChange={() => setDarkMode(!darkMode)}
-                    />
+                    <input type="checkbox" checked={!isDark} onChange={() => toggleDark()} />
                     <span className="slider"></span>
                   </label>
                 </button>

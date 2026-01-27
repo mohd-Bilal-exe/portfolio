@@ -197,11 +197,11 @@ export default function SkillsSection({ scrollToPage }: { scrollToPage: (index: 
                 setShowAllSkills(true);
                 scrollToPage(2);
               }}
-              className="group flex items-center gap-4 font-light text-primary/30 text-xs md:text-lg cursor-pointer"
+              className="group flex items-center gap-4 font-light text-text-primary/70 text-xs md:text-lg cursor-pointer"
             >
               <div className="bg-background-overlay w-6 md:w-12 group-hover:w-24 h-px transition-all duration-300" />
               See Full Tech Stack
-              <span className="bg-background-surface p-2 rounded-full text-primary transition-transform group-hover:translate-x-2 duration-300">
+              <span className="bg-background-surface p-2 rounded-full text-text-primary transition-transform group-hover:translate-x-2 duration-300">
                 <ArrowRight size={20} />
               </span>
             </button>
@@ -286,7 +286,7 @@ const CollapsibleSection = ({
           </span>
 
           <h3
-            className={`text-lg md:text-2xl font-semibold transition-colors duration-300 ease-in-out ${isOpen ? 'text-primary' : 'text-text-secondary group-hover:text-zinc-300'}`}
+            className={`text-lg md:text-2xl font-semibold transition-colors duration-300 ease-in-out ${isOpen ? 'text-text-primary' : 'text-text-secondary group-hover:text-zinc-300'}`}
           >
             {title}
           </h3>
@@ -336,12 +336,12 @@ const SkillCard = ({ skill }: { skill: any }) => {
         }
       `}
     >
-      <div className={`${isEmphasized ? 'text-primary/90' : 'text-primary/70'}`}>
+      <div className={`${isEmphasized ? 'text-text-primary/90' : 'text-text-primary/70'}`}>
         {React.cloneElement(skill.icon, { size: 18 })}
       </div>
 
       <span
-        className={`font-medium text-xxs md:text-sm ${isEmphasized ? 'text-primary/90' : 'text-primary/70'}`}
+        className={`font-medium text-xxs md:text-sm ${isEmphasized ? 'text-text-primary/90' : 'text-text-primary/70'}`}
       >
         {skill.name}
       </span>
@@ -388,7 +388,7 @@ const StoryCard = ({
       <div className="mb-4 font-mono text-xxs text-zinc-500 md:text-sm tracking-tighter">
         {number}
       </div>
-      <h3 className="mb-3 font-bold text-md text-primary/85 md:text-2xl">
+      <h3 className="mb-3 font-bold text-md text-text-primary/85 md:text-2xl">
         <AnimateString delayOffset={index * 0.12}>{title}</AnimateString>
       </h3>
       <p className="max-w-xs text-text-secondary text-xxs md:text-sm leading-relaxed">
