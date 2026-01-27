@@ -13,7 +13,7 @@ const projects = [
     imgScr: null, // Replace with actual asset if available
     link: 'https://github.com/mohd-Bilal-exe/motion-on-native', // Link to your GitHub/NPM
     description:
-      'A Framer Motion-like animation library for React Native built on top of Reanimated 3.',
+      'A Framer Motion-like open source animation library for React Native built on top of Reanimated 3.',
     tech: ['React Native', 'Reanimated', 'TypeScript'],
     isEmphasized: true,
   },
@@ -104,10 +104,10 @@ export default function ProjectsSection({
         <div className="flex flex-col justify-start items-center px-[10dvw] w-dvw">
           <div className="w-full">
             <h2 className="mb-12 font-bold text-primary/80 text-4xl md:text-7xl leading-tight -white">
-              <AnimateString>Crafting digital products</AnimateString>
+              <AnimateString delayOffset={0.05}>Crafting digital products</AnimateString>
               <br />
               <span className="text-primary/50">
-                <AnimateString delayOffset={0.5}>with intent and precision.</AnimateString>
+                <AnimateString delayOffset={0.12}>with intent and precision.</AnimateString>
               </span>
             </h2>
 
@@ -173,7 +173,7 @@ const FeaturedCard = ({ project, index }: { project: any; index: number }) => (
     target="_blank"
     initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8, delay: index * 0.2 }}
+    transition={{ duration: 0.7, delay: index * 0.12 }}
     viewport={{ once: true }}
     className="group cursor-pointer"
   >
@@ -199,7 +199,7 @@ const FeaturedCard = ({ project, index }: { project: any; index: number }) => (
       <div>
         <h4 className="mb-1 font-bold text-primary/70 text-2xl">{project.title}</h4>
         <p className="text-primary/50 text-sm">
-          <AnimateString delayOffset={index * 0.2 + 0.5}>{project.description}</AnimateString>
+          <AnimateString delayOffset={index * 0.12 + 0.18}>{project.description}</AnimateString>
         </p>
       </div>
     </div>
@@ -224,7 +224,7 @@ const BentoCard = ({ project }: { project: any }) => (
         </a>
       </div>
       <p className="mb-8 text-zinc-400 leading-relaxed">
-        <AnimateString>{project.description}</AnimateString>
+        <AnimateString delayOffset={0.05}>{project.description}</AnimateString>
       </p>
     </div>
     <div className="flex flex-wrap gap-2">

@@ -118,8 +118,8 @@ const About = () => {
         <div className="font-medium text-text-secondary/70 text-2xl md:text-5xl text-left leading-[1.6]">
           {/* Sentence 1 */}
           <div className="mb-8">
-            <AnimateString>Hey, I engineer</AnimateString>
-            <AnimateString delayOffset={0.2} className="ml-1.5 text-text-primary/85">
+            <AnimateString delayOffset={0.05}>Hey, I engineer</AnimateString>
+            <AnimateString delayOffset={0.15} className="ml-1.5 text-text-primary/85">
               scalable digital experiences
             </AnimateString>
             <MediaPill
@@ -127,14 +127,14 @@ const About = () => {
               imgClassName="object-bottom object-cover"
               staticImg={codeImg}
               videoSrc={codeVideo}
-              delayOffset={0.25}
+              delayOffset={0.2}
             />
-            <AnimateString delayOffset={0.3}>while eating Awadhi cuisine in</AnimateString>
-            <AnimateString delayOffset={0.4} className="ml-2 text-text-primary/85">
+            <AnimateString delayOffset={0.25}>while eating Awadhi cuisine in</AnimateString>
+            <AnimateString delayOffset={0.35} className="ml-2 text-text-primary/85">
               Lucknow, Uttar Pradesh, India
             </AnimateString>
             <MediaPill
-              delayOffset={0.45}
+              delayOffset={0.4}
               alt="Lucknow"
               staticImg={lucknowImg}
               imgClassName="object-bottom object-cover"
@@ -145,37 +145,37 @@ const About = () => {
 
           {/* Sentence 2 */}
           <div>
-            <AnimateString delayOffset={0.5}>
+            <AnimateString delayOffset={0.45}>
               Away from the screens, my mood is fueled by the
             </AnimateString>
 
-            <AnimateString delayOffset={0.6} className="inline-block mx-1.5 text-text-primary/85">
+            <AnimateString delayOffset={0.55} className="inline-block mx-1.5 text-text-primary/85">
               lifting heavy circles
             </AnimateString>
 
             <MediaPill
-              delayOffset={0.65}
+              delayOffset={0.6}
               alt="Gym"
               imgClassName="object-top object-cover"
               staticImg={gymImg}
               videoSrc={gymVideo}
             />
 
-            <AnimateString delayOffset={0.7}>and ocassionaly finding different</AnimateString>
+            <AnimateString delayOffset={0.65}>and ocassionaly finding different</AnimateString>
 
-            <AnimateString delayOffset={0.8} className="inline-block mx-1.5 text-text-primary/85">
+            <AnimateString delayOffset={0.75} className="inline-block mx-1.5 text-text-primary/85">
               perspective
             </AnimateString>
 
             <MediaPill
               alt="Photography"
-              delayOffset={0.9}
+              delayOffset={0.8}
               imgClassName="object-[30%_30%] object-cover"
               staticImg={cameraImg}
               videoSrc={photographyVideo}
             />
 
-            <AnimateString delayOffset={1}>through a lens.</AnimateString>
+            <AnimateString delayOffset={0.85}>through a lens.</AnimateString>
           </div>
         </div>
 

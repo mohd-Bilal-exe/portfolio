@@ -123,53 +123,6 @@ const skillsData = [
   },
 ];
 
-// --- UPDATED STORY CARD ---
-const StoryCard = ({
-  number,
-  title,
-  desc,
-  index,
-}: {
-  number: string;
-  title: string;
-  desc: string;
-  index: number;
-}) => {
-  // Staggered slide-in variants
-  const cardVariants = {
-    hidden: { opacity: 0, x: -50 },
-    visible: {
-      opacity: 1,
-      x: 0,
-    },
-  };
-
-  return (
-    <motion.div
-      variants={cardVariants}
-      initial="hidden"
-      whileInView="visible"
-      transition={{
-        duration: 0.8,
-        ease: [0.2, 0.65, 0.3, 0.9],
-        delay: index * 0.2, // Stagger the cards themselves
-      }}
-      viewport={{ once: true }}
-      className="py-4 pl-6 border-border-subtle border-l"
-    >
-      <div className="mb-4 font-mono text-xxs text-zinc-500 md:text-sm tracking-tighter">
-        {number}
-      </div>
-      <h3 className="mb-3 font-bold text-md text-primary/85 md:text-2xl">
-        <AnimateString delayOffset={index * 0.2}>{title}</AnimateString>
-      </h3>
-      <p className="max-w-xs text-text-secondary text-xxs md:text-sm leading-relaxed">
-        <AnimateString delayOffset={index * 0.2 + 0.3}>{desc}</AnimateString>
-      </p>
-    </motion.div>
-  );
-};
-
 export default function SkillsSection({ scrollToPage }: { scrollToPage: (index: number) => void }) {
   const [showAllSkills, setShowAllSkills] = useState(false);
   const [openSection, setOpenSection] = useState<number[]>([]);
@@ -203,15 +156,15 @@ export default function SkillsSection({ scrollToPage }: { scrollToPage: (index: 
         <div className="flex flex-col justify-center items-center w-dvw h-full">
           <div className="px-[10dvw] w-full">
             <h2 className="mb-6 font-bold text-text-primary/85 text-2xl md:text-6xl leading-[1.1]">
-              <AnimateString>I don't just write code. </AnimateString>
+              <AnimateString delayOffset={0.05}>I don't just write code. </AnimateString>
               <br />
               <span className="text-text-muted">
-                <AnimateString delayOffset={0.6}>I engineer solutions.</AnimateString>
+                <AnimateString delayOffset={0.12}>I engineer solutions.</AnimateString>
               </span>
             </h2>
 
             <p className="mb-16 max-w-3xl text-text-secondary text-xs md:text-lg leading-relaxed">
-              <AnimateString delayOffset={0.62}>
+              <AnimateString delayOffset={0.18}>
                 My technical philosophy balances performance with aesthetics. I leverage modern
                 frameworks to build applications that scale effortlessly.
               </AnimateString>
@@ -396,6 +349,51 @@ const SkillCard = ({ skill }: { skill: any }) => {
       {isEmphasized && (
         <div className="top-0 right-0 absolute bg-linear-to-b from-transparent via-indigo-500/50 to-transparent opacity-50 w-px h-full" />
       )}
+    </motion.div>
+  );
+};
+const StoryCard = ({
+  number,
+  title,
+  desc,
+  index,
+}: {
+  number: string;
+  title: string;
+  desc: string;
+  index: number;
+}) => {
+  // Staggered slide-in variants
+  const cardVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+    },
+  };
+
+  return (
+    <motion.div
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      transition={{
+        duration: 0.7,
+        ease: [0.2, 0.65, 0.3, 0.9],
+        delay: index * 0.12, // Stagger the cards themselves
+      }}
+      viewport={{ once: true }}
+      className="py-4 pl-6 border-border-subtle border-l"
+    >
+      <div className="mb-4 font-mono text-xxs text-zinc-500 md:text-sm tracking-tighter">
+        {number}
+      </div>
+      <h3 className="mb-3 font-bold text-md text-primary/85 md:text-2xl">
+        <AnimateString delayOffset={index * 0.12}>{title}</AnimateString>
+      </h3>
+      <p className="max-w-xs text-text-secondary text-xxs md:text-sm leading-relaxed">
+        <AnimateString delayOffset={index * 0.12}>{desc}</AnimateString>
+      </p>
     </motion.div>
   );
 };

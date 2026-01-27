@@ -19,7 +19,7 @@ const SideNav = ({
   // Calculate percentage for the vertical line height
   const progressPercent = (activePageIndex / (totalPages - 1)) * 100;
   return (
-    <div className="top-1/2 left-1.5 md:left-6 z-50 fixed flex flex-col items-center gap-6 -translate-y-1/2 pointer-events-auto">
+    <div className="top-1/2 left-1.5 md:left-6 z-100 fixed flex flex-col items-center gap-6 -translate-y-1/2 pointer-events-auto">
       {/* --- UP / PREV BUTTON --- */}
       <div className="group relative">
         <button
@@ -223,11 +223,11 @@ const NavBar = ({
             initial="initial"
             animate="animate"
             exit="exit"
-            className="z-300 fixed inset-0 flex flex-col justify-center bg-accent/20 backdrop-blur-2xl px-8 md:px-20 cursor-default"
+            className="top-0 z-30 fixed flex flex-col justify-center bg-accent/20 backdrop-blur-2xl px-8 md:px-20 w-dvw h-dvh cursor-default"
           >
-            <div className="relative flex flex-col justify-center mx-auto w-full max-w-7xl h-full">
+            <div className="z-50 relative flex flex-col justify-center mx-auto w-full max-w-7xl h-full">
               {/* HEADER ROW (Logo/Close placeholder) */}
-              <div className="top-16 left-0 absolute flex justify-between items-center w-full font-semibold text-primary text-sm uppercase tracking-widest">
+              <div className="top-16 left-0 z-50 absolute flex justify-between items-center w-full font-semibold text-primary text-sm uppercase tracking-widest">
                 <span>Jump To a section!</span>
                 <button
                   onClick={() => {
@@ -246,7 +246,7 @@ const NavBar = ({
                 initial="initial"
                 animate="open"
                 exit="initial"
-                className="flex flex-col gap-2 font-kola"
+                className="z-50 flex flex-col gap-2 font-kola"
               >
                 {pages.map((page, index) => (
                   <div key={index} className="flex justify-start items-center overflow-hidden">

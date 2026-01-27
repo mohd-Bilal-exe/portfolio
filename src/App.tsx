@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Lenis from 'lenis';
 import DotGrid from './components/global/DotGrid';
 import { NavBar, SideNav } from './components/global/Navbars';
@@ -50,11 +50,13 @@ export default function App() {
       targetElement?.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
+  useLayoutEffect(() => {
+    if (activePageIndex !== 0) scrollToPage(0);
+  }, []);
   useEffect(() => {
     scrollToPage(0);
     const lenis = new Lenis({
-      duration: 0.25,
+      duration: 0.75,
       easing: easeOutQuart,
       orientation: 'vertical',
       smoothWheel: true,
@@ -115,8 +117,9 @@ export default function App() {
 
   return (
     <div
-      className={`bg-background/95 font-nunito ${darkMode ? 'dark' : ''} transition-colors duration-300 ease-in-out selection:bg-accent selection:text-accent-muted w-dvw`}
+      className={`bg-background/95 font-nunito ${darkMode ? 'dark' : ''} transition-colors duration-300 ease-in-out selection:bg-accent selection:text-accent-muted w-dvw transform-cpu scroll-smooth`}
     >
+      <SideNav activePageIndex={activePageIndex} pages={PAGE_DATA} scrollToPage={scrollToPage} />
       <NavBar
         activePageIndex={activePageIndex}
         pages={PAGE_DATA}
@@ -125,12 +128,6 @@ export default function App() {
         darkMode={darkMode}
         setHasHomeAnimated={setHasHomeAnimated}
       />
-      <div className="hidden z-0 fixed inset-0 opacity-30 pointer-events-none">
-        <GridBackground
-          baseColor={getActiveColor(activePageIndex)}
-          activeColor={getActiveColor(activePageIndex)}
-        />
-      </div>
       <div className="relative flex flex-col w-full">
         {PAGE_DATA.map(({ id, Component }, index) => (
           <div
@@ -160,7 +157,6 @@ export default function App() {
           className="z-100"
         ></GradualBlurMemo>
       )}
-      <SideNav activePageIndex={activePageIndex} pages={PAGE_DATA} scrollToPage={scrollToPage} />
     </div>
   );
 }
