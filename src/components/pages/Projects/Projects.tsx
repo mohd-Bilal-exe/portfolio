@@ -81,7 +81,10 @@ export default function ProjectsSection({
   const [showVault, setShowVault] = useState(false);
   const date = new Date();
   return (
-    <div className="relative flex flex-col justify-center pt-[5dvh] w-full min-h-dvh overflow-hidden font-space-grotesk font-bold">
+    <section
+      id="mohammad-bilal-projects"
+      className="relative flex flex-col justify-center pt-[5dvh] w-full min-h-dvh overflow-hidden font-space-grotesk font-bold"
+    >
       {/* Label */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
@@ -90,7 +93,7 @@ export default function ProjectsSection({
         className="flex items-center gap-4 mx-[7dvw] md:mx-[10dvw] py-6 md:py-10"
       >
         <div className="bg-zinc-700 w-12 h-px" />
-        <span className="font-medium text-text-secondary text-sm uppercase tracking-widest">
+        <span className="font-medium text-text-secondary text-xxs md:text-sm uppercase tracking-widest">
           latest Works
         </span>
       </motion.div>
@@ -103,7 +106,7 @@ export default function ProjectsSection({
         {/* === PAGE 1: FEATURED STORY === */}
         <div className="flex flex-col justify-start items-center px-[10dvw] w-dvw">
           <div className="w-full">
-            <h2 className="mb-12 font-bold text-text-primary/80 text-4xl md:text-7xl leading-tight -white">
+            <h2 className="mb-12 font-bold text-text-primary/80 text-xl md:text-5xl leading-tight -white">
               <AnimateString delayOffset={0.05}>Crafting digital products</AnimateString>
               <br />
               <span className="text-text-primary/50">
@@ -137,11 +140,11 @@ export default function ProjectsSection({
         </div>
 
         {/* === PAGE 2: BENTO VAULT === */}
-        <div className="flex flex-col justify-center px-[10dvw] w-dvw">
-          <div className="flex justify-between items-end mb-12">
-            <div>
-              <h3 className="font-bold text-white text-4xl">The Vault</h3>
-              <p className="mt-2 font-mono text-zinc-600 text-sm">
+        <div className="flex flex-col justify-center px-[10dvw] pb-[5dvh] w-dvw">
+          <div className="flex flex-col justify-between items-end mb-12">
+            <div className="flex flex-row md:flex-col w-full">
+              <h3 className="font-bold text-text-primary text-2xl md:text-4xl">The Vault</h3>
+              <p className="mt-2 font-mono text-xxs text-zinc-600 md:text-sm">
                 SELECTED WORKS // 2024-{date.getFullYear()}
               </p>
             </div>
@@ -150,9 +153,13 @@ export default function ProjectsSection({
                 setShowVault(false);
                 scrollToPage(3);
               }}
-              className="flex items-center gap-2 hover:bg-zinc-900 px-6 py-3 border border-zinc-800 rounded-full text-zinc-400 transition-colors"
+              className="group flex items-center gap-2 hover:bg-background-overlay/40 px-6 py-3 border border-border-subtle rounded-full min-w-[15dvw] text-text-secondary text-xxs md:text-sm transition-colors"
             >
-              <ArrowLeft size={18} /> Back to Featured
+              <ArrowLeft
+                size={18}
+                className="text-text-primary/20 group-hover:text-text-primary transition-all group-hover:-translate-x-1.5 ease-in-out"
+              />{' '}
+              Back to Featured
             </button>
           </div>
 
@@ -163,7 +170,7 @@ export default function ProjectsSection({
           </div>
         </div>
       </motion.div>
-    </div>
+    </section>
   );
 }
 
@@ -197,8 +204,8 @@ const FeaturedCard = ({ project, index }: { project: any; index: number }) => (
     </div>
     <div className="flex justify-between items-start px-2">
       <div>
-        <h4 className="mb-1 font-bold text-text-primary/70 text-2xl">{project.title}</h4>
-        <p className="text-text-primary/50 text-sm">
+        <h4 className="mb-1 font-bold text-md text-text-primary/70 md:text-2xl">{project.title}</h4>
+        <p className="text-text-primary/50 text-xs md:text-xs">
           <AnimateString delayOffset={index * 0.12 + 0.18}>{project.description}</AnimateString>
         </p>
       </div>
@@ -218,12 +225,12 @@ const BentoCard = ({ project }: { project: any }) => (
   >
     <div>
       <div className="flex justify-between items-start mb-6">
-        <h4 className="font-bold text-white text-3xl">{project.title}</h4>
-        <span className="bg-zinc-900 p-2 rounded-full text-zinc-500 hover:text-white transition-colors">
+        <h4 className="font-bold text-text-primary text-xl md:text-3xl">{project.title}</h4>
+        <span className="bg-background-overlay p-2 rounded-full text-text-primary hover:text-white transition-colors">
           <ExternalLink size={20} />
         </span>
       </div>
-      <p className="mb-8 text-zinc-400 leading-relaxed">
+      <p className="mb-8 text-text-primary/60 text-xxs md:text-sm leading-relaxed">
         <AnimateString delayOffset={0.05}>{project.description}</AnimateString>
       </p>
     </div>
@@ -231,7 +238,7 @@ const BentoCard = ({ project }: { project: any }) => (
       {project.tech.map((t: string) => (
         <span
           key={t}
-          className="bg-zinc-900/50 px-3 py-1 rounded-md font-mono text-zinc-500 text-xs"
+          className="bg-zinc-900/50 px-3 py-1 rounded-md font-mono text-text-secondary text-xxxs md:text-xs"
         >
           {t}
         </span>

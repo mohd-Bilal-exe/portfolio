@@ -131,23 +131,26 @@ const MediaPill = ({
 // --- 3. The Main Section ---
 const About = () => {
   return (
-    <section className="flex items-center px-[10dvw] py-[10dvh] w-full min-h-dvh font-space-grotesk font-bold">
+    <section
+      id="mohammad-bilal-about"
+      className="flex items-center px-[10dvw] py-[10dvh] w-full md:min-h-dvh font-space-grotesk font-bold"
+    >
       <div className="w-full md:max-w-7xl">
         {/* Header Label */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="flex items-center gap-4 mb-12"
+          className="flex items-center gap-4 py-6 md:py-10"
         >
           <div className="bg-zinc-700 w-12 h-px" />
-          <span className="font-medium text-text-secondary text-sm uppercase tracking-widest">
+          <span className="font-medium text-text-secondary text-xxs md:text-sm uppercase tracking-widest">
             About Me
           </span>
         </motion.div>
 
         {/* Content Paragraph */}
-        <div className="font-medium text-text-secondary/70 text-2xl md:text-5xl text-left leading-[1.6]">
+        <div className="font-medium text-text-secondary/70 text-xl md:text-5xl text-left leading-[1.6]">
           {/* Sentence 1 */}
           <div className="mb-8">
             <AnimateString delayOffset={0.05}>Hey, I engineer</AnimateString>

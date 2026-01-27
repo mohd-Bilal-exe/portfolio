@@ -43,11 +43,11 @@ const SideNav = ({
               isFirst
                 ? 'opacity-30 cursor-not-allowed text-text-muted'
                 : `
-                  text-text-primary
-                  hover:bg-background-overlay/70
-                  hover:border-accent
-                  hover:text-accent
-                  cursor-pointer
+                   text-text-primary
+                    hover:text-text-muted
+                    hover:bg-background-surface
+                    hover:border-accent
+                    cursor-pointer
                 `
             }
           `}
@@ -100,9 +100,9 @@ const SideNav = ({
                   ? 'opacity-30 cursor-not-allowed text-text-muted'
                   : `
                     text-text-primary
-                    hover:bg-background-overlay/70
+                    hover:text-text-muted
+                    hover:bg-background-surface
                     hover:border-accent
-                    hover:text-accent
                     cursor-pointer
                   `
               }
@@ -295,151 +295,3 @@ const NavBar = ({
   );
 };
 export { SideNav, NavBar };
-/*const NavBarOld = ({
-  activePageIndex,
-  pages,
-  scrollToPage,
-}: {
-  activePageIndex: number;
-  pages: { title: string }[];
-  scrollToPage: (index: number) => void;
-}) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen(!isOpen);
-
-  // --- DIMENSIONS ---
-  const buttonSize = 32;
-  const dotSize = 12;
-  const menuWidth = 600;
-  const menuHeight = 35;
-
-  // --- POSITIONS ---
-  const centerPos = 'calc(-31vw + 40px)';
-  const rightPos = '0px';
-
-  // --- COLORS ---
-  // 1. Transparent (invisible box, just icon)
-  const colorTransparent = 'rgba(255, 255, 255, 0)';
-  // 2. Solid White (The "Energy Dot")
-  const colorDot = 'rgba(255, 255, 255, 1)';
-  // 3. Hazy Glass (The Menu Background) - Darker for contrast
-  const colorMenu = 'rgba(20, 20, 20, 0.6)';
-
-  const variants = {
-    open: {
-      width: [buttonSize, dotSize, dotSize, dotSize, dotSize, menuWidth],
-      height: [buttonSize, dotSize, dotSize, dotSize, dotSize, menuHeight],
-      borderRadius: ['12px', '50%', '50%', '50%', '50%', '24px'],
-
-      // MOVEMENT: Stays Right (0-0.3) -> Moves (0.3-0.7) -> Stays Center (0.7-1)
-      x: [rightPos, rightPos, rightPos, centerPos, centerPos, centerPos],
-      y: [0, 0, 0, 0, 0, -7],
-      // COLOR: Transparent -> Solid Dot -> Solid Dot -> Hazy Menu
-      backgroundColor: [
-        colorTransparent, // 0% (Start)
-        colorDot, // 20% (Collapsed to Dot)
-        colorDot, // 30% (Wait)
-        colorDot, // 70% (Moved)
-        colorDot, // 80% (Wait)
-        colorMenu, // 100% (Expanded)
-      ],
-
-      transition: {
-        duration: 1.5,
-        ease: easeInOut,
-        times: [0, 0.2, 0.3, 0.7, 0.8, 1],
-      },
-    },
-
-    closed: {
-      width: [menuWidth, dotSize, dotSize, dotSize, dotSize, buttonSize],
-      height: [menuHeight, dotSize, dotSize, dotSize, dotSize, buttonSize],
-      borderRadius: ['24px', '50%', '50%', '50%', '50%', '12px'],
-
-      // MOVEMENT: Stays Center (0-0.3) -> Moves (0.3-0.7) -> Stays Right (0.7-1)
-      x: [centerPos, centerPos, centerPos, rightPos, rightPos, rightPos],
-
-      // COLOR: Hazy Menu -> Solid Dot -> Solid Dot -> Transparent
-      backgroundColor: [
-        colorMenu, // 0% (Start)
-        colorDot, // 20% (Collapsed to Dot)
-        colorDot, // 30% (Wait)
-        colorDot, // 70% (Moved)
-        colorDot, // 80% (Wait)
-        colorTransparent, // 100% (Back to Hamburger)
-      ],
-
-      transition: {
-        duration: 1.5,
-        ease: easeInOut,
-        times: [0, 0.2, 0.3, 0.7, 0.8, 1],
-      },
-    },
-  };
-
-  return (
-    <motion.div
-      initial={'closed'}
-      animate={isOpen ? 'open' : 'closed'}
-      variants={variants}
-      className={`
-        fixed top-4 right-4 z-50 flex items-center justify-center overflow-hidden
-        
-        ${isOpen ? 'cursor-default backdrop-blur-md shadow-2xl border border-white/10' : 'cursor-pointer'}
-      `}
-    >
-      <div className="relative flex justify-center items-center w-full h-full">
-        
-        <motion.button
-          onClick={() => {
-            toggle();
-          }}
-          className="absolute inset-0 flex justify-center items-center text-periwinkle-500/50 cursor-pointer"
-          animate={{ opacity: isOpen ? 0 : 1, scale: isOpen ? 0 : 1 }}
-          transition={{ duration: 0.2, delay: isOpen ? 0 : 1.3 }}
-        >
-          <Menu className="size-5" />
-        </motion.button>
-
-      
-        <motion.div
-          animate={{
-            opacity: isOpen ? 1 : 0,
-            scale: isOpen ? 1 : 0.9,
-          }}
-          transition={{ duration: 0.3, delay: isOpen ? 1.2 : 0 }} // Appears AFTER expansion
-          className={`flex items-center justify-center gap-8 px-4 w-full ${!isOpen ? 'pointer-events-none' : ''}`}
-        >
-          {pages.map((page, i) => (
-            <button
-              key={i}
-              onClick={e => {
-                e.stopPropagation();
-                toggle();
-                setTimeout(() => scrollToPage(i), 1200);
-              }}
-              className="font-bold text-primary hover:text-amber-400 text-sm uppercase tracking-wider whitespace-nowrap transition-colors"
-            >
-              {page.title}
-            </button>
-          ))}
-        </motion.div>
-        {isOpen && (
-          <motion.div
-            className="top-1.5 right-2 absolute rounded-full text-primary cursor-pointer"
-            animate={{
-              opacity: isOpen ? 1 : 0,
-              scale: isOpen ? 1 : 0.9,
-            }}
-            transition={{ duration: 0.3, delay: isOpen ? 1.2 : 0 }}
-            onClick={() => {
-              toggle();
-            }}
-          >
-            <ChevronRight className="size-5" />
-          </motion.div>
-        )}
-      </div>
-    </motion.div>
-  );
-};*/

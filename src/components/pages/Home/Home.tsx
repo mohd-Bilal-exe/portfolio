@@ -28,7 +28,10 @@ const Home = ({ markAnimationComplete }: { markAnimationComplete: () => void }) 
   }, []);
 
   return (
-    <div className="relative flex flex-col justify-between items-between w-dvw h-dvh overflow-hidden font-nunito">
+    <section
+      id="mohammad-bilal"
+      className="relative flex flex-col justify-between items-between w-dvw h-dvh overflow-hidden font-nunito"
+    >
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: animationState.revealContent ? 1 : 0 }}
@@ -91,7 +94,7 @@ const Home = ({ markAnimationComplete }: { markAnimationComplete: () => void }) 
           Building scalable solutions with pixel-perfect frontend experiences.
         </p>
       </motion.div>
-    </div>
+    </section>
   );
 };
 

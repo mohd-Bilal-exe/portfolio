@@ -156,12 +156,12 @@ export default function App() {
         <GradualBlurMemo
           target="page"
           position="bottom"
-          height="5rem"
-          strength={2}
+          height="6rem"
+          strength={5}
           divCount={5}
           curve="bezier"
           exponential
-          opacity={0.8}
+          opacity={0.9}
           className="z-100"
         ></GradualBlurMemo>
       )}
