@@ -4,8 +4,6 @@ import { ArrowRight } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 import AnimateString from '../../global/AnimateString';
 
-// Assets are lazy-loaded via dynamic import() when needed to keep the initial bundle small.
-
 const MediaPill = ({
   staticImg,
   staticImgLoader,
@@ -123,12 +121,11 @@ const MediaPill = ({
           isHovered ? 'opacity-100' : 'opacity-0'
         )}
       />
-      <div className="absolute inset-0 rounded-full ring-1 ring-black/10 ring-inset pointer-events-none" />
+      <div className="absolute inset-0 ring-1 ring-black/10 ring-inset pointer-events-none" />
     </motion.span>
   );
 };
 
-// --- 3. The Main Section ---
 const About = () => {
   return (
     <section
@@ -189,7 +186,7 @@ const About = () => {
           {/* Sentence 2 */}
           <div>
             <AnimateString delayOffset={0.45}>
-              Away from the screens, my mood is fueled by the
+              Away from the screens, my mood is fueled by
             </AnimateString>
 
             <AnimateString delayOffset={0.55} className="inline-block mx-1.5 text-text-primary/85">
