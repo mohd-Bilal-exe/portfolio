@@ -279,6 +279,76 @@
   src: url('./fonts/ibm-plex-mono/IBMPlexMono-Regular.ttf') format('truetype');
 }
 
+/* Local copies for previously imported Google Fonts */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  src: url('./fonts/Nunito_Sans/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Nunito Sans';
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+  src: url('./fonts/Nunito_Sans/NunitoSans-Italic-VariableFont_YTLC,opsz,wdth,wght.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'Playwrite US Modern';
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  src: url('./fonts/Playwrite_US_Modern/PlaywriteUSModern-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('./fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('./fonts/Space_Mono/SpaceMono-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('./fonts/Space_Mono/SpaceMono-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url('./fonts/Space_Mono/SpaceMono-Italic.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+  src: url('./fonts/Space_Mono/SpaceMono-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Zeyada';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('./fonts/Zeyada/Zeyada-Regular.ttf') format('truetype');
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);

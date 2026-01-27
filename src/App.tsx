@@ -7,7 +7,6 @@ import Projects from './components/pages/Projects/Projects';
 import Contact from './components/pages/Contact/Contact';
 import Skills from './components/pages/Skills/Skills';
 import GradualBlurMemo from './components/global/GradientBlur';
-import useMediaQuery from './hooks/useMediaQuery';
 import { twMerge } from 'tailwind-merge';
 
 const PAGE_DATA = [
@@ -43,7 +42,6 @@ export default function App() {
     });
   };
 
-  console.log('Dark mode from app, ', isDark);
   const [activePageIndex, setActivePageIndex] = useState(0);
   const lenisRef = useRef<Lenis | null>(null);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
