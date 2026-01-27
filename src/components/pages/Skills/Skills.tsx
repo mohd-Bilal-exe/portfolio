@@ -1,25 +1,16 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Layout,
-  Code2,
   Server,
   Database,
-  Smartphone,
   Cloud,
   PenTool,
-  Cpu,
-  Globe,
-  Box,
-  GitBranch,
-  Layers,
   ChevronDown,
   ArrowRight,
   ArrowLeft,
 } from 'lucide-react';
 import AnimateString from '../../global/AnimateString';
 
-// --- ANIMATION COMPONENT ---
 
 const skillsData = [
   {
