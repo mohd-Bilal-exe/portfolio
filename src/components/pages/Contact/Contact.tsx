@@ -1,7 +1,7 @@
 import { ArrowRight, Instagram, Github, Linkedin } from 'lucide-react';
 import AnimateString from '../../global/AnimateString';
 import { motion } from 'framer-motion';
-import { contentHeading, mainContent, pageHeading, pageName } from '../../../lib/fontClassNames';
+import { contentHeading, pageHeading, pageName } from '../../../lib/fontClassNames';
 import { twMerge } from 'tailwind-merge';
 const Contact = () => {
   return (

@@ -10,7 +10,6 @@ import {
   mainContent,
   pageHeading,
   pageName,
-  subHeadingClassNames,
 } from '../../../lib/fontClassNames';
 
 const skillsData = [

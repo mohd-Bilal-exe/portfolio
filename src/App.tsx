@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Lenis from 'lenis';
 import { NavBar, SideNav } from './components/global/Navbars';
 import Home from './components/pages/Home/Home';
