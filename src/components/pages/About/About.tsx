@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 import AnimateString from '../../global/AnimateString';
+import { pageHeading, pageName } from '../../../lib/fontClassNames';
 
 const MediaPill = ({
   staticImg,
@@ -141,13 +142,23 @@ const About = () => {
           className="flex items-center gap-4 py-6 md:py-10"
         >
           <div className="bg-zinc-700 w-12 h-px" />
-          <span className="font-medium text-text-secondary text-xxs md:text-sm uppercase tracking-widest">
+          <span
+            className={twMerge(
+              pageName,
+              'font-medium text-text-secondary  uppercase tracking-widest'
+            )}
+          >
             About Me
           </span>
         </motion.div>
 
         {/* Content Paragraph */}
-        <div className="font-medium text-text-secondary/70 text-xl md:text-5xl text-left leading-[1.6]">
+        <div
+          className={twMerge(
+            pageHeading,
+            'font-medium text-text-secondary/70 text-left leading-[1.6]'
+          )}
+        >
           {/* Sentence 1 */}
           <div className="mb-8">
             <AnimateString delayOffset={0.05}>Hey, I engineer</AnimateString>

@@ -2,6 +2,16 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Server, Database, Cloud, PenTool, ChevronDown, ArrowRight, ArrowLeft } from 'lucide-react';
 import AnimateString from '../../global/AnimateString';
+import { twMerge } from 'tailwind-merge';
+import {
+  contentHeading,
+  contentIndex,
+  contentSubHeading,
+  mainContent,
+  pageHeading,
+  pageName,
+  subHeadingClassNames,
+} from '../../../lib/fontClassNames';
 
 const skillsData = [
   {
@@ -376,7 +386,9 @@ export default function SkillsSection({ scrollToPage }: { scrollToPage: (index: 
         className="flex items-center gap-4 mx-[7dvw] md:mx-[10dvw] py-6 md:py-10"
       >
         <div className="bg-zinc-700 w-12 h-px" />
-        <span className="font-medium text-text-secondary text-xxs md:text-sm uppercase tracking-widest">
+        <span
+          className={twMerge(pageName, 'font-medium text-text-secondary uppercase tracking-widest')}
+        >
           What I bring to the table.
         </span>
       </motion.div>
@@ -389,7 +401,9 @@ export default function SkillsSection({ scrollToPage }: { scrollToPage: (index: 
         {/* === PAGE 1: STORYTELLING === */}
         <div className="flex flex-col justify-center items-center w-dvw h-full">
           <div className="px-[10dvw] w-full">
-            <h2 className="mb-6 font-bold text-text-primary/85 text-2xl md:text-6xl leading-[1.1]">
+            <h2
+              className={twMerge(pageHeading, 'mb-6 font-bold text-text-primary/85  leading-[1.1]')}
+            >
               <AnimateString delayOffset={0.05}>I don't just write code. </AnimateString>
               <br />
               <span className="text-text-muted">
@@ -397,7 +411,12 @@ export default function SkillsSection({ scrollToPage }: { scrollToPage: (index: 
               </span>
             </h2>
 
-            <p className="mb-16 max-w-3xl text-text-secondary text-xs md:text-lg leading-relaxed">
+            <p
+              className={twMerge(
+                mainContent,
+                'mb-16 max-w-3xl text-text-secondary leading-relaxed'
+              )}
+            >
               <AnimateString delayOffset={0.18}>
                 My technical philosophy balances performance with aesthetics. I leverage modern
                 frameworks to build applications that scale effortlessly.
@@ -515,12 +534,21 @@ const CollapsibleSection = ({
         className="group flex justify-between items-center py-5 w-full text-left"
       >
         <div className="flex items-baseline gap-4">
-          <span className="font-mono text-md text-text-secondary/50 group-hover:text-text-secondary md:text-3xl transition-colors duration-300">
+          <span
+            className={twMerge(
+              contentSubHeading,
+              'font-mono  text-text-secondary/50 group-hover:text-text-secondary  transition-colors duration-300'
+            )}
+          >
             {String(index + 1).padStart(2, '0')}
           </span>
 
           <h3
-            className={`text-lg md:text-2xl font-semibold transition-colors duration-300 ease-in-out ${isOpen ? 'text-text-primary' : 'text-text-secondary group-hover:text-zinc-300'}`}
+            className={twMerge(
+              contentHeading,
+              'font-semibold text-lg md:text-2xl transition-colors duration-300 ease-in-out',
+              isOpen ? 'text-text-primary' : 'text-text-secondary group-hover:text-zinc-300'
+            )}
           >
             {title}
           </h3>
@@ -574,7 +602,7 @@ const SkillCard = ({ skill }: { skill: any }) => {
         {React.cloneElement(skill.icon, { size: 18 })}
       </div>
       <span
-        className={`font-medium text-xxs md:text-sm ${isEmphasized ? 'text-text-primary/90' : 'text-text-primary/70'}`}
+        className={`font-medium text-xxxs  md:text-xs ${isEmphasized ? 'text-text-primary/90' : 'text-text-primary/70'}`}
       >
         {skill.name}
       </span>
@@ -617,13 +645,13 @@ const StoryCard = ({
       viewport={{ once: true }}
       className="py-4 pl-6 border-border-subtle border-l"
     >
-      <div className="mb-4 font-mono text-xxs text-zinc-500 md:text-sm tracking-tighter">
+      <div className={twMerge(contentIndex, 'mb-4 font-mono text-zinc-500 tracking-tighter')}>
         {number}
       </div>
-      <h3 className="mb-3 font-bold text-md text-text-primary/85 md:text-2xl">
+      <h3 className={twMerge(contentHeading, 'mb-3 font-bold text-text-primary/85')}>
         <AnimateString delayOffset={index * 0.12}>{title}</AnimateString>
       </h3>
-      <p className="max-w-xs text-text-secondary text-xxs md:text-sm leading-relaxed">
+      <p className={twMerge(contentSubHeading, 'max-w-xs text-text-secondary  leading-relaxed')}>
         <AnimateString delayOffset={index * 0.12}>{desc}</AnimateString>
       </p>
     </motion.div>

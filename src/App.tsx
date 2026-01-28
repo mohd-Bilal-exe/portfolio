@@ -74,9 +74,6 @@ export default function App() {
       targetElement?.scrollIntoView({ behavior: 'smooth' });
     }
   };
-  useLayoutEffect(() => {
-    if (activePageIndex !== 0) scrollToPage(0);
-  }, []);
   useEffect(() => {
     scrollToPage(0);
     const lenis = new Lenis({
@@ -125,7 +122,7 @@ export default function App() {
     <div
       className={twMerge(
         isDark ? 'dark' : '',
-        ` bg-background/95 font-nunito transition-colors duration-300 ease-in-out selection:bg-accent selection:text-accent-muted w-dvw transform-cpu `
+        ` bg-background/95 font-nunito transition-colors duration-300 ease-in-out selection:bg-accent selection:text-accent-muted w-dvw overflow-hidden max-w-dvw transform-cpu `
       )}
     >
       <Seo

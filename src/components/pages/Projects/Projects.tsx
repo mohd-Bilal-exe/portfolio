@@ -3,6 +3,15 @@ import { motion } from 'framer-motion';
 import { ArrowRight, ArrowLeft, ExternalLink } from 'lucide-react';
 import AnimateString from '../../global/AnimateString';
 import { debatrix, portfolio, resumeIQ, TODONest } from '../../../lib/assets';
+import { twMerge } from 'tailwind-merge';
+import {
+  contentHeading,
+  contentIndex,
+  contentSubHeading,
+  mainContent,
+  pageHeading,
+  pageName,
+} from '../../../lib/fontClassNames';
 
 // --- DATA ---
 const projects = [
@@ -93,7 +102,12 @@ export default function ProjectsSection({
         className="flex items-center gap-4 mx-[7dvw] md:mx-[10dvw] py-6 md:py-10"
       >
         <div className="bg-zinc-700 w-12 h-px" />
-        <span className="font-medium text-text-secondary text-xxs md:text-sm uppercase tracking-widest">
+        <span
+          className={twMerge(
+            pageName,
+            'font-medium text-text-secondary  uppercase tracking-widest'
+          )}
+        >
           latest Works
         </span>
       </motion.div>
@@ -106,7 +120,9 @@ export default function ProjectsSection({
         {/* === PAGE 1: FEATURED STORY === */}
         <div className="flex flex-col justify-start items-center px-[10dvw] w-dvw">
           <div className="w-full">
-            <h2 className="mb-12 font-bold text-text-primary/80 text-xl md:text-5xl leading-tight -white">
+            <h2
+              className={twMerge(pageHeading, 'mb-12 font-bold text-text-primary/80 leading-tight')}
+            >
               <AnimateString delayOffset={0.05}>Crafting digital products</AnimateString>
               <br />
               <span className="text-text-primary/50">
@@ -163,10 +179,15 @@ export default function ProjectsSection({
             </button>
           </div>
 
-          <div className="gap-6 grid grid-cols-1 md:grid-cols-6">
-            {projects.map(project => (
-              <BentoCard key={project.key} project={project} />
-            ))}
+          <div className="relative">
+            {/* Blur overlay */}
+            <div className="z-10 fixed inset-0 bg-black/30 opacity-0 group-hover/grid:opacity-100 backdrop-blur-md transition-opacity duration-500 pointer-events-none" />
+
+            <div className="group/grid z-20 relative gap-6 grid grid-cols-1 md:grid-cols-6">
+              {projects.map(project => (
+                <BentoCard key={project.key} project={project} />
+              ))}
+            </div>
           </div>
         </div>
       </motion.div>
@@ -192,7 +213,11 @@ const FeaturedCard = ({ project, index }: { project: any; index: number }) => (
           className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
         />
       ) : (
-        <div className="flex justify-center items-center w-full h-full text-text-primary bg-accent-muted/5">
+        <div
+          className={
+            'flex justify-center items-center w-full h-full text-text-primary bg-accent-muted/5'
+          }
+        >
           <h1>{project.title}</h1>
         </div>
       )}
@@ -204,8 +229,10 @@ const FeaturedCard = ({ project, index }: { project: any; index: number }) => (
     </div>
     <div className="flex justify-between items-start px-2">
       <div>
-        <h4 className="mb-1 font-bold text-md text-text-primary/70 md:text-2xl">{project.title}</h4>
-        <p className="text-text-primary/50 text-xs md:text-xs">
+        <h4 className={twMerge(contentHeading, 'mb-1 font-bold  text-text-primary/70 ')}>
+          {project.title}
+        </h4>
+        <p className={twMerge(contentIndex, 'text-text-primary/50')}>
           <AnimateString delayOffset={index * 0.12 + 0.18}>{project.description}</AnimateString>
         </p>
       </div>
@@ -218,31 +245,45 @@ const BentoCard = ({ project }: { project: any }) => (
     href={project.link}
     target="_blank"
     className={`
-    relative group p-8 rounded-[2rem] border border-border bg-background-surface/10 
-    hover:border-border-strong cursor-pointer  duration-500 flex flex-col justify-between hover:scale-[102%] transition-all
-    ${project.isEmphasized ? 'md:col-span-3 ' : 'md:col-span-2'}
-  `}
+      relative group/card overflow-hidden
+      p-8 rounded-[2rem] border border-border
+      bg-background-surface/80 backdrop-blur
+      transition-all duration-500
+      hover:scale-[1.03] hover:z-30
+      ${
+        project.isEmphasized
+          ? 'col-span-6 md:col-span-3 lg:col-span-4'
+          : 'col-span-6 md:col-span-3 lg:col-span-2'
+      }
+    `}
   >
-    <div>
-      <div className="flex justify-between items-start mb-6">
-        <h4 className="font-bold text-text-primary text-xl md:text-3xl">{project.title}</h4>
-        <span className="bg-background-overlay p-2 rounded-full text-text-primary hover:text-white transition-colors">
-          <ExternalLink size={20} />
-        </span>
-      </div>
-      <p className="mb-8 text-text-primary/60 text-xxs md:text-sm leading-relaxed">
-        <AnimateString delayOffset={0.05}>{project.description}</AnimateString>
-      </p>
+    {/* Always visible */}
+    <div className="flex justify-between items-start">
+      <h4 className={twMerge(contentHeading, 'font-bold text-text-primary')}>{project.title}</h4>
+      <span className="bg-background-overlay p-2 rounded-full text-text-muted">
+        <ExternalLink size={20} />
+      </span>
     </div>
-    <div className="flex flex-wrap gap-2">
-      {project.tech.map((t: string) => (
-        <span
-          key={t}
-          className="bg-zinc-900/50 px-3 py-1 rounded-md font-mono text-text-secondary text-xxxs md:text-xs"
-        >
-          {t}
-        </span>
-      ))}
+
+    {/* Expandable content */}
+    <div className="opacity-0 group-hover/card:opacity-100 mt-6 max-h-0 group-hover/card:max-h-125 transition-all translate-y-4 group-hover/card:translate-y-0 duration-500 ease-in-out delay-300">
+      <p className={twMerge(mainContent, 'mb-6 text-text-primary/60')}>
+        <AnimateString delayOffset={0.03}>{project.description}</AnimateString>
+      </p>
+
+      <div className="flex flex-wrap gap-2">
+        {project.tech.map((t: string) => (
+          <span
+            key={t}
+            className={twMerge(
+              contentSubHeading,
+              'bg-zinc-900/50 px-3 py-1 rounded-md font-mono text-text-secondary'
+            )}
+          >
+            {t}
+          </span>
+        ))}
+      </div>
     </div>
   </a>
 );

@@ -1,6 +1,8 @@
 import { ArrowRight, Instagram, Github, Linkedin } from 'lucide-react';
 import AnimateString from '../../global/AnimateString';
 import { motion } from 'framer-motion';
+import { contentHeading, mainContent, pageHeading, pageName } from '../../../lib/fontClassNames';
+import { twMerge } from 'tailwind-merge';
 const Contact = () => {
   return (
     <section
@@ -11,27 +13,37 @@ const Contact = () => {
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        className="flex items-center gap-4 mx-[7dvw] md:mx-[10dvw] py-6 md:py-10"
+        className="flex items-center gap-4 py-6 md:py-10"
       >
         <div className="bg-zinc-700 w-12 h-px" />
-        <span className="font-medium text-text-secondary text-xxs md:text-sm uppercase tracking-widest">
+        <span className={pageName + 'font-medium text-text-secondary uppercase tracking-widest'}>
           Wanna talk?
         </span>
       </motion.div>
       <div className="flex md:flex-row flex-col w-full">
         <div className="flex flex-col justify-between w-full md:w-1/2 min-h-[30dvh]">
           <div>
-            <h2 className="mb-8 font-bold text-text-primary/70 text-xl md:text-6xl leading-tight">
+            <h2
+              className={twMerge(pageHeading, 'mb-8 font-bold text-text-primary/70  leading-tight')}
+            >
               <AnimateString delayOffset={0.05}>Let's connect.</AnimateString>
             </h2>
 
             <div className="space-y-2">
-              <p className="font-mono text-text-primary/50 text-xxs md:text-xs uppercase tracking-widest">
+              <p
+                className={twMerge(
+                  pageName,
+                  'font-mono text-text-primary/50  uppercase tracking-widest'
+                )}
+              >
                 <AnimateString delayOffset={0.12}>Email me at</AnimateString>
               </p>
               <a
                 href="mailto:mohammadbilal.mail@gmail.com?subject=Loved%20your%20work%E2%80%94let%E2%80%99s%20chat!&body=Hey%20Bilal,%0D%0A%0D%0AJust%20checked%20out%20your%20portfolio%20and%20had%20to%20reach%20out.%20Super%20impressed(assumption).%20%0D%0A%0D%0AI%20had%20something%20in%20mind%20and%20would%20love%20to%20run%20it%20by%20you:%0D%0A%0D%0A[drop%20your%20message%20here]%0D%0A%0D%0ALooking%20forward%20to%20hearing%20from%20you!%0D%0A%0D%0ACheers,%0D%0A[Your%20Name]"
-                className="group flex items-center gap-2 font-medium text-text-primary/90 hover:text-zinc-400 text-xs md:text-2xl transition-colors"
+                className={twMerge(
+                  contentHeading,
+                  'group flex items-center gap-2 font-medium text-text-primary/90 hover:text-zinc-400 text-xs md:text-2xl transition-colors'
+                )}
               >
                 <AnimateString delayOffset={0.15}>mohammadbilal.mail@gmail.com</AnimateString>
                 <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />

@@ -41,7 +41,7 @@ const Home = ({ markAnimationComplete }: { markAnimationComplete: () => void }) 
         <h2 className="inline-block mb-2 text-md text-zinc-500 md:text-lg tracking-widest">
           Hey There, I'm
         </h2>
-        <h1 className="font-zeyada text-md text-text-heading md:text-3xl tracking-wdide tracking-widest">
+        <h1 className="font-zeyada text-md text-text-heading md:text-xl lg:text-3xl tracking-wdide tracking-widest">
           MOHAMMAD BILAL
         </h1>
       </motion.div>
@@ -62,7 +62,7 @@ const Home = ({ markAnimationComplete }: { markAnimationComplete: () => void }) 
           }}
           className="z-20 px-[4.5dvw]"
         >
-          <h1 className="bg-clip-text bg-linear-to-br from-text-heading text-transparent to-text-muted md:text-10xl text-4xl text-center md:text-start leading-none tracking-wide space-mono-bold">
+          <h1 className="bg-clip-text bg-linear-to-br from-text-heading text-transparent to-text-muted lg:text-10xl text-4xl md:text-5xl text-center md:text-start leading-none tracking-wide space-mono-bold">
             FULLSTACK
           </h1>
         </motion.div>
@@ -78,7 +78,7 @@ const Home = ({ markAnimationComplete }: { markAnimationComplete: () => void }) 
           }}
           className="z-20 md:px-[4.5dvw] pt-2 pb-4 text-center md:text-end translate-y-[-20dvh] md:translate-0 md:y-0"
         >
-          <h1 className="bg-clip-text bg-linear-to-br from-text-primary text-transparent to-text-secondary md:text-10xl text-4xl leading-none tracking-wide space-mono-bold">
+          <h1 className="bg-clip-text bg-linear-to-br from-text-primary text-transparent to-text-secondary lg:text-10xl text-4xl md:text-5xl leading-none tracking-wide space-mono-bold">
             DEVELOPER
           </h1>
         </motion.div>
