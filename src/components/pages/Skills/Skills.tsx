@@ -530,7 +530,7 @@ const CollapsibleSection = ({
     <div className="border-zinc-800 border-b">
       <button
         onClick={onToggle}
-        className="group flex justify-between items-center py-5 w-full text-left"
+        className="group flex justify-between items-center py-5 w-full text-left cursor-pointer"
       >
         <div className="flex items-baseline gap-4">
           <span
@@ -587,12 +587,12 @@ const SkillCard = ({ skill }: { skill: any }) => {
   return (
     <motion.div
       className={`
-        relative overflow-hidden rounded-2xl border
+        relative overflow-hidden rounded-full border
         flex flex-wrap items-center gap-3 px-4 py-3
-         shadow-sm 
+         shadow-sm  w-full md:w-auto
         ${
           !isEmphasized
-            ? 'bg-background-surface/50  border-border-default w-full md:w-auto'
+            ? 'bg-background-surface/50  border-border-default opacity-75 '
             : 'bg-background-surface/90  border-border-strong'
         }
       `}

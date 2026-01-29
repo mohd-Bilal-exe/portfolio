@@ -278,7 +278,7 @@ const BentoCard = ({ project }: { project: any }) => (
             key={t}
             className={twMerge(
               contentSubHeading,
-              'bg-zinc-900/50 px-3 py-1 rounded-md font-mono text-text-secondary'
+              'bg-background-overlay/60  px-3 py-1 rounded-full font-mono text-text-secondary'
             )}
           >
             {t}
