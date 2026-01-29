@@ -228,7 +228,7 @@ const NavBar = ({
                     setIsOpen(false);
                     setTimeout(() => setHasHomeAnimated(true), 500);
                   }}
-                  className="hover:text-text-primary/70 hover:scale-110 active:scale-95 transition-transform cursor-pointer"
+                  className="top-9 right-9 z-100 fixed hover:text-text-primary/70 hover:scale-110 active:scale-95 transition-transform cursor-pointer"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -257,7 +257,7 @@ const NavBar = ({
                         font-bold tracking-tighter cursor-pointer
                         text-5xl md:text-7xl
                         transition-colors 
-                        ${activePageIndex === index ? 'text-text-primary/90 tracking-tight' : 'text-text-primary/60'}
+                        ${activePageIndex === index ? 'text-text-primary tracking-tight' : 'text-text-primary/50'}
                         group-hover:text-accent-hover
                       `}
                       >
