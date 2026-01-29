@@ -29,6 +29,7 @@ const MediaPill = ({
   const [imgSrc, setImgSrc] = useState<string | undefined>(staticImg);
   const [videoSrcState, setVideoSrcState] = useState<string | undefined>(videoSrc);
   const [isLoading, setIsLoading] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   const preloadAssets = async () => {
     if (isLoading) return;
@@ -71,6 +72,7 @@ const MediaPill = ({
 
   const handleMouseLeave = () => {
     setIsHovered(false);
+    setIsVideoPlaying(false);
     if (videoRef.current) {
       videoRef.current.pause();
     }
@@ -106,9 +108,10 @@ const MediaPill = ({
         className={twMerge(
           imgClassName,
           'absolute inset-0 w-full h-full transition-opacity duration-300',
-          isHovered ? 'opacity-0' : 'opacity-100'
+          isHovered && isVideoPlaying ? 'opacity-0' : 'opacity-100'
         )}
       />
+
       <video
         ref={videoRef}
         src={videoSrcState}
@@ -116,12 +119,16 @@ const MediaPill = ({
         loop
         playsInline
         preload="none"
+        onPlaying={() => setIsVideoPlaying(true)}
+        onPause={() => setIsVideoPlaying(false)}
+        onEnded={() => setIsVideoPlaying(false)}
         className={twMerge(
           videoClassName,
           'absolute inset-0 w-full h-full object-cover transition-opacity duration-300',
-          isHovered ? 'opacity-100' : 'opacity-0'
+          isHovered && isVideoPlaying ? 'opacity-100' : 'opacity-0'
         )}
       />
+
       <div className="absolute inset-0 ring-1 ring-black/10 ring-inset pointer-events-none" />
     </motion.span>
   );
@@ -219,7 +226,7 @@ const About = () => {
             <AnimateString delayOffset={0.65}>and ocassionaly finding different</AnimateString>
 
             <AnimateString delayOffset={0.75} className="inline-block mx-1.5 text-text-primary/85">
-              perspective
+              perspectives
             </AnimateString>
 
             <MediaPill
@@ -245,13 +252,13 @@ const About = () => {
           whileInView={{ opacity: 0.6 }}
           transition={{ delay: 0.6 }}
         >
-          <span className="hidden md:inline-block font-hand text-text-secondary/70 text-sm md:text-xl">
+          <span className="hidden md:inline-block font-hand text-text-secondary/70 text-xxs md:text-sm">
             (Hover the images to see them in action)
           </span>
           <span className="md:hidden inline-block font-hand text-text-secondary/70 text-sm md:text-xl">
             (Tap the images to see them in action)
           </span>
-          <ArrowRight className="my-auto size-5 md:size-8 text-text-secondary/70" />
+          <ArrowRight className="flex justify-center items-center size-5 md:size-6 text-text-secondary/70" />
         </motion.div>
       </div>
     </section>

@@ -24,14 +24,10 @@ const SideNav = ({
       <div className="group relative">
         <button
           onClick={() => {
-            console.log(
-              'SideNav UP clicked, current index:',
-              activePageIndex,
-              'target:',
-              activePageIndex - 1
-            );
             !isFirst && scrollToPage(activePageIndex - 1);
           }}
+          name="page-up"
+          id="page-up"
           disabled={isFirst}
           className={`
             p-2 rounded-full border
@@ -80,14 +76,10 @@ const SideNav = ({
       <div className="group relative">
         <button
           onClick={() => {
-            console.log(
-              'SideNav DOWN clicked, current index:',
-              activePageIndex,
-              'target:',
-              activePageIndex + 1
-            );
             !isLast && scrollToPage(activePageIndex + 1);
           }}
+          name="page-down"
+          id="page-down"
           disabled={isLast}
           className={`
               p-2 rounded-full border
@@ -196,12 +188,13 @@ const NavBar = ({
       },
     },
   };
-  console.log('darkMode from navbar', isDark);
   return (
     <>
       {/* --- TRIGGER BUTTON (Top-Right Corner) --- */}
       {!isOpen && (
         <button
+          name="navbar-open"
+          id="navbar-open"
           onClick={() =>
             setTimeout(() => {
               setHasHomeAnimated(false);
@@ -229,6 +222,8 @@ const NavBar = ({
               <div className="top-16 left-0 z-50 absolute flex justify-between items-center w-full font-semibold text-text-primary text-sm uppercase tracking-widest">
                 <span>Jump To a section!</span>
                 <button
+                  id="navbar-close"
+                  name="navbar-close"
                   onClick={() => {
                     setIsOpen(false);
                     setTimeout(() => setHasHomeAnimated(true), 500);

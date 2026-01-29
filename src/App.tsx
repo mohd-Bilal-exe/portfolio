@@ -77,7 +77,7 @@ export default function App() {
   useEffect(() => {
     scrollToPage(0);
     const lenis = new Lenis({
-      duration: 0.75,
+      duration: 0.25,
       easing: easeOutQuart,
       orientation: 'vertical',
       smoothWheel: true,

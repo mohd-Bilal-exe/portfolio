@@ -35,7 +35,7 @@ const Home = ({ markAnimationComplete }: { markAnimationComplete: () => void }) 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: animationState.revealContent ? 1 : 0 }}
-        transition={{ duration: 0.5, delay: 0.6 }} // Fade in slightly after movement starts
+        transition={{ duration: 0.5, delay: 0.4 }} // Fade in slightly after movement starts
         className="px-[5dvw] pt-[19dvh] md:pt-[15dvh] h-1/2"
       >
         <h2 className="inline-block mb-2 text-md text-zinc-500 md:text-lg tracking-widest">
@@ -87,10 +87,10 @@ const Home = ({ markAnimationComplete }: { markAnimationComplete: () => void }) 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: animationState.revealContent ? 1 : 0 }}
-        transition={{ duration: 0.5, delay: 0.6 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
         className="flex justify-end pt-[20dvh] pr-[5dvw] h-1/2"
       >
-        <p className="max-w-xs md:max-w-2xl font-space-grotesk text-zinc-400 text-xs md:text-sm text-center leading-relaxed translate-y-[-20dvh] md:translate-0">
+        <p className="max-w-xs md:max-w-2xl h-fit font-space-grotesk text-zinc-400 text-xs md:text-sm text-center leading-relaxed translate-y-[-20dvh] md:translate-0">
           Building scalable solutions with pixel-perfect frontend experiences.
         </p>
       </motion.div>

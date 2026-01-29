@@ -45,7 +45,7 @@ const projects = [
     imgScr: resumeIQ,
     link: 'https://resumeiq-mohdb.vercel.app/',
     description:
-      'AI resume reviewer with real-time LaTeX preview, PDF export, and credit-based analysis.',
+      "AI resume reviewer with detail breakdown of the resume and it's different sections.",
     tech: ['Next.js', 'Firebase', 'Express', 'Node', 'Gemini API'],
     isEmphasized: true,
   },
@@ -56,8 +56,8 @@ const projects = [
     imgScr: portfolio,
     link: '#',
     description:
-      'Privacy-first mobile screenshot manager that uses local AI to organize and tag images.',
-    tech: ['React Native', 'SQLite', 'Gemini API', 'AWS Bedrock'],
+      'AI-first mobile screenshot manager that uses local AI to organize and tag images with optional cloud processing',
+    tech: ['React Native', 'SQLite', 'Gemini API', 'AWS Bedrock - Amazon Nova Lite'],
     isEmphasized: true,
   },
   {
@@ -208,6 +208,7 @@ const FeaturedCard = ({ project, index }: { project: any; index: number }) => (
     <div className="relative grayscale group-hover:grayscale-0 mb-6 rounded-[2rem] aspect-4/3 overflow-hidden transition-all duration-800">
       {project.imgScr ? (
         <img
+          loading="lazy"
           src={project.imgScr}
           alt={project.title}
           className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"

@@ -1,7 +1,12 @@
 import { ArrowRight, Instagram, Github, Linkedin } from 'lucide-react';
 import AnimateString from '../../global/AnimateString';
 import { motion } from 'framer-motion';
-import { contentHeading, pageHeading, pageName } from '../../../lib/fontClassNames';
+import {
+  contentHeading,
+  contentSubHeading,
+  pageHeading,
+  pageName,
+} from '../../../lib/fontClassNames';
 import { twMerge } from 'tailwind-merge';
 const Contact = () => {
   return (
@@ -41,7 +46,7 @@ const Contact = () => {
               <a
                 href="mailto:mohammadbilal.mail@gmail.com?subject=Loved%20your%20work%E2%80%94let%E2%80%99s%20chat!&body=Hey%20Bilal,%0D%0A%0D%0AJust%20checked%20out%20your%20portfolio%20and%20had%20to%20reach%20out.%20Super%20impressed(assumption).%20%0D%0A%0D%0AI%20had%20something%20in%20mind%20and%20would%20love%20to%20run%20it%20by%20you:%0D%0A%0D%0A[drop%20your%20message%20here]%0D%0A%0D%0ALooking%20forward%20to%20hearing%20from%20you!%0D%0A%0D%0ACheers,%0D%0A[Your%20Name]"
                 className={twMerge(
-                  contentHeading,
+                  contentSubHeading,
                   'group flex items-center gap-2 font-medium text-text-primary/90 hover:text-zinc-400 text-xs md:text-2xl transition-colors'
                 )}
               >
@@ -59,12 +64,14 @@ const Contact = () => {
               </p>
               <div className="flex items-center gap-6 text-zinc-400">
                 <a
+                  aria-label="See my github journey!"
                   href="https://github.com/mohd-Bilal-exe"
                   className="hover:text-text-primary hover:scale-105 transition-colors duration-500"
                 >
                   <Github size={20} />
                 </a>
                 <a
+                  aria-label="I apply to jobs using this app."
                   href="https://www.linkedin.com/in/mohd--bilal--"
                   className="hover:text-blue-400 hover:scale-105 transition-colors duration-500"
                 >
@@ -72,6 +79,7 @@ const Contact = () => {
                 </a>
 
                 <a
+                  aria-label="I post cool stuff here!"
                   href="https://www.instagram.com/mohd.bilal__/"
                   className="hover:text-pink-600 hover:scale-105 transition-colors duration-500"
                 >
@@ -94,7 +102,7 @@ const Contact = () => {
         {/* --- RIGHT SECTION: Formspree Form --- */}
         <div className="mt-20 md:mt-0 md:pl-[5dvw] w-full md:w-1/2">
           <div className="mb-12">
-            <p className="mb-2 font-medium text-md text-text-primary md:text-2xl">
+            <p className="mb-2 font-medium text-md text-text-primary md:text-lg lg:text-2xl">
               <AnimateString delayOffset={0.12}>Say hello</AnimateString>
             </p>
             <div className="bg-zinc-800 w-full h-px" />
@@ -163,7 +171,7 @@ const Contact = () => {
               className="group flex items-center gap-3 font-bold text-text-primary text-lg uppercase tracking-[0.2em] active:scale-95 transition-all"
             >
               Submit
-              <span className="bg-background-surface p-2 rounded-full text-priamry transition-transform group-hover:translate-x-2 duration-300">
+              <span className="bg-background-surface p-2 rounded-full text-text-primary transition-transform group-hover:translate-x-2 duration-300">
                 <ArrowRight size={18} />
               </span>
             </button>
