@@ -7,7 +7,6 @@ import Projects from './components/pages/Projects/Projects';
 import Contact from './components/pages/Contact/Contact';
 import Skills from './components/pages/Skills/Skills';
 import GradualBlurMemo from './components/global/GradientBlur';
-import Seo from './components/global/Seo';
 import { twMerge } from 'tailwind-merge';
 
 const PAGE_DATA = [
@@ -125,10 +124,6 @@ export default function App() {
         ` bg-background/95 font-nunito transition-colors duration-300 ease-in-out selection:bg-accent selection:text-accent-muted w-dvw overflow-hidden max-w-dvw transform-cpu `
       )}
     >
-      <Seo
-        title="Mohammad Bilal — Personal Portfolio"
-        description="I engineer software solutions with keen eye to detail and user first approach from Lucknow, India"
-      />
       <SideNav activePageIndex={activePageIndex} pages={PAGE_DATA} scrollToPage={scrollToPage} />
       <NavBar
         activePageIndex={activePageIndex}
