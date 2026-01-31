@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 import AnimateString from '../../global/AnimateString';
 import { pageHeading, pageName } from '../../../lib/fontClassNames';
+import useMediaQuery from '../../../hooks/useMediaQuery';
 
 const MediaPill = ({
   staticImg,
@@ -14,6 +15,7 @@ const MediaPill = ({
   videoClassName = '',
   alt,
   delayOffset = 0,
+  isMobile = false,
 }: {
   staticImg?: string;
   staticImgLoader?: () => Promise<string>;
@@ -23,6 +25,7 @@ const MediaPill = ({
   videoClassName?: string;
   alt: string;
   delayOffset?: number;
+  isMobile?: boolean;
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -80,14 +83,14 @@ const MediaPill = ({
 
   return (
     <motion.span
-      className="inline-block relative bg-zinc-800 shadow-sm mx-1.5 border border-white/10 rounded-full overflow-hidden align-middle"
+      className="inline-block relative shadow-sm mx-1.5 border border-white/10 rounded-full overflow-hidden align-middle"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onViewportEnter={preloadAssets}
       initial={{ width: 48, borderRadius: 24, opacity: 0, y: 15, filter: 'blur(5px)' }}
       animate={{
-        width: isHovered ? 220 : 110,
-        height: isHovered ? 100 : 40,
+        width: isHovered ? 220 : isMobile ? 80 : 110,
+        height: isHovered ? 100 : isMobile ? 30 : 45,
         borderRadius: 24,
       }}
       whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
@@ -135,6 +138,7 @@ const MediaPill = ({
 };
 
 const About = () => {
+  const isMobile = useMediaQuery('(max-width: 768px)');
   return (
     <section
       id="mohammad-bilal-about"
@@ -175,6 +179,7 @@ const About = () => {
             <MediaPill
               alt="Coding"
               imgClassName="object-bottom object-cover"
+              isMobile={isMobile}
               staticImgLoader={() =>
                 import('../../../assets/Images/code.jpg').then(m => m.default ?? m)
               }
@@ -190,6 +195,7 @@ const About = () => {
             <MediaPill
               delayOffset={0.4}
               alt="Lucknow"
+              isMobile={isMobile}
               staticImgLoader={() =>
                 import('../../../assets/Images/lucknow.webp').then(m => m.default ?? m)
               }
@@ -214,6 +220,7 @@ const About = () => {
             <MediaPill
               delayOffset={0.6}
               alt="Gym"
+              isMobile={isMobile}
               imgClassName="object-top object-cover"
               staticImgLoader={() =>
                 import('../../../assets/Images/gym.jpg').then(m => m.default ?? m)
@@ -232,6 +239,7 @@ const About = () => {
             <MediaPill
               alt="Photography"
               delayOffset={0.8}
+              isMobile={isMobile}
               imgClassName="object-[30%_30%] object-cover"
               staticImgLoader={() =>
                 import('../../../assets/Images/Camera.webp').then(m => m.default ?? m)

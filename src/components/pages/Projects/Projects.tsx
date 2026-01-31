@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowRight, ArrowLeft, ExternalLink } from 'lucide-react';
 import AnimateString from '../../global/AnimateString';
 import { debatrix, portfolio, resumeIQ, TODONest } from '../../../lib/assets';
@@ -8,12 +8,11 @@ import {
   contentHeading,
   contentIndex,
   contentSubHeading,
-  mainContent,
   pageHeading,
   pageName,
+  caption,
 } from '../../../lib/fontClassNames';
 
-// --- DATA ---
 const projects = [
   {
     isFeatured: true,
@@ -52,12 +51,12 @@ const projects = [
   {
     isFeatured: false,
     key: 'Clarity',
-    title: 'Clarity AI',
+    title: 'Clarity',
     imgScr: portfolio,
     link: '#',
     description:
       'AI-first mobile screenshot manager that uses local AI to organize and tag images with optional cloud processing',
-    tech: ['React Native', 'SQLite', 'Gemini API', 'AWS Bedrock - Amazon Nova Lite'],
+    tech: ['React Native', 'SQLite', 'Gemini API', 'AWS Bedrock'],
     isEmphasized: true,
   },
   {
@@ -112,84 +111,94 @@ export default function ProjectsSection({
         </span>
       </motion.div>
 
-      <motion.div
-        className="flex w-[200dvw]"
-        animate={{ x: showVault ? '-100vw' : '0vw' }}
-        transition={{ type: 'spring', stiffness: 80, damping: 20 }}
-      >
-        {/* === PAGE 1: FEATURED STORY === */}
-        <div className="flex flex-col justify-start items-center px-[10dvw] w-dvw">
-          <div className="w-full">
-            <h2
-              className={twMerge(pageHeading, 'mb-12 font-bold text-text-primary/80 leading-tight')}
+      <motion.div className={`flex`}>
+        <AnimatePresence>
+          {!showVault ? (
+            <motion.div
+              initial={{ x: 300, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: -300, opacity: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="flex flex-col justify-start items-center px-[10dvw] w-dvw h-full"
             >
-              <AnimateString delayOffset={0.05}>Crafting digital products</AnimateString>
-              <br />
-              <span className="text-text-primary/50">
-                <AnimateString delayOffset={0.12}>with intent and precision.</AnimateString>
-              </span>
-            </h2>
+              <div className="w-full">
+                <h2
+                  className={twMerge(
+                    pageHeading,
+                    'mb-12 font-bold text-text-primary/80 leading-tight'
+                  )}
+                >
+                  <AnimateString delayOffset={0.05}>Crafting digital products</AnimateString>
+                  <br />
+                  <span className="text-text-primary/50">
+                    <AnimateString delayOffset={0.12}>with intent and precision.</AnimateString>
+                  </span>
+                </h2>
 
-            {/* Horizontal Cards (Halo Aesthetic) */}
-            <div className="gap-6 grid grid-cols-1 md:grid-cols-3 mb-16">
-              {projects
-                .filter(p => p.isFeatured)
-                .map((project, i) => (
-                  <FeaturedCard key={project.key} project={project} index={i} />
-                ))}
-            </div>
+                {/* Horizontal Cards (Halo Aesthetic) */}
+                <div className="gap-6 grid grid-cols-1 md:grid-cols-3 mb-16">
+                  {projects
+                    .filter(p => p.isFeatured)
+                    .map((project, i) => (
+                      <FeaturedCard key={project.key} project={project} index={i} />
+                    ))}
+                </div>
 
-            <button
-              onClick={() => {
-                setShowVault(true);
-                scrollToPage(3);
-              }}
-              className="group flex items-center gap-4 font-light text-text-primary/90 text-xs md:text-lg underline underline-offset-3 underline-text-secondary cursor-pointer"
+                <button
+                  onClick={() => {
+                    setShowVault(true);
+                    scrollToPage(3);
+                  }}
+                  className="group flex items-center gap-4 font-light text-text-primary/90 text-xs md:text-lg underline underline-offset-3 underline-text-secondary cursor-pointer"
+                >
+                  <div className="w-6 md:w-12 group-hover:w-24 h-px bg-text-primary transition-all duration-300" />
+                  Explore project Vault
+                  <span className="bg-background-surface p-2 rounded-full text-text-primary transition-transform group-hover:translate-x-2 duration-300">
+                    <ArrowRight size={20} />
+                  </span>
+                </button>
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div
+              initial={{ x: 300, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: -300, opacity: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="flex flex-col justify-center px-[10dvw] pb-[5dvh] w-dvw"
             >
-              <div className="w-6 md:w-12 group-hover:w-24 h-px bg-text-primary transition-all duration-300" />
-              Explore project Vault
-              <span className="bg-background-surface p-2 rounded-full text-text-primary transition-transform group-hover:translate-x-2 duration-300">
-                <ArrowRight size={20} />
-              </span>
-            </button>
-          </div>
-        </div>
+              <div className="flex flex-col justify-between items-end mb-12">
+                <div className="flex flex-row md:flex-col w-full">
+                  <h3 className="font-bold text-text-primary text-2xl md:text-4xl">The Vault</h3>
+                  <h4 className="mt-2 font-mono text-xxs text-zinc-600 md:text-sm">
+                    SELECTED WORKS // 2024-{date.getFullYear()}
+                  </h4>
+                </div>
+              </div>
 
-        {/* === PAGE 2: BENTO VAULT === */}
-        <div className="flex flex-col justify-center px-[10dvw] pb-[5dvh] w-dvw">
-          <div className="flex flex-col justify-between items-end mb-12">
-            <div className="flex flex-row md:flex-col w-full">
-              <h3 className="font-bold text-text-primary text-2xl md:text-4xl">The Vault</h3>
-              <p className="mt-2 font-mono text-xxs text-zinc-600 md:text-sm">
-                SELECTED WORKS // 2024-{date.getFullYear()}
-              </p>
-            </div>
-            <button
-              onClick={() => {
-                setShowVault(false);
-                scrollToPage(3);
-              }}
-              className="group flex items-center gap-2 hover:bg-background-overlay/40 px-6 py-3 border border-border-subtle rounded-full min-w-[15dvw] text-text-secondary text-xxs md:text-sm transition-colors"
-            >
-              <ArrowLeft
-                size={18}
-                className="text-text-primary/20 group-hover:text-text-primary transition-all group-hover:-translate-x-1.5 ease-in-out"
-              />{' '}
-              Back to Featured
-            </button>
-          </div>
-
-          <div className="relative">
-            {/* Blur overlay */}
-            <div className="z-10 fixed inset-0 bg-black/30 opacity-0 group-hover/grid:opacity-100 backdrop-blur-md transition-opacity duration-500 pointer-events-none" />
-
-            <div className="group/grid z-20 relative gap-6 grid grid-cols-1 md:grid-cols-6">
-              {projects.map(project => (
-                <BentoCard key={project.key} project={project} />
-              ))}
-            </div>
-          </div>
-        </div>
+              <div className="relative">
+                <div className="z-20 relative flex flex-wrap gap-6">
+                  {projects.map(project => (
+                    <BentoCard key={project.key} project={project} />
+                  ))}
+                </div>
+                <button
+                  onClick={() => {
+                    setShowVault(false);
+                    scrollToPage(3);
+                  }}
+                  className="group flex items-center gap-2 hover:bg-background-overlay/40 mt-[5dvh] px-6 py-3 border border-text-primary/15 rounded-full min-w-[15dvw] text-text-secondary text-xxs md:text-sm transition-colors"
+                >
+                  <ArrowLeft
+                    size={18}
+                    className="text-text-primary/20 group-hover:text-text-primary transition-all group-hover:-translate-x-1.5 ease-in-out"
+                  />{' '}
+                  Back to Featured
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
     </section>
   );
@@ -245,46 +254,39 @@ const BentoCard = ({ project }: { project: any }) => (
   <a
     href={project.link}
     target="_blank"
-    className={`
-      relative group/card overflow-hidden
-      p-8 rounded-[2rem] border border-border
-      bg-background-surface/80 backdrop-blur
-      transition-all duration-500
-      hover:scale-[1.03] hover:z-30
-      ${
-        project.isEmphasized
-          ? 'col-span-6 md:col-span-3 lg:col-span-4'
-          : 'col-span-6 md:col-span-3 lg:col-span-2'
-      }
-    `}
+    className="group/card relative bg-background-surface/20 p-8 border border-text-primary/15 rounded-[2rem] w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] transition-transform hover:-translate-y-2 duration-500"
   >
-    {/* Always visible */}
-    <div className="flex justify-between items-start">
+    {/* Emphasis Badge */}
+    {project.isEmphasized && (
+      <span className="right-4 bottom-4 absolute bg-primary/10 px-3 py-1 rounded-full font-mono text-primary text-xxs tracking-wide">
+        My fav!
+      </span>
+    )}
+
+    {/* Header */}
+    <div className="flex justify-between items-start mb-4">
       <h4 className={twMerge(contentHeading, 'font-bold text-text-primary')}>{project.title}</h4>
       <span className="bg-background-overlay p-2 rounded-full text-text-muted">
-        <ExternalLink size={20} />
+        <ExternalLink size={18} />
       </span>
     </div>
 
-    {/* Expandable content */}
-    <div className="opacity-0 group-hover/card:opacity-100 mt-6 max-h-0 group-hover/card:max-h-125 transition-all translate-y-4 group-hover/card:translate-y-0 duration-500 ease-in-out delay-300">
-      <p className={twMerge(mainContent, 'mb-6 text-text-primary/60')}>
-        <AnimateString delayOffset={0.03}>{project.description}</AnimateString>
-      </p>
+    {/* Description */}
+    <p className={twMerge(contentSubHeading, 'mb-6 text-text-primary/60')}>{project.description}</p>
 
-      <div className="flex flex-wrap gap-2">
-        {project.tech.map((t: string) => (
-          <span
-            key={t}
-            className={twMerge(
-              contentSubHeading,
-              'bg-background-overlay/60  px-3 py-1 rounded-full font-mono text-text-secondary'
-            )}
-          >
-            {t}
-          </span>
-        ))}
-      </div>
+    {/* Tech */}
+    <div className="flex flex-wrap gap-2">
+      {project.tech.map((t: string) => (
+        <span
+          key={t}
+          className={twMerge(
+            caption,
+            'bg-background-overlay/60 px-3 py-1 rounded-full font-mono text-text-secondary'
+          )}
+        >
+          {t}
+        </span>
+      ))}
     </div>
   </a>
 );

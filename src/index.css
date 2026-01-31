@@ -16,6 +16,34 @@
   --font-playwrite-us: 'Playwrite US Modern', cursive;
   --font-zeyada: 'Zeyada', cursive;
 
+  --text-pico: 1px;
+  --text-pico--line-height: 1.1;
+  --text-pico--letter-spacing: 0.02rem;
+
+  --text-femto: clamp(0.42rem, calc(0.38rem + 0.08dvh), 0.48rem);
+  --text-femto--line-height: 1.25;
+  --text-femto--letter-spacing: 0.022rem;
+
+  --text-atom: clamp(0.38rem, calc(0.35rem + 0.06dvh), 0.44rem);
+  --text-atom--line-height: 1.2;
+  --text-atom--letter-spacing: 0.025rem;
+
+  --text-nano: clamp(0.25rem, calc(0.25rem + 0.12dvh), 0.58rem);
+  --text-nano--line-height: 1.35;
+  --text-nano--letter-spacing: 0.018rem;
+
+  --text-micro: clamp(0.58rem, calc(0.52rem + 0.14dvh), 0.65rem);
+  --text-micro--line-height: 1.4;
+  --text-micro--letter-spacing: 0.02rem;
+
+  --text-tiny: clamp(0.64rem, calc(0.58rem + 0.16dvh), 0.72rem);
+  --text-tiny--line-height: 1.45;
+  --text-tiny--letter-spacing: 0.02rem;
+
+  --text-caption: clamp(0.7rem, calc(0.62rem + 0.18dvh), 0.8rem);
+  --text-caption--line-height: 1.45;
+  --text-caption--letter-spacing: 0.02rem;
+
   --text-xxxs: clamp(0.68rem, calc(0.6rem + 0.18dvh), 0.75rem);
   --text-xxxs--line-height: calc(var(--text-xxxs) * 1.45);
   --text-xxxs--letter-spacing: 0.02rem;

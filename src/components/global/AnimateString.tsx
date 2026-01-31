@@ -1,5 +1,4 @@
 import { motion, useReducedMotion } from 'framer-motion';
-
 const AnimateString = ({
   children,
   className,
@@ -12,12 +11,25 @@ const AnimateString = ({
   if (!children) return null;
   const words = children.split(' ').filter(Boolean);
   const shouldReduce = useReducedMotion();
+  if (shouldReduce) {
+    return (
+      <motion.span
+        className="inline-block mr-3 last:mr-0 transform-gpu"
+        initial={{ opacity: 0, y: 15, filter: 'blur(5px)' }}
+        whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        {children}
+      </motion.span>
+    );
+  }
   return (
     <span className={className}>
       {words.map((word, i) => (
         <motion.span
           key={i}
-          className="inline-block mr-3 last:mr-0 transform-gpu" // inline-block keeps them on the same line
+          className="inline-block mr-3 last:mr-0 transform-gpu"
           initial={{ opacity: 0, y: 15, filter: 'blur(5px)' }}
           whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           viewport={{ once: true }}
@@ -27,7 +39,7 @@ const AnimateString = ({
               : { duration: 0.5, delay: delayOffset + i * 0.02 }
           }
         >
-          {`${word}`}
+          {word}
         </motion.span>
       ))}
     </span>

@@ -102,7 +102,18 @@ const skillsData = [
           </svg>
         ),
       },
-
+      {
+        name: 'Prisma ORM',
+        emphasized: true,
+        icon: (
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path
+              fill="currentColor"
+              d="M4.003 15.728a1 1 0 0 1-.008-1.054l7.479-12.199a.996.996 0 0 1 1.753.104l6.832 14.82a.996.996 0 0 1-.618 1.37l-10.628 3.19a.996.996 0 0 1-1.127-.42zm8.334-9.686L9.707 19.14a.373.373 0 0 0 .472.431l7.343-2.192a.373.373 0 0 0 .236-.506L13.046 5.968a.373.373 0 0 0-.71.074"
+            />
+          </svg>
+        ),
+      },
       {
         name: 'MongoDB',
         emphasized: false,
@@ -117,7 +128,6 @@ const skillsData = [
           </svg>
         ),
       },
-
       {
         name: 'Express.js',
         emphasized: true,
@@ -130,7 +140,6 @@ const skillsData = [
           </svg>
         ),
       },
-
       {
         name: 'Firebase',
         emphasized: true,
@@ -382,7 +391,7 @@ export default function SkillsSection({ scrollToPage }: { scrollToPage: (index: 
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        className="flex items-center gap-4 mx-[7dvw] md:mx-[10dvw] py-6 md:py-10"
+        className="flex items-center gap-4 mx-[7dvw] md:mx-[10dvw] py-[5dvh] md:py-10"
       >
         <div className="bg-zinc-700 w-12 h-px" />
         <span
@@ -392,124 +401,135 @@ export default function SkillsSection({ scrollToPage }: { scrollToPage: (index: 
         </span>
       </motion.div>
 
-      <motion.div
-        className="flex w-[200dvw] h-full"
-        animate={{ x: showAllSkills ? '-100vw' : '0vw' }}
-        transition={{ type: 'spring', stiffness: 120, damping: 20 }}
-      >
-        {/* === PAGE 1: STORYTELLING === */}
-        <div className="flex flex-col justify-center items-center w-dvw h-full">
-          <div className="px-[10dvw] w-full">
-            <h2
-              className={twMerge(pageHeading, 'mb-6 font-bold text-text-primary/85  leading-[1.1]')}
+      <div className="">
+        <AnimatePresence>
+          {!showAllSkills ? (
+            <motion.div
+              key={showAllSkills ? 'Do not show all skills' : 'Show all skills'}
+              initial={{ x: 300, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: -300, opacity: 0 }}
+              className="flex flex-col justify-center items-center w-dvw h-full"
             >
-              <AnimateString delayOffset={0.05}>I don't just write code. </AnimateString>
-              <br />
-              <span className="text-text-muted">
-                <AnimateString delayOffset={0.12}>I engineer solutions.</AnimateString>
-              </span>
-            </h2>
-
-            <p
-              className={twMerge(
-                mainContent,
-                'mb-16 max-w-3xl text-text-secondary leading-relaxed'
-              )}
-            >
-              <AnimateString delayOffset={0.18}>
-                My technical philosophy balances performance with aesthetics. I leverage modern
-                frameworks to build applications that scale effortlessly.
-              </AnimateString>
-            </p>
-
-            {/* The 3 Pillars - Numbered List */}
-            <div className="gap-8 grid grid-cols-1 md:grid-cols-3 mb-20">
-              <StoryCard
-                index={0}
-                number="// 01"
-                title="Performance First"
-                desc="Optimized rendering patterns and server-side strategies ensure instant interactions."
-              />
-              <StoryCard
-                index={1}
-                number="// 02"
-                title="Type Safe & Secure"
-                desc="Rigorous TypeScript implementation and secure authentication flows for robust apps."
-              />
-              <StoryCard
-                index={2}
-                number="// 03"
-                title="Motion & Interaction"
-                desc="Using Framer Motion to create meaningful micro-interactions that guide the users."
-              />
-            </div>
-
-            <button
-              onClick={() => {
-                setShowAllSkills(true);
-                scrollToPage(2);
-              }}
-              className="group flex items-center gap-4 font-light text-text-primary/90 text-xs md:text-lg underline underline-offset-3 underline-text-secondary cursor-pointer"
-            >
-              <div className="w-6 md:w-12 group-hover:w-24 h-px bg-text-primary transition-all duration-300" />
-              See Full Tech Stack
-              <span className="bg-background-surface p-2 rounded-full text-text-primary transition-transform group-hover:translate-x-2 duration-300">
-                <ArrowRight size={20} />
-              </span>
-            </button>
-          </div>
-        </div>
-
-        {/* PAGE 2 (Detailed Stack) omitted for brevity - remains the same as your source */}
-        <div className="px-[13dvw] md:px-[5dvw] w-dvw">
-          <div className="mx-auto max-w-5xl min-h-full">
-            {/* Back Button Header */}
-            <div className="flex justify-between items-center gap-6 mb-12">
-              <div>
-                <h3 className="font-bold text-text-primary text-xl md:text-3xl">
-                  Technical Arsenal
-                </h3>
-                <p className="ml-2 font-mono text-text-secondary text-sm">Full Breakdown</p>
-              </div>
-              <button
-                onClick={() => {
-                  setOpenSection([]);
-                  scrollToPage(2);
-                  setShowAllSkills(false);
-                }}
-                className="group flex items-center gap-2 hover:bg-background-overlay/40 px-6 py-3 border border-border-subtle rounded-full text-text-secondary text-xxs md:text-sm transition-colors start"
-              >
-                <ArrowLeft
-                  size={24}
-                  className="text-text-primary/20 group-hover:text-text-primary transition-all group-hover:-translate-x-1.5 ease-in-out"
-                />
-
-                <span> Go back!</span>
-              </button>
-            </div>
-
-            {/* Your Existing Grid */}
-
-            <div className="gap-x-12 gap-y-8 grid grid-cols-1 md:grid-cols-2 pb-20">
-              {skillsData.map((section, index) => (
-                <CollapsibleSection
-                  key={section.category}
-                  index={index}
-                  title={section.category}
-                  isOpen={openSection.includes(index)}
-                  onToggle={() => toggleSection(index)}
+              <div className="flex flex-col gap-1 md:gap-10 px-[10dvw] w-full">
+                <span
+                  className={twMerge(
+                    pageHeading,
+                    'mb-6 font-bold text-text-primary/85  leading-[1.1]'
+                  )}
                 >
-                  <div className="flex flex-wrap justify-start items-between gap-3">
-                    {section.items.map(skill => (
-                      <SkillCard key={skill.name} skill={skill} />
-                    ))}
+                  <AnimateString delayOffset={0.05}>I don't just write code. </AnimateString>
+                  <br />
+                  <AnimateString delayOffset={0.12} className="text-text-muted">
+                    I engineer solutions.
+                  </AnimateString>
+                </span>
+
+                <p
+                  className={twMerge(
+                    mainContent,
+                    'mb-16 max-w-3xl text-text-secondary leading-relaxed'
+                  )}
+                >
+                  <AnimateString delayOffset={0.18}>
+                    My technical philosophy balances performance with aesthetics. I use modern
+                    frameworks to build applications that scale effortlessly.
+                  </AnimateString>
+                </p>
+
+                {/* The 3 Pillars - Numbered List */}
+                <div className="gap-8 grid grid-cols-1 md:grid-cols-3 mb-20">
+                  <StoryCard
+                    index={0}
+                    number="// 01"
+                    title="What I build with?"
+                    desc="Mostly Next.js and the modern web stack. I pick tools that are — fast, stable, and proven in production."
+                  />
+
+                  <StoryCard
+                    index={1}
+                    number="// 02"
+                    title="How I code?"
+                    desc="TypeScript everywhere. Clear types, predictable logic, and security practices."
+                  />
+
+                  <StoryCard
+                    index={2}
+                    number="// 03"
+                    title="How I write code?"
+                    desc="Readable first, clever second. Animations with Framer Motion only where they actually help the experience."
+                  />
+                </div>
+
+                <button
+                  onClick={() => {
+                    setShowAllSkills(true);
+                    scrollToPage(2);
+                  }}
+                  className="group flex items-center gap-4 font-light text-text-primary/90 text-xs md:text-lg underline underline-offset-3 underline-text-secondary cursor-pointer"
+                >
+                  <div className="w-6 md:w-12 group-hover:w-24 h-px bg-text-primary transition-all duration-300" />
+                  See Full Tech Stack
+                  <span className="bg-background-surface p-2 rounded-full text-text-primary transition-transform group-hover:translate-x-2 duration-300">
+                    <ArrowRight size={20} />
+                  </span>
+                </button>
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div
+              key={showAllSkills ? 'Show all skills' : 'Do not how all skills'}
+              initial={{ x: 300, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: -300, opacity: 0 }}
+              className="px-[13dvw] md:px-[5dvw] w-dvw"
+            >
+              <div className="mx-auto max-w-5xl min-h-full">
+                {/* Back Button Header */}
+                <div className="flex justify-between items-center gap-6 mb-12">
+                  <div>
+                    <h3 className="font-bold text-text-primary text-xl md:text-3xl">
+                      Technical Skills
+                    </h3>
+                    <p className="ml-2 font-mono text-text-secondary text-sm">Full Breakdown</p>
                   </div>
-                </CollapsibleSection>
-              ))}
-            </div>
-          </div>
-        </div>
-      </motion.div>
+                </div>
+                <div className="gap-x-12 gap-y-8 grid grid-cols-1 md:grid-cols-2 pb-20">
+                  {skillsData.map((section, index) => (
+                    <CollapsibleSection
+                      key={section.category}
+                      index={index}
+                      title={section.category}
+                      isOpen={openSection.includes(index)}
+                      onToggle={() => toggleSection(index)}
+                    >
+                      <div className="flex flex-wrap justify-start items-between gap-3">
+                        {section.items.map(skill => (
+                          <SkillCard key={skill.name} skill={skill} />
+                        ))}
+                      </div>
+                    </CollapsibleSection>
+                  ))}
+                </div>
+                <button
+                  onClick={() => {
+                    setOpenSection([]);
+                    scrollToPage(2);
+                    setShowAllSkills(false);
+                  }}
+                  className="group flex items-center gap-2 hover:bg-background-overlay/40 px-6 py-3 border border-text-primary/15 rounded-full text-text-secondary text-xxs md:text-sm transition-colors start"
+                >
+                  <ArrowLeft
+                    size={24}
+                    className="text-text-primary/20 group-hover:text-text-primary transition-all group-hover:-translate-x-1.5 ease-in-out"
+                  />
+                  <span> Go back to Summary!</span>
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </section>
   );
 }
@@ -587,8 +607,8 @@ const SkillCard = ({ skill }: { skill: any }) => {
   return (
     <motion.div
       className={`
-        relative overflow-hidden rounded-full border
-        flex flex-wrap items-center gap-3 px-4 py-3
+        relative overflow-hidden rounded-full border border-text-primary/15
+        flex flex-wrap items-center justify-center gap-3 px-4 py-3
          shadow-sm  w-full md:w-auto
         ${
           !isEmphasized
@@ -642,15 +662,15 @@ const StoryCard = ({
         delay: index * 0.12, // Stagger the cards themselves
       }}
       viewport={{ once: true }}
-      className="py-4 pl-6 border-border-subtle border-l"
+      className="py-4 pl-6 border-text-primary/15 border-l"
     >
       <div className={twMerge(contentIndex, 'mb-4 font-mono text-zinc-500 tracking-tighter')}>
         {number}
       </div>
-      <h3 className={twMerge(contentHeading, 'mb-3 font-bold text-text-primary/85')}>
+      <h3 className={twMerge(contentHeading, 'mb-3 font-bold text-text-primary/95')}>
         <AnimateString delayOffset={index * 0.12}>{title}</AnimateString>
       </h3>
-      <p className={twMerge(contentSubHeading, 'max-w-xs text-text-secondary  leading-relaxed')}>
+      <p className={twMerge(contentSubHeading, 'max-w-xs text-text-primary/65  leading-relaxed')}>
         <AnimateString delayOffset={index * 0.12}>{desc}</AnimateString>
       </p>
     </motion.div>
