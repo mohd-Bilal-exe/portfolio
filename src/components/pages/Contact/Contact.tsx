@@ -7,7 +7,7 @@ const Contact = () => {
   return (
     <section
       id="mohammad-bilal-contact"
-      className="flex flex-col px-[15dvw] md:px-[10dvw] py-[10dvh] pb-[15dvh] w-full min-h-dvh font-space-grotesk font-bold"
+      className="flex flex-col px-[15dvw] md:px-[10dvw] py-[10svh] pb-[15svh] w-full min-h-svh font-space-grotesk font-bold"
     >
       <motion.div
         initial={{ opacity: 0, x: -20 }}
@@ -21,7 +21,7 @@ const Contact = () => {
         </span>
       </motion.div>
       <div className="flex md:flex-row flex-col w-full">
-        <div className="flex flex-col justify-between w-full md:w-1/2 min-h-[30dvh]">
+        <div className="flex flex-col justify-between w-full md:w-1/2 min-h-[30svh]">
           <div>
             <h2
               className={twMerge(pageHeading, 'mb-8 font-bold text-text-primary/70  leading-tight')}

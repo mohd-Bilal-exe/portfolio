@@ -20,89 +20,89 @@
   --text-pico--line-height: 1.1;
   --text-pico--letter-spacing: 0.02rem;
 
-  --text-femto: clamp(0.42rem, calc(0.38rem + 0.08dvh), 0.48rem);
+  --text-femto: clamp(0.42rem, calc(0.38rem + 0.08svh), 0.48rem);
   --text-femto--line-height: 1.25;
   --text-femto--letter-spacing: 0.022rem;
 
-  --text-atom: clamp(0.38rem, calc(0.35rem + 0.06dvh), 0.44rem);
+  --text-atom: clamp(0.38rem, calc(0.35rem + 0.06svh), 0.44rem);
   --text-atom--line-height: 1.2;
   --text-atom--letter-spacing: 0.025rem;
 
-  --text-nano: clamp(0.25rem, calc(0.25rem + 0.12dvh), 0.58rem);
+  --text-nano: clamp(0.25rem, calc(0.25rem + 0.12svh), 0.58rem);
   --text-nano--line-height: 1.35;
   --text-nano--letter-spacing: 0.018rem;
 
-  --text-micro: clamp(0.58rem, calc(0.52rem + 0.14dvh), 0.65rem);
+  --text-micro: clamp(0.58rem, calc(0.52rem + 0.14svh), 0.65rem);
   --text-micro--line-height: 1.4;
   --text-micro--letter-spacing: 0.02rem;
 
-  --text-tiny: clamp(0.64rem, calc(0.58rem + 0.16dvh), 0.72rem);
+  --text-tiny: clamp(0.64rem, calc(0.58rem + 0.16svh), 0.72rem);
   --text-tiny--line-height: 1.45;
   --text-tiny--letter-spacing: 0.02rem;
 
-  --text-caption: clamp(0.7rem, calc(0.62rem + 0.18dvh), 0.8rem);
+  --text-caption: clamp(0.7rem, calc(0.62rem + 0.18svh), 0.8rem);
   --text-caption--line-height: 1.45;
   --text-caption--letter-spacing: 0.02rem;
 
-  --text-xxxs: clamp(0.68rem, calc(0.6rem + 0.18dvh), 0.75rem);
+  --text-xxxs: clamp(0.68rem, calc(0.6rem + 0.18svh), 0.75rem);
   --text-xxxs--line-height: calc(var(--text-xxxs) * 1.45);
   --text-xxxs--letter-spacing: 0.02rem;
 
-  --text-xxs: clamp(0.75rem, calc(0.65rem + 0.22dvh), 0.88rem);
+  --text-xxs: clamp(0.75rem, calc(0.65rem + 0.22svh), 0.88rem);
   --text-xxs--line-height: calc(var(--text-xxs) * 1.4);
   --text-xxs--letter-spacing: 0.02rem;
 
-  --text-xs: clamp(0.88rem, calc(0.75rem + 0.27dvh), 1rem);
+  --text-xs: clamp(0.88rem, calc(0.75rem + 0.27svh), 1rem);
   --text-xs--line-height: calc(var(--text-xs) * 1.4);
   --text-xs--letter-spacing: 0.02rem;
 
-  --text-sm: clamp(1rem, calc(0.92rem + 0.39dvh), 1.2rem);
+  --text-sm: clamp(1rem, calc(0.92rem + 0.39svh), 1.2rem);
   --text-sm--line-height: calc(var(--text-sm) * 1.4);
   --text-sm--letter-spacing: 0.02rem;
 
-  --text-md: clamp(1.13rem, calc(0.98rem + 0.73dvh), 1.5rem);
+  --text-md: clamp(1.13rem, calc(0.98rem + 0.73svh), 1.5rem);
   --text-md--line-height: calc(var(--text-md) * 1.5);
   --text-md--letter-spacing: 0.015rem;
 
-  --text-lg: clamp(1.27rem, calc(1.03rem + 1.19dvh), 1.88rem);
+  --text-lg: clamp(1.27rem, calc(1.03rem + 1.19svh), 1.88rem);
   --text-lg--line-height: calc(var(--text-lg) * 1.4);
   --text-lg--letter-spacing: 0.015rem;
 
-  --text-xl: clamp(1.42rem, calc(1.06rem + 1.8dvh), 2.34rem);
+  --text-xl: clamp(1.42rem, calc(1.06rem + 1.8svh), 2.34rem);
   --text-xl--line-height: calc(var(--text-xl) * 1.4);
   --text-xl--letter-spacing: 0.01rem;
-  --text-2xl: clamp(1.6rem, calc(1.08rem + 2.59dvh), 2.93rem);
+  --text-2xl: clamp(1.6rem, calc(1.08rem + 2.59svh), 2.93rem);
   --text-2xl--line-height: calc(var(--text-2xl) * 1.2);
   --text-2xl--letter-spacing: 0.01rem;
 
-  --text-3xl: clamp(1.8rem, calc(1.08rem + 3.63dvh), 3.66rem);
+  --text-3xl: clamp(1.8rem, calc(1.08rem + 3.63svh), 3.66rem);
   --text-3xl--line-height: calc(var(--text-3xl) * 1.1);
   --text-3xl--letter-spacing: 0.005rem;
 
-  --text-4xl: clamp(2.03rem, calc(1.03rem + 4.98dvh), 4.58rem);
+  --text-4xl: clamp(2.03rem, calc(1.03rem + 4.98svh), 4.58rem);
   --text-4xl--line-height: calc(var(--text-4xl) * 1);
   --text-4xl--letter-spacing: 0.005rem;
 
-  --text-5xl: clamp(2.28rem, calc(0.94rem + 6.71dvh), 5.72rem);
+  --text-5xl: clamp(2.28rem, calc(0.94rem + 6.71svh), 5.72rem);
   --text-5xl--line-height: calc(var(--text-5xl) * 1);
   --text-5xl--letter-spacing: 0rem;
 
-  --text-6xl: clamp(2.57rem, calc(0.78rem + 8.95dvh), 7.15rem);
+  --text-6xl: clamp(2.57rem, calc(0.78rem + 8.95svh), 7.15rem);
   --text-6xl--line-height: calc(var(--text-6xl) * 1);
   --text-6xl--letter-spacing: 0rem;
-  --text-7xl: clamp(3.1rem, calc(0.78rem + 10.5dvh), 8.57rem);
+  --text-7xl: clamp(3.1rem, calc(0.78rem + 10.5svh), 8.57rem);
   --text-7xl--line-height: calc(var(--text-7xl) * 1);
   --text-7xl--letter-spacing: 0rem;
 
-  --text-8xl: clamp(3.75rem, calc(0.78rem + 12.7dvh), 10.25rem);
+  --text-8xl: clamp(3.75rem, calc(0.78rem + 12.7svh), 10.25rem);
   --text-8xl--line-height: calc(var(--text-8xl) * 1);
   --text-8xl--letter-spacing: 0rem;
 
-  --text-9xl: clamp(4.5rem, calc(0.78rem + 14.6dvh), 12rem);
+  --text-9xl: clamp(4.5rem, calc(0.78rem + 14.6svh), 12rem);
   --text-9xl--line-height: calc(var(--text-9xl) * 1);
   --text-9xl--letter-spacing: 0rem;
 
-  --text-10xl: clamp(5.5rem, calc(0.78rem + 18dvh), 16rem);
+  --text-10xl: clamp(5.5rem, calc(0.78rem + 18svh), 16rem);
   --text-10xl--line-height: calc(var(--text-10xl) * 0.9);
   --text-10xl--letter-spacing: 0rem;
 }

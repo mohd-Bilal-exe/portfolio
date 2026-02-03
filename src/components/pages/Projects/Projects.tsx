@@ -91,7 +91,7 @@ export default function ProjectsSection({
   return (
     <section
       id="mohammad-bilal-projects"
-      className="relative flex flex-col justify-center pt-[5dvh] w-full min-h-dvh overflow-hidden font-space-grotesk font-bold"
+      className="relative flex flex-col justify-center pt-[5svh] w-full min-h-svh overflow-hidden font-space-grotesk font-bold"
     >
       {/* Label */}
       <motion.div
@@ -165,7 +165,7 @@ export default function ProjectsSection({
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -300, opacity: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="flex flex-col justify-center px-[10dvw] pb-[5dvh] w-dvw"
+              className="flex flex-col justify-center px-[10dvw] pb-[5svh] w-dvw"
             >
               <div className="flex flex-col justify-between items-end mb-12">
                 <div className="flex flex-row md:flex-col w-full">
@@ -187,7 +187,7 @@ export default function ProjectsSection({
                     setShowVault(false);
                     scrollToPage(3);
                   }}
-                  className="group flex items-center gap-2 hover:bg-background-overlay/40 mt-[5dvh] px-6 py-3 border border-text-primary/15 rounded-full min-w-[15dvw] text-text-secondary text-xxs md:text-sm transition-colors"
+                  className="group flex items-center gap-2 hover:bg-background-overlay/40 mt-[5svh] px-6 py-3 border border-text-primary/15 rounded-full min-w-[15dvw] text-text-secondary text-xxs md:text-sm transition-colors"
                 >
                   <ArrowLeft
                     size={18}

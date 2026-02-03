@@ -385,13 +385,13 @@ export default function SkillsSection({ scrollToPage }: { scrollToPage: (index: 
   return (
     <section
       id="mohammad-bilal-skills"
-      className="relative flex flex-col justify-center py-[10dvh] w-full min-h-dvh overflow-hidden font-space-grotesk font-bold"
+      className="relative flex flex-col justify-center py-[10svh] w-full min-h-svh overflow-hidden font-space-grotesk font-bold"
     >
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        className="flex items-center gap-4 mx-[7dvw] md:mx-[10dvw] py-[5dvh] md:py-10"
+        className="flex items-center gap-4 mx-[7dvw] md:mx-[10dvw] py-[5svh] md:py-10"
       >
         <div className="bg-zinc-700 w-12 h-px" />
         <span

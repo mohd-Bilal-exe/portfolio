@@ -30,13 +30,13 @@ const Home = ({ markAnimationComplete }: { markAnimationComplete: () => void }) 
   return (
     <section
       id="mohammad-bilal"
-      className="relative flex flex-col justify-between items-between w-dvw h-dvh overflow-hidden font-nunito"
+      className="relative flex flex-col justify-between items-between w-dvw h-svh overflow-hidden font-nunito"
     >
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: animationState.revealContent ? 1 : 0 }}
         transition={{ duration: 0.5, delay: 0.4 }} // Fade in slightly after movement starts
-        className="px-[5dvw] pt-[19dvh] md:pt-[15dvh] h-1/2"
+        className="px-[5dvw] pt-[19svh] md:pt-[15svh] h-1/2"
       >
         <h2 className="inline-block mb-2 text-md text-zinc-500 md:text-lg tracking-widest">
           Hey There, I'm
@@ -54,7 +54,7 @@ const Home = ({ markAnimationComplete }: { markAnimationComplete: () => void }) 
           initial={{ x: '-100dvw', y: 0 }}
           animate={{
             x: animationState.animateTitle ? 0 : '-100dvw',
-            y: animationState.revealContent ? '30dvh' : 0,
+            y: animationState.revealContent ? '30svh' : 0,
           }}
           transition={{
             x: { duration: 1, ease: [0.22, 1, 0.36, 1] },
@@ -67,16 +67,16 @@ const Home = ({ markAnimationComplete }: { markAnimationComplete: () => void }) 
           </h1>
         </motion.div>
         <motion.div
-          initial={{ x: '100dvw', y: '-10dvh' }}
+          initial={{ x: '100dvw', y: '-10svh' }}
           animate={{
             x: animationState.animateTitle ? 0 : '100dvw',
-            y: animationState.revealContent ? '-30dvh' : '-10dvh',
+            y: animationState.revealContent ? '-30svh' : '-10svh',
           }}
           transition={{
             x: { duration: 1, ease: [0.22, 1, 0.36, 1] },
             y: { duration: 1.5, type: 'spring', ease: 'easeOut', damping: 50, stiffness: 100 },
           }}
-          className="z-20 md:px-[4.5dvw] pt-2 pb-4 text-center md:text-end translate-y-[-20dvh] md:translate-0 md:y-0"
+          className="z-20 md:px-[4.5dvw] pt-2 pb-4 text-center md:text-end translate-y-[-20svh] md:translate-0 md:y-0"
         >
           <h1 className="bg-clip-text bg-linear-to-br from-text-primary text-transparent to-text-secondary lg:text-10xl text-4xl md:text-5xl leading-none tracking-wide space-mono-bold">
             DEVELOPER
@@ -88,9 +88,9 @@ const Home = ({ markAnimationComplete }: { markAnimationComplete: () => void }) 
         initial={{ opacity: 0 }}
         animate={{ opacity: animationState.revealContent ? 1 : 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
-        className="flex justify-end pt-[20dvh] pr-[5dvw] h-1/2"
+        className="flex justify-end pt-[20svh] pr-[5dvw] h-1/2"
       >
-        <p className="max-w-xs md:max-w-2xl h-fit font-space-grotesk text-zinc-400 text-xs md:text-sm text-center leading-relaxed translate-y-[-20dvh] md:translate-0">
+        <p className="max-w-xs md:max-w-2xl h-fit font-space-grotesk text-zinc-400 text-xs md:text-sm text-center leading-relaxed translate-y-[-20svh] md:translate-0">
           Building scalable solutions with pixel-perfect frontend experiences.
         </p>
       </motion.div>

@@ -142,7 +142,7 @@ const About = () => {
   return (
     <section
       id="mohammad-bilal-about"
-      className="flex items-center px-[10dvw] py-[10dvh] w-full md:min-h-dvh font-space-grotesk font-bold"
+      className="flex items-center px-[10dvw] py-[10svh] w-full md:min-h-svh font-space-grotesk font-bold"
     >
       <div className="w-full md:max-w-7xl">
         {/* Header Label */}

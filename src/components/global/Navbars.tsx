@@ -215,7 +215,7 @@ const NavBar = ({
             initial="initial"
             animate="animate"
             exit="exit"
-            className="top-0 z-30 fixed flex flex-col justify-center bg-accent/20 backdrop-blur-2xl px-8 md:px-20 w-dvw h-dvh cursor-default"
+            className="top-0 z-30 fixed flex flex-col justify-center bg-accent/20 backdrop-blur-2xl px-8 md:px-20 w-dvw h-svh cursor-default"
           >
             <div className="z-50 relative flex flex-col justify-center mx-auto w-full max-w-7xl h-full">
               {/* HEADER ROW (Logo/Close placeholder) */}

@@ -140,7 +140,7 @@ export default function App() {
             ref={el => {
               sectionRefs.current[index] = el;
             }}
-            className="relative flex justify-center items-center w-full min-h-dvh"
+            className="relative flex justify-center items-center w-full min-h-svh"
           >
             <Component
               markAnimationComplete={() => setHasHomeAnimated(true)}
