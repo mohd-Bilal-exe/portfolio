@@ -181,7 +181,7 @@ const About = () => {
               imgClassName="object-bottom object-cover"
               isMobile={isMobile}
               staticImgLoader={() =>
-                import('../../../assets/Images/code.jpg').then(m => m.default ?? m)
+                import('../../../assets/Images/code.webp').then(m => m.default ?? m)
               }
               videoSrcLoader={() =>
                 import('../../../assets/Videos/CodeVideo.mp4').then(m => m.default ?? m)
@@ -223,7 +223,7 @@ const About = () => {
               isMobile={isMobile}
               imgClassName="object-top object-cover"
               staticImgLoader={() =>
-                import('../../../assets/Images/gym.jpg').then(m => m.default ?? m)
+                import('../../../assets/Images/gym.webp').then(m => m.default ?? m)
               }
               videoSrcLoader={() =>
                 import('../../../assets/Videos/GymVideo.mp4').then(m => m.default ?? m)

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowRight, ArrowLeft, ExternalLink } from 'lucide-react';
 import AnimateString from '../../global/AnimateString';
-import { debatrix, portfolio, resumeIQ, TODONest } from '../../../lib/assets';
+import { debatrix, MotionOnNative, portfolio, resumeIQ, TODONest } from '../../../lib/assets';
 import { twMerge } from 'tailwind-merge';
 import {
   contentHeading,
@@ -18,8 +18,8 @@ const projects = [
     isFeatured: true,
     key: 'motion-on-native',
     title: 'Motion on Native',
-    imgScr: null, // Replace with actual asset if available
-    link: 'https://github.com/mohd-Bilal-exe/motion-on-native', // Link to your GitHub/NPM
+    imgScr: MotionOnNative,
+    link: 'https://motion-on-native.vercel.app/',
     description:
       'A Framer Motion-like open source animation library for React Native built on top of Reanimated 3.',
     tech: ['React Native', 'Reanimated', 'TypeScript'],
