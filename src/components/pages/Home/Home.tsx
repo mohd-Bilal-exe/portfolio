@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const Home = ({ markAnimationComplete }: { markAnimationComplete: () => void }) => {
+
   const [animationState, setAnimationState] = useState({
     animateTitle: false,
     revealContent: false,

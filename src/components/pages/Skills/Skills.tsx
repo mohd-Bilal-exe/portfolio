@@ -11,6 +11,7 @@ import {
   pageHeading,
   pageName,
 } from '../../../lib/fontClassNames';
+import useMediaQuery from '../../../hooks/useMediaQuery';
 
 const skillsData = [
   {
@@ -373,6 +374,7 @@ const skillsData = [
 ];
 
 export default function SkillsSection({ scrollToPage }: { scrollToPage: (index: number) => void }) {
+  const isMobile = useMediaQuery('(max-width: 768px)');
   const [showAllSkills, setShowAllSkills] = useState(false);
   const [openSection, setOpenSection] = useState<number[]>([]);
 
@@ -418,9 +420,9 @@ export default function SkillsSection({ scrollToPage }: { scrollToPage: (index: 
                     'mb-6 font-bold text-text-primary/85  leading-[1.1]'
                   )}
                 >
-                  <AnimateString delayOffset={0.05}>I don't just write code. </AnimateString>
+                  <AnimateString isMobile={isMobile} delayOffset={0.05}>I don't just write code. </AnimateString>
                   <br />
-                  <AnimateString delayOffset={0.12} className="text-text-muted">
+                  <AnimateString isMobile={isMobile} delayOffset={0.12} className="text-text-muted">
                     I engineer solutions.
                   </AnimateString>
                 </span>
@@ -431,7 +433,7 @@ export default function SkillsSection({ scrollToPage }: { scrollToPage: (index: 
                     'mb-16 max-w-3xl text-text-secondary leading-relaxed'
                   )}
                 >
-                  <AnimateString delayOffset={0.18}>
+                  <AnimateString isMobile={isMobile} delayOffset={0.18}>
                     My technical philosophy balances performance with aesthetics. I use modern
                     frameworks to build applications that scale effortlessly.
                   </AnimateString>
@@ -440,20 +442,21 @@ export default function SkillsSection({ scrollToPage }: { scrollToPage: (index: 
                 {/* The 3 Pillars - Numbered List */}
                 <div className="gap-8 grid grid-cols-1 md:grid-cols-3 mb-20">
                   <StoryCard
+                    isMobile={isMobile}
                     index={0}
                     number="// 01"
                     title="What I build with?"
                     desc="Mostly Next.js and the modern web stack. I pick tools that are — fast, stable, and proven in production."
                   />
 
-                  <StoryCard
+                  <StoryCard isMobile={isMobile}
                     index={1}
                     number="// 02"
                     title="How I code?"
                     desc="TypeScript everywhere. Clear types, predictable logic, and security practices."
                   />
 
-                  <StoryCard
+                  <StoryCard isMobile={isMobile}
                     index={2}
                     number="// 03"
                     title="How I write code?"
@@ -610,10 +613,9 @@ const SkillCard = ({ skill }: { skill: any }) => {
         relative overflow-hidden rounded-full border border-text-primary/15
         flex flex-wrap items-center justify-center gap-3 px-4 py-3
          shadow-sm  w-full md:w-auto
-        ${
-          !isEmphasized
-            ? 'bg-background-surface/50  border-border-default opacity-75 '
-            : 'bg-background-surface/90  border-border-strong'
+        ${!isEmphasized
+          ? 'bg-background-surface/50  border-border-default opacity-75 '
+          : 'bg-background-surface/90  border-border-strong'
         }
       `}
     >
@@ -632,12 +634,14 @@ const SkillCard = ({ skill }: { skill: any }) => {
   );
 };
 const StoryCard = ({
+  isMobile,
   number,
   title,
   desc,
   index,
 }: {
   number: string;
+  isMobile: boolean;
   title: string;
   desc: string;
   index: number;
@@ -668,10 +672,10 @@ const StoryCard = ({
         {number}
       </div>
       <h3 className={twMerge(contentHeading, 'mb-3 font-bold text-text-primary/95')}>
-        <AnimateString delayOffset={index * 0.12}>{title}</AnimateString>
+        <AnimateString isMobile={isMobile} delayOffset={index * 0.12}>{title}</AnimateString>
       </h3>
       <p className={twMerge(contentSubHeading, 'max-w-xs text-text-primary/65  leading-relaxed')}>
-        <AnimateString delayOffset={index * 0.12}>{desc}</AnimateString>
+        <AnimateString isMobile={isMobile} delayOffset={index * 0.12}>{desc}</AnimateString>
       </p>
     </motion.div>
   );

@@ -12,6 +12,7 @@ import {
   pageName,
   caption,
 } from '../../../lib/fontClassNames';
+import useMediaQuery from '../../../hooks/useMediaQuery';
 
 const projects = [
   {
@@ -86,6 +87,7 @@ export default function ProjectsSection({
 }: {
   scrollToPage: (page: number) => void;
 }) {
+  const isMobile = useMediaQuery('(max-width: 768px)');
   const [showVault, setShowVault] = useState(false);
   const date = new Date();
   return (
@@ -128,10 +130,10 @@ export default function ProjectsSection({
                     'mb-12 font-bold text-text-primary/80 leading-tight'
                   )}
                 >
-                  <AnimateString delayOffset={0.05}>Crafting digital products</AnimateString>
+                  <AnimateString isMobile={isMobile} delayOffset={0.05}>Crafting digital products</AnimateString>
                   <br />
                   <span className="text-text-primary/50">
-                    <AnimateString delayOffset={0.12}>with intent and precision.</AnimateString>
+                    <AnimateString isMobile={isMobile} delayOffset={0.12}>with intent and precision.</AnimateString>
                   </span>
                 </h2>
 
@@ -140,7 +142,7 @@ export default function ProjectsSection({
                   {projects
                     .filter(p => p.isFeatured)
                     .map((project, i) => (
-                      <FeaturedCard key={project.key} project={project} index={i} />
+                      <FeaturedCard isMobile={isMobile} key={project.key} project={project} index={i} />
                     ))}
                 </div>
 
@@ -204,7 +206,7 @@ export default function ProjectsSection({
   );
 }
 
-const FeaturedCard = ({ project, index }: { project: any; index: number }) => (
+const FeaturedCard = ({ project, index, isMobile }: { project: any; index: number, isMobile: boolean }) => (
   <motion.a
     href={project.link}
     target="_blank"
@@ -243,7 +245,7 @@ const FeaturedCard = ({ project, index }: { project: any; index: number }) => (
           {project.title}
         </h4>
         <p className={twMerge(contentIndex, 'text-text-primary/50')}>
-          <AnimateString delayOffset={index * 0.12 + 0.18}>{project.description}</AnimateString>
+          <AnimateString isMobile={isMobile} delayOffset={index * 0.12 + 0.18}>{project.description}</AnimateString>
         </p>
       </div>
     </div>

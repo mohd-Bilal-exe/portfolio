@@ -3,7 +3,9 @@ import AnimateString from '../../global/AnimateString';
 import { motion } from 'framer-motion';
 import { contentSubHeading, pageHeading, pageName } from '../../../lib/fontClassNames';
 import { twMerge } from 'tailwind-merge';
+import useMediaQuery from '../../../hooks/useMediaQuery';
 const Contact = () => {
+  const isMobile = useMediaQuery('(max-width: 768px)');
   return (
     <section
       id="mohammad-bilal-contact"
@@ -26,7 +28,7 @@ const Contact = () => {
             <h2
               className={twMerge(pageHeading, 'mb-8 font-bold text-text-primary/70  leading-tight')}
             >
-              <AnimateString delayOffset={0.05}>Let's connect.</AnimateString>
+              <AnimateString isMobile={isMobile} delayOffset={0.05}>Let's connect.</AnimateString>
             </h2>
 
             <div className="space-y-2">
@@ -36,7 +38,7 @@ const Contact = () => {
                   'font-mono text-text-primary/50  uppercase tracking-widest'
                 )}
               >
-                <AnimateString delayOffset={0.12}>Email me at</AnimateString>
+                <AnimateString isMobile={isMobile} delayOffset={0.12}>Email me at</AnimateString>
               </p>
               <a
                 href="mailto:mohammadbilal.mail@gmail.com?subject=Loved%20your%20work%E2%80%94let%E2%80%99s%20chat!&body=Hey%20Bilal,%0D%0A%0D%0AJust%20checked%20out%20your%20portfolio%20and%20had%20to%20reach%20out.%20Super%20impressed(assumption).%20%0D%0A%0D%0AI%20had%20something%20in%20mind%20and%20would%20love%20to%20run%20it%20by%20you:%0D%0A%0D%0A[drop%20your%20message%20here]%0D%0A%0D%0ALooking%20forward%20to%20hearing%20from%20you!%0D%0A%0D%0ACheers,%0D%0A[Your%20Name]"
@@ -45,7 +47,7 @@ const Contact = () => {
                   'group flex items-center gap-2 font-medium text-text-primary/90 hover:text-zinc-400 text-xs md:text-2xl transition-colors'
                 )}
               >
-                <AnimateString delayOffset={0.15}>mohammadbilal.mail@gmail.com</AnimateString>
+                <AnimateString isMobile={isMobile} delayOffset={0.15}>mohammadbilal.mail@gmail.com</AnimateString>
                 <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
               </a>
             </div>
@@ -55,7 +57,7 @@ const Contact = () => {
           <div className="flex flex-col gap-8 mt-12 md:mt-0">
             <div className="space-y-4">
               <p className="font-mono text-text-primary/50 text-xxs md:text-xs uppercase tracking-widest">
-                <AnimateString delayOffset={0.2}>Find me on</AnimateString>
+                <AnimateString isMobile={isMobile} delayOffset={0.2}>Find me on</AnimateString>
               </p>
               <div className="flex items-center gap-6 text-zinc-400">
                 <a
@@ -85,10 +87,10 @@ const Contact = () => {
 
             <div className="space-y-1">
               <p className="font-mono text-text-primary/50 text-xxs md:text-xs uppercase tracking-widest">
-                <AnimateString delayOffset={0.22}>Location</AnimateString>
+                <AnimateString isMobile={isMobile} delayOffset={0.22}>Location</AnimateString>
               </p>
               <p className="text-zinc-400 text-xs md:text-sm">
-                <AnimateString delayOffset={0.25}>Lucknow, Uttar Pradesh, India</AnimateString>
+                <AnimateString isMobile={isMobile} delayOffset={0.25}>Lucknow, Uttar Pradesh, India</AnimateString>
               </p>
             </div>
           </div>
@@ -98,7 +100,7 @@ const Contact = () => {
         <div className="mt-20 md:mt-0 md:pl-[5dvw] w-full md:w-1/2">
           <div className="mb-12">
             <p className="mb-2 font-medium text-md text-text-primary md:text-lg lg:text-2xl">
-              <AnimateString delayOffset={0.12}>Say hello</AnimateString>
+              <AnimateString isMobile={isMobile} delayOffset={0.12}>Say hello</AnimateString>
             </p>
             <div className="bg-zinc-800 w-full h-px" />
           </div>

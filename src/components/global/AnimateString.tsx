@@ -10,11 +10,13 @@ const container = {
 };
 
 const AnimateString = ({
+  isMobile,
   children,
   className,
   direction = 'bottom',
   delayOffset = 0,
 }: {
+  isMobile?: boolean;
   children: string;
   className?: string;
   direction?: 'top' | 'bottom';
@@ -25,9 +27,7 @@ const AnimateString = ({
   const shouldReduce = useReducedMotion();
   const words = children.split(' ').filter(Boolean);
 
-  if (shouldReduce) {
-    return <span className={className}>{children}</span>;
-  }
+
   const wordVariant = (direction: 'top' | 'bottom') => ({
     hidden: {
       opacity: 0,
@@ -40,7 +40,9 @@ const AnimateString = ({
       filter: ['blur(10px)', 'blur(5px)', 'blur(0px)'],
     },
   });
-
+  if (shouldReduce || isMobile) {
+    return <motion.span variants={wordVariant(direction)} animate="visible" initial="hidden" transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: delayOffset }} className={className}>{children}</motion.span>;
+  }
   return (
     <motion.span
       className={className}
