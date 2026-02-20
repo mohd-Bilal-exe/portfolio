@@ -217,7 +217,7 @@ const NavBar = ({
           >
             <div className="z-50 relative flex flex-col justify-center mx-auto w-full max-w-7xl h-full">
               {/* HEADER ROW (Logo/Close placeholder) */}
-              <div className="top-16 left-0 z-50 absolute flex justify-between items-center w-full font-semibold text-text-primary text-sm uppercase tracking-widest">
+              <div className="top-6 left-0 z-50 absolute flex justify-between items-center w-full font-semibold text-text-primary text-sm uppercase tracking-widest">
                 <span>Jump To a section!</span>
                 <button
                   id="navbar-close"
