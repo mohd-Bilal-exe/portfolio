@@ -435,7 +435,7 @@ export default function SkillsSection({ scrollToPage }: { scrollToPage: (index: 
                 >
                   <AnimateString isMobile={isMobile} delayOffset={0.18}>
                     My technical philosophy balances performance with aesthetics. I use modern
-                    frameworks to build applications that scale effortlessly.
+                    frameworks to build applications designed for scalability and performance.
                   </AnimateString>
                 </p>
 

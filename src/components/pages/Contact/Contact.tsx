@@ -1,4 +1,4 @@
-import { ArrowRight, Instagram, Github, Linkedin } from 'lucide-react';
+import { ArrowRight, Instagram, Github, Linkedin, FileText } from 'lucide-react';
 import AnimateString from '../../global/AnimateString';
 import { motion } from 'framer-motion';
 import { contentSubHeading, pageHeading, pageName } from '../../../lib/fontClassNames';
@@ -49,6 +49,28 @@ const Contact = () => {
               >
                 <AnimateString isMobile={isMobile} delayOffset={0.15}>mohammadbilal.mail@gmail.com</AnimateString>
                 <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
+              </a>
+            </div>
+
+            <div className="space-y-2 mt-12">
+              <p
+                className={twMerge(
+                  pageName,
+                  'font-mono text-text-primary/50  uppercase tracking-widest'
+                )}
+              >
+                <AnimateString isMobile={isMobile} delayOffset={0.18}>Want my resume?</AnimateString>
+              </p>
+              <a
+                href="https://drive.google.com/file/d/1A3MEQ8T2zhAnXMWewjK8HOxJIoOEo3e8/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={twMerge(
+                  contentSubHeading,
+                  'group flex items-center gap-2 font-medium text-text-primary/90 hover:text-zinc-400 text-xs md:text-2xl transition-colors'
+                )}
+              >Download PDF
+                <FileText size={20} className="transition-transform group-hover:scale-110" />
               </a>
             </div>
           </div>

@@ -92,7 +92,7 @@ const Home = ({ markAnimationComplete }: { markAnimationComplete: () => void }) 
         className="flex justify-end pt-[20svh] pr-[5dvw] h-1/2"
       >
         <p className="max-w-xs md:max-w-2xl h-fit font-space-grotesk text-zinc-400 text-xs md:text-sm text-center leading-relaxed translate-y-[-20svh] md:translate-0">
-          Building scalable solutions with pixel-perfect frontend experiences.
+          Building scalable solutions with intentional frontend experiences.
         </p>
       </motion.div>
     </section>

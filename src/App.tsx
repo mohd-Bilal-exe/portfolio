@@ -6,6 +6,7 @@ import About from './components/pages/About/About';
 import Projects from './components/pages/Projects/Projects';
 import Contact from './components/pages/Contact/Contact';
 import Skills from './components/pages/Skills/Skills';
+import Experience from './components/pages/Experience/Experience';
 import GradualBlurMemo from './components/global/GradientBlur';
 import { twMerge } from 'tailwind-merge';
 
@@ -13,6 +14,7 @@ const PAGE_DATA = [
   { id: 'home', title: 'Home', color: '', Component: Home },
   { id: 'about', title: 'About', color: '', Component: About },
   { id: 'skills', title: 'Skills', color: '', Component: Skills },
+  { id: 'experience', title: 'Experience', color: '', Component: Experience },
   { id: 'projects', title: 'Projects', color: '', Component: Projects },
   { id: 'contact', title: 'Contact', color: '', Component: Contact },
 ];
@@ -24,7 +26,7 @@ export default function App() {
       const s = localStorage.getItem('theme');
       if (s === 'dark') return true;
       if (s === 'light') return false;
-    } catch (e) {}
+    } catch (e) { }
     if (typeof window !== 'undefined' && window.matchMedia) {
       return window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
@@ -37,7 +39,7 @@ export default function App() {
       try {
         if (persist) localStorage.setItem('theme', next ? 'dark' : 'light');
         else localStorage.removeItem('theme');
-      } catch (e) {}
+      } catch (e) { }
       return next;
     });
   };

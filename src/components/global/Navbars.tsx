@@ -35,10 +35,9 @@ const SideNav = ({
             border-border-subtle
             backdrop-blur-sm
             transition-all duration-300
-            ${
-              isFirst
-                ? 'opacity-30 cursor-not-allowed text-text-muted'
-                : `
+            ${isFirst
+              ? 'opacity-30 cursor-not-allowed text-text-muted'
+              : `
                    text-text-primary
                     hover:text-text-muted
                     hover:bg-background-surface
@@ -87,17 +86,16 @@ const SideNav = ({
               border-border-subtle
               backdrop-blur-sm
               transition-all duration-300
-              ${
-                isLast
-                  ? 'opacity-30 cursor-not-allowed text-text-muted'
-                  : `
+              ${isLast
+              ? 'opacity-30 cursor-not-allowed text-text-muted'
+              : `
                     text-text-primary
                     hover:text-text-muted
                     hover:bg-background-surface
                     hover:border-accent
                     cursor-pointer
                   `
-              }
+            }
             `}
         >
           <ChevronDown className="size-3 md:size-5" />
@@ -273,10 +271,18 @@ const NavBar = ({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { delay: 0.5 } }}
                 exit={{ opacity: 0 }}
-                className="right-0 bottom-8 absolute"
+                className="right-0 bottom-8 absolute flex items-center gap-6"
               >
+                <a
+                  href="https://drive.google.com/file/d/1A3MEQ8T2zhAnXMWewjK8HOxJIoOEo3e8/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-background-overlay/60 hover:bg-background-surface backdrop-blur-sm px-6 py-2 rounded-full font-bold text-text-heading text-sm uppercase tracking-wider transition-colors"
+                >
+                  Resume
+                </a>
                 <button className="">
-                  <label className="bg-background-overlay/60 hover:bg-color-background-overlay backdrop-blur-sm ml-4 px-6 py-2 rounded-full font-bold text-text-heading text-sm uppercase tracking-wider transition-colors switch">
+                  <label className="bg-background-overlay/60 hover:bg-color-background-overlay backdrop-blur-sm px-6 py-2 rounded-full font-bold text-text-heading text-sm uppercase tracking-wider transition-colors switch">
                     <input type="checkbox" checked={!isDark} onChange={() => toggleDark()} />
                     <span className="slider"></span>
                   </label>
