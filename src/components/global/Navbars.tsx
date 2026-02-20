@@ -253,7 +253,7 @@ const NavBar = ({
                         }}
                         className={`
                         font-bold tracking-tighter cursor-pointer
-                        text-5xl md:text-7xl
+                        text-3xl md:text-7xl
                         transition-colors 
                         ${activePageIndex === index ? 'text-text-primary tracking-tight' : 'text-text-primary/50'}
                         group-hover:text-accent-hover

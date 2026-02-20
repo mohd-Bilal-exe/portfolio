@@ -47,10 +47,6 @@ const Home = ({ markAnimationComplete }: { markAnimationComplete: () => void }) 
         </h1>
       </motion.div>
       <div className="top-0 left-0 z-10 absolute flex flex-col justify-between items-between w-full h-full">
-        {/* BLOCK 1: "FULL STACK" 
-            - Phase 1: Slide in from LEFT
-            - Phase 2: Slide UP (negative Y) to reveal Name
-        */}
         <motion.div
           initial={{ x: '-100dvw', y: 0 }}
           animate={{
@@ -84,7 +80,6 @@ const Home = ({ markAnimationComplete }: { markAnimationComplete: () => void }) 
           </h1>
         </motion.div>
       </div>
-      {/* 2. THE DESCRIPTION (Revealed by DEVELOPER moving DOWN) */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: animationState.revealContent ? 1 : 0 }}
