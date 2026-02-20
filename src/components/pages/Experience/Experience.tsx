@@ -70,7 +70,7 @@ const Experience = () => {
                         number="// Apr 2025 – Present"
                         title="Software Developer"
                         desc="RealtyPlus, Zambia (Remote) — Developing CMS, dashboards, and internal tools from scratch. Refactored legacy code, reduced API response time by 35%, and led frontend architecture decisions for new modules."
-                        tech={['Next.js', 'TypeScript', 'Node.js', 'Prisma', 'PostgreSQL']}
+                        tech={['React', 'Firebase', 'Zustand', 'Tailwind CSS', 'Next.js', 'TypeScript', 'Node.js', 'genAI']}
                     />
 
                     <StoryCard
