@@ -2,7 +2,15 @@ import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowRight, ArrowLeft, ExternalLink } from 'lucide-react';
 import AnimateString from '../../global/AnimateString';
-import { debatrix, MotionOnNative, portfolio, resumeIQ, TODONest } from '../../../lib/assets';
+import {
+  debatrix,
+  MotionOnNative,
+  Orchera,
+  portfolio,
+  resumeIQ,
+  Textwind,
+  TODONest,
+} from '../../../lib/assets';
 import { twMerge } from 'tailwind-merge';
 import {
   contentHeading,
@@ -19,7 +27,7 @@ const projects = [
     isFeatured: true,
     key: 'textwind',
     title: 'Textwind',
-    imgScr: null,
+    imgScr: Textwind,
     link: 'https://www.npmjs.com/package/textwind',
     description:
       'A complete fluid typography system for Tailwind CSS with inline scale modifiers, 11 semantic primitives, and zero-config setup. Published on NPM.',
@@ -30,7 +38,7 @@ const projects = [
     isFeatured: true,
     key: 'orchera',
     title: 'Orchera',
-    imgScr: null,
+    imgScr: Orchera,
     link: 'https://orchera.vercel.app/',
     description:
       'A visual backend execution engine where APIs are defined as computation graphs (DAGs) instead of traditional server code. Includes a marketplace for reusable backend workflows.',
@@ -50,7 +58,7 @@ const projects = [
   },
 
   {
-    isFeatured: true,
+    isFeatured: false,
     key: 'debatrix',
     title: 'deBatrix',
     imgScr: debatrix,
@@ -61,7 +69,7 @@ const projects = [
     isEmphasized: false,
   },
   {
-    isFeatured: true,
+    isFeatured: false,
     key: 'ResumeIQ',
     title: 'ResumeIQ',
     imgScr: resumeIQ,
@@ -152,10 +160,14 @@ export default function ProjectsSection({
                     'mb-12 font-bold text-text-primary/80 leading-tight'
                   )}
                 >
-                  <AnimateString isMobile={isMobile} delayOffset={0.05}>Crafting digital products</AnimateString>
+                  <AnimateString isMobile={isMobile} delayOffset={0.05}>
+                    Crafting digital products
+                  </AnimateString>
                   <br />
                   <span className="text-text-primary/50">
-                    <AnimateString isMobile={isMobile} delayOffset={0.12}>with intent and precision.</AnimateString>
+                    <AnimateString isMobile={isMobile} delayOffset={0.12}>
+                      with intent and precision.
+                    </AnimateString>
                   </span>
                 </h2>
 
@@ -164,7 +176,12 @@ export default function ProjectsSection({
                   {projects
                     .filter(p => p.isFeatured)
                     .map((project, i) => (
-                      <FeaturedCard isMobile={isMobile} key={project.key} project={project} index={i} />
+                      <FeaturedCard
+                        isMobile={isMobile}
+                        key={project.key}
+                        project={project}
+                        index={i}
+                      />
                     ))}
                 </div>
 
@@ -228,7 +245,15 @@ export default function ProjectsSection({
   );
 }
 
-const FeaturedCard = ({ project, index, isMobile }: { project: any; index: number, isMobile: boolean }) => (
+const FeaturedCard = ({
+  project,
+  index,
+  isMobile,
+}: {
+  project: any;
+  index: number;
+  isMobile: boolean;
+}) => (
   <motion.a
     href={project.link}
     target="_blank"
@@ -244,7 +269,7 @@ const FeaturedCard = ({ project, index, isMobile }: { project: any; index: numbe
           loading="lazy"
           src={project.imgScr}
           alt={project.title}
-          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
         />
       ) : (
         <div
@@ -267,7 +292,9 @@ const FeaturedCard = ({ project, index, isMobile }: { project: any; index: numbe
           {project.title}
         </h4>
         <p className={twMerge(contentIndex, 'text-text-primary/50')}>
-          <AnimateString isMobile={isMobile} delayOffset={index * 0.12 + 0.18}>{project.description}</AnimateString>
+          <AnimateString isMobile={isMobile} delayOffset={index * 0.12 + 0.18}>
+            {project.description}
+          </AnimateString>
         </p>
       </div>
     </div>

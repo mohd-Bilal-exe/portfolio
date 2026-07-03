@@ -13,8 +13,12 @@ import resumeIQ from '../assets/Images/resumeIQ.webp';
 import TODONest from '../assets/Images/TODOnest.webp';
 import debatrix from '../assets/Images/debatrix.webp';
 import MotionOnNative from '../assets/Images/motion-on-native.webp';
+import Orchera from '../assets/Images/orchera.webp';
+import Textwind from '../assets/Images/textwind.webp';
 export {
   portfolio,
+  Orchera,
+  Textwind,
   MotionOnNative,
   debatrix,
   resumeIQ,
