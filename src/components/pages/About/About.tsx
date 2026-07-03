@@ -6,8 +6,6 @@ import AnimateString from '../../global/AnimateString';
 import { pageHeading, pageName } from '../../../lib/fontClassNames';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 
-
-
 const About = () => {
   const isMobile = useMediaQuery('(max-width: 768px)');
   return (
@@ -43,8 +41,14 @@ const About = () => {
         >
           {/* Sentence 1 */}
           <div className="mb-8">
-            <AnimateString isMobile={isMobile} delayOffset={0.05}>Hey, I engineer</AnimateString>
-            <AnimateString isMobile={isMobile} delayOffset={0.15} className="ml-1.5 text-text-primary/85">
+            <AnimateString isMobile={isMobile} delayOffset={0.05}>
+              Hey, I engineer
+            </AnimateString>
+            <AnimateString
+              isMobile={isMobile}
+              delayOffset={0.15}
+              className="ml-1.5 text-text-primary/85"
+            >
               scalable digital experiences
             </AnimateString>
             <MediaPill
@@ -59,8 +63,14 @@ const About = () => {
               }
               delayOffset={0.2}
             />
-            <AnimateString isMobile={isMobile} delayOffset={0.25}>while eating Awadhi cuisine in</AnimateString>
-            <AnimateString isMobile={isMobile} delayOffset={0.35} className="ml-2 text-text-primary/85">
+            <AnimateString isMobile={isMobile} delayOffset={0.25}>
+              while eating Awadhi cuisine in
+            </AnimateString>
+            <AnimateString
+              isMobile={isMobile}
+              delayOffset={0.35}
+              className="ml-2 text-text-primary/85"
+            >
               Lucknow, Uttar Pradesh, India
             </AnimateString>
             <MediaPill
@@ -84,7 +94,11 @@ const About = () => {
               Away from the screens, my mood is fueled by
             </AnimateString>
 
-            <AnimateString isMobile={isMobile} delayOffset={0.55} className="inline-block mx-1.5 text-text-primary/85">
+            <AnimateString
+              isMobile={isMobile}
+              delayOffset={0.55}
+              className="inline-block mx-1.5 text-text-primary/85"
+            >
               lifting heavy circles
             </AnimateString>
 
@@ -101,9 +115,15 @@ const About = () => {
               }
             />
 
-            <AnimateString isMobile={isMobile} delayOffset={0.65}>and ocassionaly finding different</AnimateString>
+            <AnimateString isMobile={isMobile} delayOffset={0.65}>
+              and ocassionaly finding different
+            </AnimateString>
 
-            <AnimateString isMobile={isMobile} delayOffset={0.75} className="inline-block mx-1.5 text-text-primary/85">
+            <AnimateString
+              isMobile={isMobile}
+              delayOffset={0.75}
+              className="inline-block mx-1.5 text-text-primary/85"
+            >
               perspectives
             </AnimateString>
 
@@ -120,11 +140,13 @@ const About = () => {
               }
             />
 
-            <AnimateString isMobile={isMobile} delayOffset={0.85}>through a lens.</AnimateString>
+            <AnimateString isMobile={isMobile} delayOffset={0.85}>
+              through a lens.
+            </AnimateString>
           </div>
         </div>
 
-        {/* Footer */}
+        {/* Footer hint */}
         <motion.div
           className="flex justify-start items-center gap-3 opacity-60 mt-16"
           initial={{ opacity: 0 }}
@@ -138,6 +160,41 @@ const About = () => {
             (Tap the images to see them in action)
           </span>
           <ArrowRight className="flex justify-center items-center size-5 md:size-6 text-text-secondary/70" />
+        </motion.div>
+
+        {/* Professional Bio */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="mt-16 pt-10 border-t border-text-primary/10"
+        >
+          {' '}
+          <p className="font-space-grotesk font-normal text-text-secondary/60 text-xs md:text-sm leading-relaxed max-w-2xl">
+            On a Serous Note,
+          </p>
+          <p className="font-space-grotesk font-normal text-text-secondary/60 text-xs md:text-sm leading-relaxed max-w-2xl">
+            Professionally, I'm a{' '}
+            <span className="text-text-primary/80 font-medium">
+              full-stack and React Native developer
+            </span>{' '}
+            based in <span className="text-text-primary/80 font-medium">Lucknow, India</span>, with
+            hands-on experience building production systems at{' '}
+            <span className="text-text-primary/80 font-medium">RealtyPlus (Zambia, Remote)</span>. I
+            author open-source{' '}
+            <span className="text-text-primary/80 font-medium">NPM packages</span> — including{' '}
+            <span className="text-text-primary/80 font-medium">Textwind</span> (a Tailwind CSS
+            typography plugin) and{' '}
+            <span className="text-text-primary/80 font-medium">Motion on Native</span> (a Framer
+            Motion-like library for React Native) — and build side projects like{' '}
+            <span className="text-text-primary/80 font-medium">Orchera</span>, a visual backend
+            execution engine. I hold a B.Tech in Computer Science from{' '}
+            <span className="text-text-primary/80 font-medium">
+              Dr. APJ Abdul Kalam Technical University, Lucknow
+            </span>
+            .
+          </p>
         </motion.div>
       </div>
     </section>
@@ -187,7 +244,7 @@ const MediaPill = ({
           try {
             videoRef.current.src = res;
             videoRef.current.load();
-          } catch (_) { }
+          } catch (_) {}
         }
       }
     } catch (e) {

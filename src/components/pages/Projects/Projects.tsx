@@ -17,6 +17,28 @@ import useMediaQuery from '../../../hooks/useMediaQuery';
 const projects = [
   {
     isFeatured: true,
+    key: 'textwind',
+    title: 'Textwind',
+    imgScr: null,
+    link: 'https://www.npmjs.com/package/textwind',
+    description:
+      'A complete fluid typography system for Tailwind CSS with inline scale modifiers, 11 semantic primitives, and zero-config setup. Published on NPM.',
+    tech: ['Tailwind CSS', 'TypeScript', 'Plugin Architecture'],
+    isEmphasized: true,
+  },
+  {
+    isFeatured: true,
+    key: 'orchera',
+    title: 'Orchera',
+    imgScr: null,
+    link: 'https://orchera.vercel.app/',
+    description:
+      'A visual backend execution engine where APIs are defined as computation graphs (DAGs) instead of traditional server code. Includes a marketplace for reusable backend workflows.',
+    tech: ['TypeScript', 'Node.js', 'Fastify', 'DAG Engine', 'System Design'],
+    isEmphasized: true,
+  },
+  {
+    isFeatured: true,
     key: 'motion-on-native',
     title: 'Motion on Native',
     imgScr: MotionOnNative,
